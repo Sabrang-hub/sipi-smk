@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -49,6 +49,52 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'main';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['do-login'] = 'auth/do_login';
+
+$route['pengguna'] = 'master/pengguna';
+$route['list-pengguna'] = 'master/get_list_data_pengguna';
+$route['simpan-pengguna'] = 'master/simpan_pengguna';
+$route['hapus-pengguna'] = 'master/hapus_pengguna';
+
+$route['jurusan'] = 'master/jurusan';
+$route['list-jurusan'] = 'master/get_list_data_jurusan';
+$route['simpan-jurusan'] = 'master/simpan_jurusan';
+$route['hapus-jurusan'] = 'master/hapus_jurusan';
+
+$route['industri'] = 'master/industri';
+$route['list-industri'] = 'master/get_list_data_industri';
+$route['simpan-industri'] = 'master/simpan_industri';
+$route['hapus-industri'] = 'master/hapus_industri';
+
+$route['kelas'] = 'master/kelas';
+$route['list-kelas'] = 'master/get_list_data_kelas';
+$route['simpan-kelas'] = 'master/simpan_kelas';
+$route['hapus-kelas'] = 'master/hapus_kelas';
+
+$route['guru'] = 'master/guru';
+$route['list-guru'] = 'master/get_list_data_guru';
+$route['simpan-guru'] = 'master/simpan_guru';
+$route['hapus-guru'] = 'master/hapus_guru';
+
+$route['siswa'] = 'master/siswa';
+$route['list-siswa'] = 'master/get_list_data_siswa';
+$route['simpan-siswa'] = 'master/simpan_siswa';
+$route['hapus-siswa'] = 'master/hapus_siswa';
+
+$route['profil-instansi'] = 'master/profil_instansi';
+$route['simpan-profil-instansi'] = 'master/simpan_profil_instansi';
+
+$route['master-group'] = 'master/get_list_group';
+$route['master-jurusan'] = 'master/get_list_jurusan';
+$route['master-status-user'] = 'master/get_list_status_user';
+$route['master-status-user'] = 'master/get_list_status_user';
+$route['master-profil-instansi'] = 'master/get_master_profil_instansi';
+$route['master-jenis-usaha'] = 'master/get_list_jenis_usaha';
+$route['master-industri'] = 'master/get_list_industri';
+$route['master-kelas'] = 'master/get_list_kelas';
+$route['master-golongan'] = 'master/get_list_golongan';
+$route['master-guru'] = 'master/get_list_guru';
+$route['master-kode'] = 'master/get_list_kode';
