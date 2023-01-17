@@ -3,6 +3,7 @@
 <link href="<?= base_url() ?>assets/vendor/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" />
 <link href="<?= base_url() ?>assets/vendor/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
 <link href="<?= base_url() ?>assets/node_modules/select2-bootstrap-5-theme/dist/select2-bootstrap-5-theme.min.css" rel="stylesheet">
+<link href="<?= base_url() ?>assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
 <?php $this->layout->endSection() ?>
 <?php $this->layout->section('content') ?>
 <div class="content">
@@ -12,7 +13,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Master</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Main</a></li>
                             <li class="breadcrumb-item active"><?= @$title ?></li>
                         </ol>
                     </div>
@@ -24,7 +25,6 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <button title="Tambah" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#modal-form-guru"><i class="mdi mdi-account-plus"></i> <span class="d-none d-lg-inline">Tambah</span></button>
                         <h5>Daftar <?= @$title ?></h5>
                     </div>
                     <div class="card-body">
@@ -36,33 +36,60 @@
     </div>
 </div>
 
-<div class="modal fade" id="modal-form-guru" tabindex="-1" aria-labelledby="fm-modal-title" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class=" modal-content">
+<div class="modal fade" id="modal-form-kelompok" tabindex="-1" aria-labelledby="fm-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Tambah Guru</h5>
+                <h5 class="modal-title">Tambah Kelompok</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
             </div>
-            <form id="fm-guru" action="<?= base_url('simpan-guru') ?>" method="POST">
-                <input type="hidden" id="guru_id" name="guru_id" />
+            <form id="fm-kelompok" action="<?= base_url('simpan-kelompok') ?>" method="POST">
+                <input type="hidden" id="kelompok_id" name="kelompok_id">
                 <div class="modal-body">
                     <span class="text-muted"><i>(<span class="text-danger">*</span>) Wajib diisi</i></span>
-
-                    <div class="my-3">
-                        <label for="nip" class="form-label">Nomor Induk Pegawai<span class="text-danger">*</span></label>
-                        <input type="text" id="nip" name="nip" class="form-control" placeholder="Masukkan nomor induk pegawai" required>
+                    <div class="row">
+                        <div class="col-lg-6 col-12">
+                            <div class="my-3">
+                                <label for="industri_id" class="form-label">Nama Industri<span class="text-danger">*</span></label>
+                                <select id="industri_id" name="industri_id" class="form-control" required disabled></select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="my-3">
+                                <label for="guru_id" class="form-label">Guru Pembimbing<span class="text-danger">*</span></label>
+                                <select id="guru_id" name="guru_id" class="form-control" required disabled></select>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="my-3">
-                        <label for="nama" class="form-label">Nama<span class="text-danger">*</span></label>
-                        <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan nama lengkap" required>
+                    <div class="row">
+                        <div class="col-lg-5 col-12">
+                            <div class="mb-3">
+                                <label for="siswa_id" class="form-label">Nama Siswa<span class="text-danger">*</span></label>
+                                <select id="siswa_id" name="siswa_id" class="form-control" required disabled></select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="mb-3 position-relative" id="tanggal_awal_container">
+                                <label for="tanggal_awal" class="form-label">Tanggal Mulai<span class="text-danger">*</span></label>
+                                <input id="tanggal_awal" name="tanggal_awal" class="form-control" placeholder="dd-mm-yyyy" data-date-autoclose="true" data-date-format="dd-mm-yyyy" data-provide="datepicker" data-date-container="#tanggal_awal_container" required>
+                            </div>
+                        </div>
+                        <div class="col-1 pt-4 d-lg-block d-none text-center">S/D</div>
+                        <div class="col-lg-3">
+                            <div class="mb-3 position-relative" id="tanggal_akhir_container">
+                                <label for="tanggal_akhir" class="form-label">Tanggal Berakhir<span class="text-danger">*</span></label>
+                                <input id="tanggal_akhir" name="tanggal_akhir" class="form-control" placeholder="dd-mm-yyyy" data-date-autoclose="true" data-date-format="dd-mm-yyyy" data-provide="datepicker" data-date-container="#tanggal_akhir_container" required>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="my-3">
-                        <label for="golongan_id" class="form-label">Golongan</label>
-                        <select type="text" id="golongan_id" name="golongan_id" class="form-control" placeholder="Masukkan nama lengkap" required></select>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="user_id" class="form-label">Pembimbing Lapangan</label>
+                                <select id="user_id" name="user_id" class="form-control"></select>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="submit" title="Simpan" class="btn btn-primary btn-sm"><i class="mdi mdi-content-save"></i> <span class="d-none d-lg-inline">Simpan</span></button>
@@ -72,6 +99,7 @@
         </div>
     </div>
 </div>
+
 <?php $this->layout->endSection() ?>
 <?php $this->layout->section('script') ?>
 <script src="<?= base_url() ?>assets/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -79,10 +107,12 @@
 <script src="<?= base_url() ?>assets/vendor/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?= base_url() ?>assets/vendor/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
 <script src="<?= base_url() ?>assets/vendor/select2/js/select2.min.js"></script>
+<script src="<?= base_url() ?>assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 <script>
     var data_src = [];
-    var modal_form_guru_id = document.getElementById("modal-form-guru");
-    var modal_form_guru = new bootstrap.Modal(modal_form_guru_id, {
+    var data_sub_src = [];
+    var modal_form_kelompok_id = document.getElementById("modal-form-kelompok");
+    var modal_form_kelompok = new bootstrap.Modal(modal_form_kelompok_id, {
         backdrop: 'static',
         keyboard: false,
     });
@@ -106,7 +136,7 @@
                     display: $.fn.dataTable.Responsive.display.modal({
                         header: function(row) {
                             var data = row.data();
-                            return data.nama.toUpperCase();
+                            return data.siswa_id + ' - ' + data.nama_siswa.toUpperCase();
                         }
                     }),
                     renderer: function(api, rowIdx, columns) {
@@ -125,7 +155,7 @@
                 }
             },
             ajax: {
-                url: '<?= base_url() ?>list-guru',
+                url: '<?= base_url() ?>list-kelompok',
                 type: 'POST',
                 data: function(d) {},
                 dataSrc: function(data) {
@@ -143,25 +173,33 @@
                     }
                 },
                 {
-                    data: 'nip',
+                    data: 'nama_siswa',
                     responsivePriority: 2,
-                    title: 'NIP',
+                    title: 'Siswa',
                     render: function(value, type, row) {
-                        return value;
+                        return row.siswa_id + ' - ' + value;
                     }
                 },
                 {
-                    data: 'nama',
+                    data: 'nama_industri',
                     responsivePriority: 3,
-                    title: 'Nama',
+                    title: 'Industri',
                     render: function(value, type, row) {
                         return value;
                     }
                 },
                 {
-                    data: 'nama_golongan',
+                    data: 'nama_guru',
                     responsivePriority: 4,
-                    title: 'Golongan',
+                    title: 'Nama Guru',
+                    render: function(value, type, row) {
+                        return value;
+                    }
+                },
+                {
+                    data: 'nama_user',
+                    responsivePriority: 5,
+                    title: 'Pemb. Lapangan',
                     render: function(value, type, row) {
                         return value;
                     }
@@ -169,14 +207,13 @@
                 {
                     data: 'created_at',
                     title: 'Info',
-                    responsivePriority: 5,
+                    responsivePriority: 7,
                     render: function(value, type, row) {
-                        var s = "<small>";
+                        var s = "";
                         s += "Created at " + row.created_at;
                         s += (row.created_by != '' && row.created_by != null ? "<br>Created By " + row.created_by : '');
                         s += (row.updated_at != '' && row.updated_at != null ? "<br>Updated at " + row.updated_at : '');
                         s += (row.updated_by != '' && row.updated_by != null ? "<br>Updated By " + row.updated_by : '');
-                        s += "</small>";
                         return s;
                     }
                 },
@@ -201,13 +238,13 @@
             }
         });
 
-        $("#golongan_id").select2({
+        $("#industri_id").select2({
             minimumResultsForSearch: 10,
-            dropdownParent: $('#golongan_id').parent(),
+            dropdownParent: $('#industri_id').parent(),
             placeholder: 'Pilih...',
             theme: "bootstrap-5",
             ajax: {
-                url: '<?= base_url() ?>master-golongan',
+                url: '<?= base_url() ?>master-industri',
                 dataType: "json",
                 type: "post",
                 data: function(params) {
@@ -230,7 +267,93 @@
             }
         });
 
-        $('#fm-guru').submit(function(e) {
+        $("#guru_id").select2({
+            minimumResultsForSearch: 10,
+            dropdownParent: $('#guru_id').parent(),
+            placeholder: 'Pilih...',
+            theme: "bootstrap-5",
+            ajax: {
+                url: '<?= base_url() ?>master-guru',
+                dataType: "json",
+                type: "post",
+                data: function(params) {
+
+                    var queryParameters = {
+                        term: params.term
+                    }
+                    return queryParameters;
+                },
+                processResults: function(data) {
+                    return {
+                        results: $.map(data, function(item) {
+                            return {
+                                id: item.id,
+                                text: item.text,
+                            }
+                        })
+                    };
+                },
+            }
+        });
+
+        $("#siswa_id").select2({
+            dropdownParent: $('#siswa_id').parent(),
+            placeholder: 'Pilih...',
+            theme: "bootstrap-5",
+            ajax: {
+                url: '<?= base_url() ?>siswa-kelompok',
+                dataType: "json",
+                type: "post",
+                data: function(params) {
+
+                    var queryParameters = {
+                        term: params.term
+                    }
+                    return queryParameters;
+                },
+                processResults: function(data) {
+                    return {
+                        results: $.map(data, function(item) {
+                            return {
+                                id: item.id,
+                                text: item.id + ' - ' + item.text,
+                            }
+                        })
+                    };
+                },
+            }
+        });
+
+        $("#user_id").select2({
+            minimumResultsForSearch: 10,
+            dropdownParent: $('#user_id').parent(),
+            placeholder: 'Pilih...',
+            theme: "bootstrap-5",
+            ajax: {
+                url: '<?= base_url() ?>pembimbing-kelompok',
+                dataType: "json",
+                type: "post",
+                data: function(params) {
+
+                    var queryParameters = {
+                        term: params.term
+                    }
+                    return queryParameters;
+                },
+                processResults: function(data) {
+                    return {
+                        results: $.map(data, function(item) {
+                            return {
+                                id: item.id,
+                                text: item.text + ' - ' + item.nama_industri,
+                            }
+                        })
+                    };
+                },
+            }
+        });
+
+        $('#fm-kelompok').submit(function(e) {
             e.preventDefault();
             $.ajax({
                 url: this.getAttribute('action'),
@@ -244,7 +367,7 @@
                 beforeSend: function() {
                     Swal.fire({
                         title: 'Loading...',
-                        html: 'Menyimpan guru',
+                        html: 'Menyimpan kelompok',
                         didOpen: () => {
                             Swal.showLoading()
                         },
@@ -262,7 +385,7 @@
                             allowEscapeKey: false,
                         });
                         $("#list").DataTable().ajax.reload();
-                        modal_form_guru.hide();
+                        modal_form_kelompok.hide();
                     } else {
                         Swal.fire({
                             icon: 'warning',
@@ -285,28 +408,41 @@
             });
         });
 
-        modal_form_guru_id.addEventListener('hidden.bs.modal', function(event) {
-            modal_form_guru_id.querySelector('.modal-title').textContent = 'Tambah Guru';
-            guru_id.value = '';
-            $('#fm-guru').trigger("reset");
+        modal_form_kelompok_id.addEventListener('hidden.bs.modal', function(event) {
+            modal_form_kelompok_id.querySelector('.modal-title').textContent = 'Tambah Kelompok';
+            $('#tanggal_awal,#tanggal_akhir').prop('disabled', false);
+            kelompok_id.value = '';
+            industri_id.innerHTML = '';
+            guru_id.innerHTML = '';
+            siswa_id.innerHTML = '';
+            $('#fm-kelompok').trigger("reset");
         });
 
     });
 
-    function edit_guru(index, e) {
+    function edit_kelompok(index, e) {
         var data = data_src[index];
-        guru_id.value = data.id;
-        nip.value = data.nip;
-        nama.value = data.nama;
-        if (data.golongan_id > 0) {
-            select2SetVal('#golongan_id', data.nama_golongan, data.golongan_id);
+        kelompok_id.value = data.id;
+        tanggal_awal.value = data.tanggal_awal;
+        tanggal_akhir.value = data.tanggal_akhir;
+        if (data.industri_id > 0) {
+            select2SetVal('#industri_id', data.nama_industri, data.industri_id, false);
+        }
+        if (data.guru_id != '') {
+            select2SetVal('#guru_id', data.nama_guru, data.guru_id, false);
+        }
+        if (data.siswa_id != '') {
+            select2SetVal('#siswa_id', data.nama_siswa, data.siswa_id, true);
+        }
+        if (data.user_id > 0) {
+            select2SetVal('#user_id', data.nama_user + ' - ' + data.nama_industri, data.user_id, false);
         }
         $(".dtr-bs-modal").find('[data-bs-dismiss="modal"]').click();
-        modal_form_guru_id.querySelector('.modal-title').textContent = 'Edit Guru';
-        modal_form_guru.show();
+        modal_form_kelompok_id.querySelector('.modal-title').textContent = 'Edit Kelompok';
+        modal_form_kelompok.show();
     }
 
-    function hapus_guru(id, nama, e) {
+    function hapus_kelompok(id, nama, e) {
         if ($(e.target).html() == '') {
             var $this = $(e.target).parent();
         } else {
@@ -321,7 +457,7 @@
         );
         Swal.fire({
             title: 'Anda yakin?',
-            html: "Guru (<span class=\"text-success\">" + nama + "</span>) dan akun akan dihapus.",
+            html: "Siswa (<span class=\"text-success\">" + nama + "</span>) akan dihapus.",
             icon: 'question',
             showCancelButton: true,
             cancelButtonText: 'Batal',
@@ -331,7 +467,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: '<?= base_url() ?>hapus-guru',
+                    url: '<?= base_url() ?>hapus-kelompok',
                     data: ({
                         id
                     }),
@@ -379,11 +515,15 @@
         });
     }
 
-    function select2SetVal(target, text, value) {
+    function select2SetVal(target, text, value, kode) {
         if ($(target).find("option[value='" + value + "']").length) {
             $(target).val(value).trigger('change');
         } else {
-            $(target).append(new Option(text, value, true, true)).trigger('change');
+            if (kode == true) {
+                $(target).append(new Option(value + ' - ' + text, value, true, true)).trigger('change');
+            } else {
+                $(target).append(new Option(text, value, true, true)).trigger('change');
+            }
         }
     }
 </script>

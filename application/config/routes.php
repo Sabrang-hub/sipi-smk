@@ -53,6 +53,7 @@ $route['default_controller'] = 'main';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['do-login'] = 'auth/do_login';
+$route['auth/(:num)'] = 'auth/do_logout/$1';
 
 $route['pengguna'] = 'master/pengguna';
 $route['list-pengguna'] = 'master/get_list_data_pengguna';
@@ -83,6 +84,19 @@ $route['siswa'] = 'master/siswa';
 $route['list-siswa'] = 'master/get_list_data_siswa';
 $route['simpan-siswa'] = 'master/simpan_siswa';
 $route['hapus-siswa'] = 'master/hapus_siswa';
+
+$route['kelompok'] = 'main/kelompok';
+$route['list-kelompok'] = 'main/get_list_data_kelompok';
+$route['list-sub-kelompok'] = 'main/get_list_sub_data_kelompok';
+$route['simpan-kelompok'] = 'main/simpan_kelompok';
+$route['hapus-kelompok'] = 'main/hapus_kelompok';
+$route['siswa-kelompok'] = 'main/get_list_siswa_kelompok';
+$route['pembimbing-kelompok'] = 'main/get_list_pembimbing_kelompok';
+
+$route['logbook'] = 'main/logbook';
+$route['list-logbook'] = 'main/get_list_data_logbook';
+$route['simpan-logbook'] = 'main/simpan_logbook';
+$route['hapus-logbook'] = 'main/hapus_logbook';
 
 $route['profil-instansi'] = 'master/profil_instansi';
 $route['simpan-profil-instansi'] = 'master/simpan_profil_instansi';

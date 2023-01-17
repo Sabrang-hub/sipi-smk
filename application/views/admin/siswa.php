@@ -116,7 +116,7 @@
                     display: $.fn.dataTable.Responsive.display.modal({
                         header: function(row) {
                             var data = row.data();
-                            return data.nama.toUpperCase();
+                            return data.nis + ' - ' + data.nama.toUpperCase();
                         }
                     }),
                     renderer: function(api, rowIdx, columns) {
@@ -195,14 +195,13 @@
                 {
                     data: 'created_at',
                     title: 'Info',
-                    responsivePriority: 7,
+                    responsivePriority: 8,
                     render: function(value, type, row) {
-                        var s = "<small>";
+                        var s = "";
                         s += "Created at " + row.created_at;
                         s += (row.created_by != '' && row.created_by != null ? "<br>Created By " + row.created_by : '');
                         s += (row.updated_at != '' && row.updated_at != null ? "<br>Updated at " + row.updated_at : '');
                         s += (row.updated_by != '' && row.updated_by != null ? "<br>Updated By " + row.updated_by : '');
-                        s += "</small>";
                         return s;
                     }
                 },
@@ -210,7 +209,7 @@
                     data: 'id',
                     title: 'Aksi',
                     orderable: false,
-                    responsivePriority: 8,
+                    responsivePriority: 7,
                     render: function(value, type, row) {
                         return row.aksi;
                     }
@@ -368,8 +367,12 @@
         modal_form_siswa.show();
     }
 
-    function hapus_siswa(id, siswa, e) {
-        var $this = $(e.target);
+    function hapus_siswa(id, nama, e) {
+        if ($(e.target).html() == '') {
+            var $this = $(e.target).parent();
+        } else {
+            var $this = $(e.target);
+        }
         var src = $this.html();
         $this.prop('disabled', true);
         $this.html(
@@ -379,7 +382,7 @@
         );
         Swal.fire({
             title: 'Anda yakin?',
-            html: "siswa (<span class=\"text-success\">" + siswa + "</span>) akan dihapus.",
+            html: "Siswa (<span class=\"text-success\">" + nama + "</span>) dan akun akan dihapus.",
             icon: 'question',
             showCancelButton: true,
             cancelButtonText: 'Batal',
@@ -404,6 +407,7 @@
                                 allowOutsideClick: false,
                                 allowEscapeKey: false,
                             });
+                            $('#list').DataTable().ajax.reload();
                         } else {
                             Swal.fire({
                                 icon: 'warning',
@@ -420,7 +424,7 @@
                         Swal.fire({
                             icon: 'danger',
                             title: "Status: " + status + "<br> Error: " + error,
-                            html: JSON.stringify(xhr),
+                            html: xhr.responseText,
                             allowOutsideClick: false,
                             allowEscapeKey: false,
                         });

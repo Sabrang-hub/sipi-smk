@@ -17,9 +17,8 @@ class M_table extends CI_Model
     {
         $i = 0;
 
-        foreach ($column_search as $item) {
-            if (isset($_POST['search']['value'])) {
-
+        if (isset($_POST['search']['value']) && $_POST['search']['value'] <> '') {
+            foreach ($column_search as $item) {
                 if ($i === 0) {
                     $this->db->group_start();
                     $this->db->like($item, $_POST['search']['value']);
@@ -29,8 +28,8 @@ class M_table extends CI_Model
 
                 if (count($column_search) - 1 == $i)
                     $this->db->group_end();
+                $i++;
             }
-            $i++;
         }
 
         if (isset($_POST['order'])) {

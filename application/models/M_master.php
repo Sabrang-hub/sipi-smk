@@ -185,11 +185,16 @@ class m_master extends CI_Model
 
     public function get_list_data_pengguna()
     {
+        $group_id = $this->session->userdata('group_id');
         $this->load->model('m_table', 'table');
-        $query = $this->db->select("a.*,b.nama as nama_group,c.nama as nama_status_user")
+        $query = $this->db->select("a.*,b.nama as nama_group,c.nama as nama_status_user,d.nama_jurusan,d.nama_kelas")
             ->from("m_user a")
             ->join("m_group b", "a.group_id=b.id", "LEFT")
-            ->join("m_status_user c", "a.status_user_id=c.id", "LEFT");
+            ->join("m_status_user c", "a.status_user_id=c.id", "LEFT")
+            ->join("m_siswa d", "a.kode=d.nis", "LEFT");
+        if ($group_id == 2) {
+            $this->db->where('a.user_id', $this->session->userdata('id'));
+        }
         $column_order  = array(null, null, 'a.username', 'a.group_id', 'a.nama,b.nama,c.nama,d.nama,e.nama', 'a.status', 'a.deleted_at,a.updated_at,a.created_at');
         $column_search = array("a.username");
         $order         = array("a.updated_at,a.created_at" => "desc");
@@ -229,6 +234,7 @@ class m_master extends CI_Model
         $data = $this->input->post();
         unset($data['user_id']);
         $data['id'] = $id;
+        $data['user_id'] = $this->session->userdata('id');
         $this->db->trans_begin();
         if ($id <> '') {
             $res = $this->db->where('id', $data['id'])->get('m_user')->row();
@@ -252,7 +258,7 @@ class m_master extends CI_Model
                 $data['nama_kelas'] = nama('m_kelas', 'nama', ['id' => $data['kelas_id']]);
                 $data['nama'] = nama('m_siswa', 'nama', ['nis' => $data['kode']]);
             } elseif ($data['group_id'] == 4) {
-                $data['nama'] = nama('m_industri', 'nama', ['id' => $data['kode']]);
+                $data['nama_industri'] = nama('m_industri', 'nama', ['id' => $data['kode']]);
             }
             $data['password'] = $this->encrypt->encode($data['password']);
             $data['updated_at'] = date('Y-m-d H:i:s');
@@ -276,7 +282,7 @@ class m_master extends CI_Model
                 $data['nama_kelas'] = nama('m_kelas', 'nama', ['id' => $data['kelas_id']]);
                 $data['nama'] = nama('m_siswa', 'nama', ['nis' => $data['kode']]);
             } elseif ($data['group_id'] == 4) {
-                $data['nama'] = nama('m_industri', 'nama', ['id' => $data['kode']]);
+                $data['nama_industri'] = nama('m_industri', 'nama', ['id' => $data['kode']]);
             }
             $data['password'] = $this->encrypt->encode($data['password']);
             $data['created_at'] = date('Y-m-d H:i:s');
@@ -779,6 +785,21 @@ class m_master extends CI_Model
                     'msg' => 'NIP sudah ada',
                 ];
             }
+            $cek_user = $this->db->where('kode', $data['nip'])->get('m_user');
+            if ($cek_user->num_rows() <= 0) {
+                $data_user = [
+                    'username' => $data['nip'],
+                    'password' => $this->encrypt->encode($data['nip']),
+                    'kode' => $data['nip'],
+                    'group_id' => 2,
+                    'nama' => $data['nama'],
+                    'status_user_id' => 1,
+                    'user_id' => $this->session->userdata('id'),
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'created_by' => $this->session->userdata('nama'),
+                ];
+                $this->db->insert('m_user', $data_user);
+            }
             $data['nama_golongan'] = nama('m_golongan', 'nama', ['id' => $data['golongan_id']]);
             $data['created_at'] = date('Y-m-d H:i:s');
             $data['created_by'] = $this->session->userdata('nama');
@@ -805,18 +826,22 @@ class m_master extends CI_Model
     public function hapus_guru()
     {
         $id = $this->input->post('id');
+        $this->db->trans_begin();
+        $res = $this->db->where('id', $id)->get('m_guru')->row();
+        $this->db->where('kode', $res->nip)->delete('m_user');
+        $this->db->where('id', $id)->delete('m_guru');
 
-        $sql = $this->db->delete_where('m_guru', ['id' => $id]);
-
-        if ($sql) {
-            return [
-                'stat' => true,
-                'msg' => 'Data terhapus',
-            ];
-        } else {
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_roleback();
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),
+            ];
+        } else {
+            $this->db->trans_commit();
+            return [
+                'stat' => true,
+                'msg' => 'Data terhapus',
             ];
         }
     }
@@ -895,6 +920,21 @@ class m_master extends CI_Model
                     'msg' => 'NIS sudah ada',
                 ];
             }
+            $cek_user = $this->db->where('kode', $data['nis'])->get('m_user');
+            if ($cek_user->num_rows() <= 0) {
+                $data_user = [
+                    'username' => $data['nis'],
+                    'password' => $this->encrypt->encode($data['nis'] . $data['tahun_masuk']),
+                    'kode' => $data['nis'],
+                    'group_id' => 3,
+                    'nama' => $data['nama'],
+                    'status_user_id' => 1,
+                    'user_id' => $this->session->userdata('id'),
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'created_by' => $this->session->userdata('nama'),
+                ];
+                $this->db->insert('m_user', $data_user);
+            }
             $data['nama_jurusan'] = nama('m_jurusan', 'nama', ['id' => $data['jurusan_id']]);
             $data['nama_kelas'] = nama('m_kelas', 'nama', ['id' => $data['kelas_id']]);
             $data['created_at'] = date('Y-m-d H:i:s');
@@ -921,18 +961,22 @@ class m_master extends CI_Model
     public function hapus_siswa()
     {
         $id = $this->input->post('id');
+        $this->db->trans_begin();
+        $res = $this->db->where('id', $id)->get('m_siswa')->row();
+        $this->db->where('kode', $res->nis)->delete('m_user');
+        $this->db->where('id', $id)->delete('m_siswa');
 
-        $sql = $this->db->delete_where('m_siswa', ['id' => $id]);
-
-        if ($sql) {
-            return [
-                'stat' => true,
-                'msg' => 'Data terhapus',
-            ];
-        } else {
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_roleback();
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),
+            ];
+        } else {
+            $this->db->trans_commit();
+            return [
+                'stat' => true,
+                'msg' => 'Data terhapus',
             ];
         }
     }

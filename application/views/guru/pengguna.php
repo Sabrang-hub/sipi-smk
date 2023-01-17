@@ -13,10 +13,10 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Master</a></li>
-                            <li class="breadcrumb-item active"><?= @$title ?></li>
+                            <li class="breadcrumb-item active">Pengguna</li>
                         </ol>
                     </div>
-                    <h4 class="page-title"><?= @$title ?></h4>
+                    <h4 class="page-title">Pengguna</h4>
                 </div>
             </div>
         </div>
@@ -24,8 +24,8 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <button title="Tambah" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#modal-form-guru"><i class="mdi mdi-account-plus"></i> <span class="d-none d-lg-inline">Tambah</span></button>
-                        <h5>Daftar <?= @$title ?></h5>
+                        <button title="Tambah" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#modal-form-pengguna"><i class="mdi mdi-account-plus"></i> <span class="d-none d-lg-inline">Tambah</span></button>
+                        <h5>Daftar Pengguna</h5>
                     </div>
                     <div class="card-body">
                         <table id="list" class="table dt-responsive w-100 nowrap"></table>
@@ -36,33 +36,66 @@
     </div>
 </div>
 
-<div class="modal fade" id="modal-form-guru" tabindex="-1" aria-labelledby="fm-modal-title" aria-hidden="true">
+<div class="modal fade" id="modal-form-pengguna" tabindex="-1" aria-labelledby="fm-modal-title" aria-hidden="true">
     <div class="modal-dialog">
         <div class=" modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Tambah Guru</h5>
+                <h5 class="modal-title">Tambah Akun</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
             </div>
-            <form id="fm-guru" action="<?= base_url('simpan-guru') ?>" method="POST">
-                <input type="hidden" id="guru_id" name="guru_id" />
+            <form id="fm-pengguna" action="<?= base_url('simpan-pengguna') ?>" method="POST">
+                <input type="hidden" id="user_id" name="user_id" />
                 <div class="modal-body">
                     <span class="text-muted"><i>(<span class="text-danger">*</span>) Wajib diisi</i></span>
 
                     <div class="my-3">
-                        <label for="nip" class="form-label">Nomor Induk Pegawai<span class="text-danger">*</span></label>
-                        <input type="text" id="nip" name="nip" class="form-control" placeholder="Masukkan nomor induk pegawai" required>
+                        <label for="group_id" class="form-label">Leval Pengguna<span class="text-danger">*</span></label>
+                        <select class="form-control" id="group_id" name="group_id" placeholder="Pilih...">
+                            <option value="4">Pembimbing Lapangan</option>
+                        </select>
                     </div>
 
-                    <div class="my-3">
-                        <label for="nama" class="form-label">Nama<span class="text-danger">*</span></label>
-                        <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan nama lengkap" required>
+                    <div class="my-3 optional" style="display: none;">
+                        <label for="kode" class="form-label"><span class="text-danger">*</span></label>
+                        <select class="form-control" id="kode" name="kode" placeholder="Pilih..." disabled>
+                        </select>
                     </div>
 
-                    <div class="my-3">
-                        <label for="golongan_id" class="form-label">Golongan</label>
-                        <select type="text" id="golongan_id" name="golongan_id" class="form-control" placeholder="Masukkan nama lengkap" required></select>
+                    <div class="mb-3 optional" style="display: none;">
+                        <label for="nama" class="form-label">Nama Lengkap<span class="text-danger">*</span></label>
+                        <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan nama lengkap" readonly>
                     </div>
 
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Nama Pengguna<span class="text-danger">*</span></label>
+                        <input type="text" id="username" name="username" class="form-control" placeholder="Masukkan nama pengguna" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Kata Sandi<span class="text-danger">*</span></label>
+                        <div class="input-group input-group-merge">
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Masukkan kata sandi">
+                            <div class="input-group-text" data-password="false">
+                                <span class="password-eye"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Masukkan email">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="keterangan" class="form-label">Keterangan</label>
+                        <textarea class="form-control" id="keterangan" name="keterangan" rows="5" placeholder="Masukkan keterangan"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="status_user_id" class="form-label">Status Pengguna<span class="text-danger">*</span></label>
+                        <select class="form-control" id="status_user_id" name="status_user_id" placeholder="Pilih...">
+                        </select>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" title="Simpan" class="btn btn-primary btn-sm"><i class="mdi mdi-content-save"></i> <span class="d-none d-lg-inline">Simpan</span></button>
@@ -81,8 +114,8 @@
 <script src="<?= base_url() ?>assets/vendor/select2/js/select2.min.js"></script>
 <script>
     var data_src = [];
-    var modal_form_guru_id = document.getElementById("modal-form-guru");
-    var modal_form_guru = new bootstrap.Modal(modal_form_guru_id, {
+    var modal_form_pengguna_id = document.getElementById("modal-form-pengguna");
+    var modal_form_pengguna = new bootstrap.Modal(modal_form_pengguna_id, {
         backdrop: 'static',
         keyboard: false,
     });
@@ -106,16 +139,18 @@
                     display: $.fn.dataTable.Responsive.display.modal({
                         header: function(row) {
                             var data = row.data();
-                            return data.nama.toUpperCase();
+                            return data.username.toUpperCase() + ' - ' + data.nama.toUpperCase();
                         }
                     }),
                     renderer: function(api, rowIdx, columns) {
                         var data = $.map(columns, function(col, i) {
-                            return '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
-                                '<td class="border-bottom border-light" valign="top">' + col.title + '</td> ' +
-                                '<td class="border-bottom border-light" valign="top">:</td> ' +
-                                '<td class="border-bottom border-light" valign="top">' + col.data + '</td>' +
-                                '</tr>';
+                            if (col.data != '') {
+                                return '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+                                    '<td class="border-bottom border-light" valign="top">' + col.title + '</td> ' +
+                                    '<td class="border-bottom border-light" valign="top">:</td> ' +
+                                    '<td class="border-bottom border-light" valign="top">' + col.data + '</td>' +
+                                    '</tr>';
+                            }
                         }).join('');
 
                         return data ?
@@ -125,7 +160,7 @@
                 }
             },
             ajax: {
-                url: '<?= base_url() ?>list-guru',
+                url: '<?= base_url() ?>list-pengguna',
                 type: 'POST',
                 data: function(d) {},
                 dataSrc: function(data) {
@@ -143,40 +178,111 @@
                     }
                 },
                 {
-                    data: 'nip',
+                    data: 'username',
                     responsivePriority: 2,
-                    title: 'NIP',
+                    title: 'Nama Pengguna',
                     render: function(value, type, row) {
                         return value;
+                    }
+                },
+                {
+                    data: 'nama_group',
+                    responsivePriority: 3,
+                    title: 'Level',
+                    render: function(value, type, row) {
+                        return "<span class=\"badge badge-outline-info\">" + value + "</span>";
                     }
                 },
                 {
                     data: 'nama',
-                    responsivePriority: 3,
+                    responsivePriority: 4,
                     title: 'Nama',
                     render: function(value, type, row) {
-                        return value;
+                        return value
                     }
                 },
                 {
-                    data: 'nama_golongan',
-                    responsivePriority: 4,
-                    title: 'Golongan',
+                    data: 'kode',
+                    responsivePriority: 7,
+                    title: 'Kode',
                     render: function(value, type, row) {
-                        return value;
+                        return value
+                    }
+                },
+                {
+                    data: 'email',
+                    responsivePriority: 8,
+                    title: 'Email',
+                    render: function(value, type, row) {
+                        return value
+                    }
+                },
+                {
+                    data: 'last_login',
+                    responsivePriority: 9,
+                    title: 'Login',
+                    render: function(value, type, row) {
+                        return value
+                    }
+                },
+                {
+                    data: 'last_logout',
+                    responsivePriority: 10,
+                    title: 'Logout',
+                    render: function(value, type, row) {
+                        return value
+                    }
+                },
+                {
+                    data: 'nama_jurusan',
+                    responsivePriority: 11,
+                    title: 'Jurusan',
+                    render: function(value, type, row) {
+                        return value
+                    }
+                },
+                {
+                    data: 'nama_kelas',
+                    responsivePriority: 12,
+                    title: 'Kelas',
+                    render: function(value, type, row) {
+                        return value
+                    }
+                },
+                {
+                    data: 'keterangan',
+                    responsivePriority: 13,
+                    title: 'Keterangan',
+                    render: function(value, type, row) {
+                        return value
+                    }
+                },
+                {
+                    data: 'status_user_id',
+                    title: 'Status',
+                    responsivePriority: 7,
+                    render: function(value, type, row) {
+                        var s = "";
+                        if (value == 1) {
+                            s += "<span class=\"badge badge-outline-success\">" + row.nama_status_user + "</span>";
+                        } else if (value == 2) {
+                            s += "<span class=\"badge badge-outline-warning\">" + row.nama_status_user + "</span>";
+                        } else {
+                            s += "<span class=\"badge badge-outline-danger\">" + row.nama_status_user + "</span>";
+                        }
+                        return s;
                     }
                 },
                 {
                     data: 'created_at',
                     title: 'Info',
-                    responsivePriority: 5,
+                    responsivePriority: 6,
                     render: function(value, type, row) {
-                        var s = "<small>";
+                        var s = "";
                         s += "Created at " + row.created_at;
                         s += (row.created_by != '' && row.created_by != null ? "<br>Created By " + row.created_by : '');
                         s += (row.updated_at != '' && row.updated_at != null ? "<br>Updated at " + row.updated_at : '');
                         s += (row.updated_by != '' && row.updated_by != null ? "<br>Updated By " + row.updated_by : '');
-                        s += "</small>";
                         return s;
                     }
                 },
@@ -184,7 +290,7 @@
                     data: 'id',
                     title: 'Aksi',
                     orderable: false,
-                    responsivePriority: 6,
+                    responsivePriority: 5,
                     render: function(value, type, row) {
                         return row.aksi;
                     }
@@ -201,13 +307,52 @@
             }
         });
 
-        $("#golongan_id").select2({
+        $("#group_id").select2({
             minimumResultsForSearch: 10,
-            dropdownParent: $('#golongan_id').parent(),
+            dropdownParent: $('#group_id').parent(),
+            placeholder: 'Pilih...',
+            theme: "bootstrap-5",
+        });
+
+        group_id_change(4);
+
+        $("#kode").select2({
+            minimumResultsForSearch: 10,
+            dropdownParent: $('#kode').parent(),
             placeholder: 'Pilih...',
             theme: "bootstrap-5",
             ajax: {
-                url: '<?= base_url() ?>master-golongan',
+                url: '<?= base_url() ?>master-kode',
+                dataType: "json",
+                type: "post",
+                data: function(params) {
+
+                    var queryParameters = {
+                        term: params.term,
+                        group_id: $('#group_id').val(),
+                    }
+                    return queryParameters;
+                },
+                processResults: function(data) {
+                    return {
+                        results: $.map(data, function(item) {
+                            return {
+                                id: item.id,
+                                text: item.id + ' - ' + item.text,
+                            }
+                        })
+                    };
+                },
+            }
+        });
+
+        $("#status_user_id").select2({
+            minimumResultsForSearch: 10,
+            dropdownParent: $('#status_user_id').parent(),
+            placeholder: 'Pilih...',
+            theme: "bootstrap-5",
+            ajax: {
+                url: '<?= base_url() ?>master-status-user',
                 dataType: "json",
                 type: "post",
                 data: function(params) {
@@ -230,7 +375,7 @@
             }
         });
 
-        $('#fm-guru').submit(function(e) {
+        $('#fm-pengguna').submit(function(e) {
             e.preventDefault();
             $.ajax({
                 url: this.getAttribute('action'),
@@ -244,7 +389,7 @@
                 beforeSend: function() {
                     Swal.fire({
                         title: 'Loading...',
-                        html: 'Menyimpan guru',
+                        html: 'Menyimpan Akun',
                         didOpen: () => {
                             Swal.showLoading()
                         },
@@ -262,7 +407,7 @@
                             allowEscapeKey: false,
                         });
                         $("#list").DataTable().ajax.reload();
-                        modal_form_guru.hide();
+                        modal_form_pengguna.hide();
                     } else {
                         Swal.fire({
                             icon: 'warning',
@@ -276,8 +421,8 @@
                 error: function(xhr, status, error) {
                     Swal.fire({
                         icon: 'error',
-                        title: status,
-                        text: error,
+                        title: "Status: " + status + "<br> Error: " + error,
+                        html: xhr.responseText,
                         allowOutsideClick: false,
                         allowEscapeKey: false,
                     });
@@ -285,33 +430,41 @@
             });
         });
 
-        modal_form_guru_id.addEventListener('hidden.bs.modal', function(event) {
-            modal_form_guru_id.querySelector('.modal-title').textContent = 'Tambah Guru';
-            guru_id.value = '';
-            $('#fm-guru').trigger("reset");
+        modal_form_pengguna_id.addEventListener('hidden.bs.modal', function(event) {
+            modal_form_pengguna_id.querySelector('.modal-title').textContent = 'Tambah Akun';
+            $('#group_id,#kode').prop('disabled', false);
+            user_id.value = '';
+            kode.innerHTML = '';
+            status_user_id.innerHTML = '';
+            $('#fm-pengguna').trigger("reset");
         });
 
     });
 
-    function edit_guru(index, e) {
+    function edit_akun(index, e) {
         var data = data_src[index];
-        guru_id.value = data.id;
-        nip.value = data.nip;
+        select2SetVal('#group_id', data.nama_group, data.group_id);
+        group_id_change(data.group_id);
+        user_id.value = data.id;
         nama.value = data.nama;
-        if (data.golongan_id > 0) {
-            select2SetVal('#golongan_id', data.nama_golongan, data.golongan_id);
+        username.value = data.username;
+        password.value = data.password;
+        email.value = data.email;
+        keterangan.value = data.keterangan;
+
+        if (data.kode > 0 && data.group_id != 1) {
+            select2SetVal('#kode', data.nama_industri, data.kode);
         }
+
+        $('#group_id,#kode').prop('disabled', true);
+        select2SetVal('#status_user_id', data.nama_status_user, data.status_user_id);
         $(".dtr-bs-modal").find('[data-bs-dismiss="modal"]').click();
-        modal_form_guru_id.querySelector('.modal-title').textContent = 'Edit Guru';
-        modal_form_guru.show();
+        modal_form_pengguna_id.querySelector('.modal-title').textContent = 'Edit Akun';
+        modal_form_pengguna.show();
     }
 
-    function hapus_guru(id, nama, e) {
-        if ($(e.target).html() == '') {
-            var $this = $(e.target).parent();
-        } else {
-            var $this = $(e.target);
-        }
+    function hapus_akun(id, user, e) {
+        var $this = $(e.target);
         var src = $this.html();
         $this.prop('disabled', true);
         $this.html(
@@ -321,7 +474,7 @@
         );
         Swal.fire({
             title: 'Anda yakin?',
-            html: "Guru (<span class=\"text-success\">" + nama + "</span>) dan akun akan dihapus.",
+            html: "Pengguna (<span class=\"text-success\">" + user + "</span>) akan dihapus.",
             icon: 'question',
             showCancelButton: true,
             cancelButtonText: 'Batal',
@@ -331,7 +484,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: '<?= base_url() ?>hapus-guru',
+                    url: '<?= base_url() ?>hapus-pengguna',
                     data: ({
                         id
                     }),
@@ -361,7 +514,7 @@
                     },
                     error: function(xhr, status, error) {
                         Swal.fire({
-                            icon: 'danger',
+                            icon: 'error',
                             title: "Status: " + status + "<br> Error: " + error,
                             html: xhr.responseText,
                             allowOutsideClick: false,
@@ -383,7 +536,28 @@
         if ($(target).find("option[value='" + value + "']").length) {
             $(target).val(value).trigger('change');
         } else {
-            $(target).append(new Option(text, value, true, true)).trigger('change');
+            $(target).append(new Option(value + ' - ' + text, value, true, true)).trigger('change');
+        }
+    }
+
+    function group_id_change(value) {
+        $('#kode').html('').prop('required', false).prop('disabled', true).closest('.optional').hide();
+        $('#nama').val('').prop('required', false).prop('readonly', false).closest('.optional').hide();
+        if (value == 2) {
+            $('#kode').html('').prop('required', true).prop('disabled', false).closest('.optional').show();
+            $('[for=kode]').text('Nama Guru');
+            $('#nama').prop('required', false).prop('readonly', true).closest('.optional').hide();
+        } else if (value == 3) {
+            $('#kode').html('').prop('required', true).prop('disabled', false).closest('.optional').show();
+            $('[for=kode]').text('Nama Siswa');
+            $('#nama').prop('required', false).prop('readonly', true).closest('.optional').hide();
+        } else if (value == 4) {
+            $('#kode').html('').prop('required', true).prop('disabled', false).closest('.optional').show();
+            $('[for=kode]').text('Nama Industri');
+            $('#nama').prop('required', true).prop('readonly', false).closest('.optional').show();
+        } else {
+            $('#kode').html('').prop('required', false).prop('disabled', true).closest('.optional').hide();
+            $('#nama').prop('required', true).prop('readonly', false).closest('.optional').show();
         }
     }
 </script>

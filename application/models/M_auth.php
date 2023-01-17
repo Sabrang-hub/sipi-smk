@@ -61,5 +61,6 @@ class M_auth extends CI_Model
     {
         $this->db->where('id', $id)->update('m_user', ['last_logout' => date('Y-m-d H:i:s')]);
         $this->session->sess_destroy();
+        redirect(base_url('auth'));
     }
 }

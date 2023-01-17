@@ -50,19 +50,7 @@
 
                     <div class="my-3">
                         <label for="group_id" class="form-label">Leval Pengguna<span class="text-danger">*</span></label>
-                        <select class="form-control" id="group_id" name="group_id" placeholder="Pilih...">
-                        </select>
-                    </div>
-
-                    <div class="my-3 optional" style="display: none;">
-                        <label for="jurusan_id" class="form-label">Jurusan<span class="text-danger">*</span></label>
-                        <select class="form-control" id="jurusan_id" name="jurusan_id" placeholder="Pilih..." disabled>
-                        </select>
-                    </div>
-
-                    <div class="my-3 optional" style="display: none;">
-                        <label for="kelas_id" class="form-label">Kelas<span class="text-danger">*</span></label>
-                        <select class="form-control" id="kelas_id" name="kelas_id" placeholder="Pilih..." disabled>
+                        <select class="form-control" id="group_id" name="group_id" placeholder="Pilih..." required>
                         </select>
                     </div>
 
@@ -287,14 +275,13 @@
                 {
                     data: 'created_at',
                     title: 'Info',
-                    responsivePriority: 5,
+                    responsivePriority: 6,
                     render: function(value, type, row) {
-                        var s = "<small>";
+                        var s = "";
                         s += "Created at " + row.created_at;
                         s += (row.created_by != '' && row.created_by != null ? "<br>Created By " + row.created_by : '');
                         s += (row.updated_at != '' && row.updated_at != null ? "<br>Updated at " + row.updated_at : '');
                         s += (row.updated_by != '' && row.updated_by != null ? "<br>Updated By " + row.updated_by : '');
-                        s += "</small>";
                         return s;
                     }
                 },
@@ -302,7 +289,7 @@
                     data: 'id',
                     title: 'Aksi',
                     orderable: false,
-                    responsivePriority: 6,
+                    responsivePriority: 5,
                     render: function(value, type, row) {
                         return row.aksi;
                     }
@@ -348,64 +335,6 @@
             }
         }).on('select2:select', function(e) {
             group_id_change(this.value);
-        });
-
-        $("#jurusan_id").select2({
-            minimumResultsForSearch: 10,
-            dropdownParent: $('#jurusan_id').parent(),
-            placeholder: 'Pilih...',
-            theme: "bootstrap-5",
-            ajax: {
-                url: '<?= base_url() ?>master-jurusan',
-                dataType: "json",
-                type: "post",
-                data: function(params) {
-
-                    var queryParameters = {
-                        term: params.term
-                    }
-                    return queryParameters;
-                },
-                processResults: function(data) {
-                    return {
-                        results: $.map(data, function(item) {
-                            return {
-                                id: item.id,
-                                text: item.text,
-                            }
-                        })
-                    };
-                },
-            }
-        });
-
-        $("#kelas_id").select2({
-            minimumResultsForSearch: 10,
-            dropdownParent: $('#kelas_id').parent(),
-            placeholder: 'Pilih...',
-            theme: "bootstrap-5",
-            ajax: {
-                url: '<?= base_url() ?>master-kelas',
-                dataType: "json",
-                type: "post",
-                data: function(params) {
-
-                    var queryParameters = {
-                        term: params.term
-                    }
-                    return queryParameters;
-                },
-                processResults: function(data) {
-                    return {
-                        results: $.map(data, function(item) {
-                            return {
-                                id: item.id,
-                                text: item.text,
-                            }
-                        })
-                    };
-                },
-            }
         });
 
         $("#kode").select2({
@@ -524,10 +453,9 @@
 
         modal_form_pengguna_id.addEventListener('hidden.bs.modal', function(event) {
             modal_form_pengguna_id.querySelector('.modal-title').textContent = 'Tambah Akun';
+            $('#group_id,#kode').prop('disabled', false);
             user_id.value = '';
             group_id.innerHTML = '';
-            jurusan_id.innerHTML = '';
-            kelas_id.innerHTML = '';
             kode.innerHTML = '';
             status_user_id.innerHTML = '';
             $('#fm-pengguna').trigger("reset");
@@ -549,15 +477,7 @@
         if (data.kode > 0 && data.group_id != 1) {
             select2SetVal('#kode', data.nama, data.kode);
         }
-
-        if (data.jurusan_id > 0 && data.group_id == 3) {
-            select2SetVal('#jurusan_id', data.nama_jurusan, data.jurusan_id);
-        }
-
-        if (data.kelas_id > 0 && data.group_id == 3) {
-            select2SetVal('#kelas_id', data.nama_kelas, data.kelas_id);
-        }
-
+        $('#group_id,#kode').prop('disabled', true);
         select2SetVal('#status_user_id', data.nama_status_user, data.status_user_id);
         $(".dtr-bs-modal").find('[data-bs-dismiss="modal"]').click();
         modal_form_pengguna_id.querySelector('.modal-title').textContent = 'Edit Akun';
@@ -642,20 +562,20 @@
     }
 
     function group_id_change(value) {
-        $('#kode,#jurusan_id,#kelas_id').html('').prop('required', false).prop('disabled', true).closest('.optional').hide();
+        $('#kode').html('').prop('required', false).prop('disabled', true).closest('.optional').hide();
         $('#nama').val('').prop('required', false).prop('readonly', false).closest('.optional').hide();
         if (value == 2) {
             $('#kode').html('').prop('required', true).prop('disabled', false).closest('.optional').show();
             $('[for=kode]').text('Nama Guru');
             $('#nama').prop('required', false).prop('readonly', true).closest('.optional').hide();
         } else if (value == 3) {
-            $('#kode,#jurusan_id,#kelas_id').html('').prop('required', true).prop('disabled', false).closest('.optional').show();
+            $('#kode').html('').prop('required', true).prop('disabled', false).closest('.optional').show();
             $('[for=kode]').text('Nama Siswa');
             $('#nama').prop('required', false).prop('readonly', true).closest('.optional').hide();
         } else if (value == 4) {
             $('#kode').html('').prop('required', true).prop('disabled', false).closest('.optional').show();
             $('[for=kode]').text('Nama Industri');
-            $('#nama').prop('required', false).prop('readonly', true).closest('.optional').hide();
+            $('#nama').prop('required', true).prop('readonly', false).closest('.optional').show();
         } else {
             $('#kode').html('').prop('required', false).prop('disabled', true).closest('.optional').hide();
             $('#nama').prop('required', true).prop('readonly', false).closest('.optional').show();

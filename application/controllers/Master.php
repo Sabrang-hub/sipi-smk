@@ -138,8 +138,16 @@ class Master extends CI_Controller
     public function pengguna()
     {
         if ($this->session->userdata('is_login')) {
-            $data['title'] = 'Pengguna';
-            $this->load->view('admin/pengguna', $data);
+            $group_id =  $this->session->userdata('group_id');
+            if ($group_id == 1) {
+                $data['title'] = 'Pengguna';
+                $this->load->view('admin/pengguna', $data);
+            } elseif ($group_id == 2) {
+                $data['title'] = 'Pengguna';
+                $this->load->view('guru/pengguna', $data);
+            } else {
+                redirect(base_url('auth'));
+            }
         } else {
             redirect(base_url('auth'));
         }

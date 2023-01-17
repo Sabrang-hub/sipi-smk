@@ -24,7 +24,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <button title="Tambah" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#modal-form-guru"><i class="mdi mdi-account-plus"></i> <span class="d-none d-lg-inline">Tambah</span></button>
+                        <button title="Tambah" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#modal-form-logbook"><i class="mdi mdi-book-plus"></i> <span class="d-none d-lg-inline">Tambah</span></button>
                         <h5>Daftar <?= @$title ?></h5>
                     </div>
                     <div class="card-body">
@@ -36,31 +36,21 @@
     </div>
 </div>
 
-<div class="modal fade" id="modal-form-guru" tabindex="-1" aria-labelledby="fm-modal-title" aria-hidden="true">
+<div class="modal fade" id="modal-form-logbook" tabindex="-1" aria-labelledby="fm-modal-title" aria-hidden="true">
     <div class="modal-dialog">
         <div class=" modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Tambah Guru</h5>
+                <h5 class="modal-title">Tambah Log Book</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
             </div>
-            <form id="fm-guru" action="<?= base_url('simpan-guru') ?>" method="POST">
-                <input type="hidden" id="guru_id" name="guru_id" />
+            <form id="fm-logbook" action="<?= base_url('simpan-logbook') ?>" method="POST">
+                <input type="hidden" id="logbook_id" name="logbook_id" />
                 <div class="modal-body">
                     <span class="text-muted"><i>(<span class="text-danger">*</span>) Wajib diisi</i></span>
 
                     <div class="my-3">
-                        <label for="nip" class="form-label">Nomor Induk Pegawai<span class="text-danger">*</span></label>
-                        <input type="text" id="nip" name="nip" class="form-control" placeholder="Masukkan nomor induk pegawai" required>
-                    </div>
-
-                    <div class="my-3">
-                        <label for="nama" class="form-label">Nama<span class="text-danger">*</span></label>
-                        <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan nama lengkap" required>
-                    </div>
-
-                    <div class="my-3">
-                        <label for="golongan_id" class="form-label">Golongan</label>
-                        <select type="text" id="golongan_id" name="golongan_id" class="form-control" placeholder="Masukkan nama lengkap" required></select>
+                        <label for="nama" class="form-label">Nama logbook<span class="text-danger">*</span></label>
+                        <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan nama logbook" required>
                     </div>
 
                 </div>
@@ -81,8 +71,8 @@
 <script src="<?= base_url() ?>assets/vendor/select2/js/select2.min.js"></script>
 <script>
     var data_src = [];
-    var modal_form_guru_id = document.getElementById("modal-form-guru");
-    var modal_form_guru = new bootstrap.Modal(modal_form_guru_id, {
+    var modal_form_logbook_id = document.getElementById("modal-form-logbook");
+    var modal_form_logbook = new bootstrap.Modal(modal_form_logbook_id, {
         backdrop: 'static',
         keyboard: false,
     });
@@ -125,7 +115,7 @@
                 }
             },
             ajax: {
-                url: '<?= base_url() ?>list-guru',
+                url: '<?= base_url() ?>list-logbook',
                 type: 'POST',
                 data: function(d) {},
                 dataSrc: function(data) {
@@ -143,25 +133,9 @@
                     }
                 },
                 {
-                    data: 'nip',
-                    responsivePriority: 2,
-                    title: 'NIP',
-                    render: function(value, type, row) {
-                        return value;
-                    }
-                },
-                {
                     data: 'nama',
-                    responsivePriority: 3,
-                    title: 'Nama',
-                    render: function(value, type, row) {
-                        return value;
-                    }
-                },
-                {
-                    data: 'nama_golongan',
-                    responsivePriority: 4,
-                    title: 'Golongan',
+                    responsivePriority: 2,
+                    title: 'Nama logbook',
                     render: function(value, type, row) {
                         return value;
                     }
@@ -169,7 +143,7 @@
                 {
                     data: 'created_at',
                     title: 'Info',
-                    responsivePriority: 5,
+                    responsivePriority: 8,
                     render: function(value, type, row) {
                         var s = "<small>";
                         s += "Created at " + row.created_at;
@@ -184,7 +158,7 @@
                     data: 'id',
                     title: 'Aksi',
                     orderable: false,
-                    responsivePriority: 6,
+                    responsivePriority: 9,
                     render: function(value, type, row) {
                         return row.aksi;
                     }
@@ -201,36 +175,7 @@
             }
         });
 
-        $("#golongan_id").select2({
-            minimumResultsForSearch: 10,
-            dropdownParent: $('#golongan_id').parent(),
-            placeholder: 'Pilih...',
-            theme: "bootstrap-5",
-            ajax: {
-                url: '<?= base_url() ?>master-golongan',
-                dataType: "json",
-                type: "post",
-                data: function(params) {
-
-                    var queryParameters = {
-                        term: params.term
-                    }
-                    return queryParameters;
-                },
-                processResults: function(data) {
-                    return {
-                        results: $.map(data, function(item) {
-                            return {
-                                id: item.id,
-                                text: item.text,
-                            }
-                        })
-                    };
-                },
-            }
-        });
-
-        $('#fm-guru').submit(function(e) {
+        $('#fm-logbook').submit(function(e) {
             e.preventDefault();
             $.ajax({
                 url: this.getAttribute('action'),
@@ -244,7 +189,7 @@
                 beforeSend: function() {
                     Swal.fire({
                         title: 'Loading...',
-                        html: 'Menyimpan guru',
+                        html: 'Menyimpan logbook',
                         didOpen: () => {
                             Swal.showLoading()
                         },
@@ -262,7 +207,7 @@
                             allowEscapeKey: false,
                         });
                         $("#list").DataTable().ajax.reload();
-                        modal_form_guru.hide();
+                        modal_form_logbook.hide();
                     } else {
                         Swal.fire({
                             icon: 'warning',
@@ -285,33 +230,25 @@
             });
         });
 
-        modal_form_guru_id.addEventListener('hidden.bs.modal', function(event) {
-            modal_form_guru_id.querySelector('.modal-title').textContent = 'Tambah Guru';
-            guru_id.value = '';
-            $('#fm-guru').trigger("reset");
+        modal_form_logbook_id.addEventListener('hidden.bs.modal', function(event) {
+            modal_form_logbook_id.querySelector('.modal-title').textContent = 'Tambah Log Book';
+            logbook_id.value = '';
+            $('#fm-logbook').trigger("reset");
         });
 
     });
 
-    function edit_guru(index, e) {
+    function edit_logbook(index, e) {
         var data = data_src[index];
-        guru_id.value = data.id;
-        nip.value = data.nip;
+        logbook_id.value = data.id;
         nama.value = data.nama;
-        if (data.golongan_id > 0) {
-            select2SetVal('#golongan_id', data.nama_golongan, data.golongan_id);
-        }
         $(".dtr-bs-modal").find('[data-bs-dismiss="modal"]').click();
-        modal_form_guru_id.querySelector('.modal-title').textContent = 'Edit Guru';
-        modal_form_guru.show();
+        modal_form_logbook_id.querySelector('.modal-title').textContent = 'Edit Log Book';
+        modal_form_logbook.show();
     }
 
-    function hapus_guru(id, nama, e) {
-        if ($(e.target).html() == '') {
-            var $this = $(e.target).parent();
-        } else {
-            var $this = $(e.target);
-        }
+    function hapus_logbook(id, logbook, e) {
+        var $this = $(e.target);
         var src = $this.html();
         $this.prop('disabled', true);
         $this.html(
@@ -321,7 +258,7 @@
         );
         Swal.fire({
             title: 'Anda yakin?',
-            html: "Guru (<span class=\"text-success\">" + nama + "</span>) dan akun akan dihapus.",
+            html: "logbook (<span class=\"text-success\">" + logbook + "</span>) akan dihapus.",
             icon: 'question',
             showCancelButton: true,
             cancelButtonText: 'Batal',
@@ -331,7 +268,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: '<?= base_url() ?>hapus-guru',
+                    url: '<?= base_url() ?>hapus-logbook',
                     data: ({
                         id
                     }),
@@ -346,7 +283,6 @@
                                 allowOutsideClick: false,
                                 allowEscapeKey: false,
                             });
-                            $('#list').DataTable().ajax.reload();
                         } else {
                             Swal.fire({
                                 icon: 'warning',
@@ -363,7 +299,7 @@
                         Swal.fire({
                             icon: 'danger',
                             title: "Status: " + status + "<br> Error: " + error,
-                            html: xhr.responseText,
+                            html: JSON.stringify(xhr),
                             allowOutsideClick: false,
                             allowEscapeKey: false,
                         });
@@ -377,14 +313,6 @@
                 $this.prop('disabled', false);
             }
         });
-    }
-
-    function select2SetVal(target, text, value) {
-        if ($(target).find("option[value='" + value + "']").length) {
-            $(target).val(value).trigger('change');
-        } else {
-            $(target).append(new Option(text, value, true, true)).trigger('change');
-        }
     }
 </script>
 <?php $this->layout->endSection() ?>

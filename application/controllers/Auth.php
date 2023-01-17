@@ -24,4 +24,9 @@ class Auth extends CI_Controller
         $response = $this->auth->do_login();
         echo json_encode($response);
     }
+
+    public function do_logout($id)
+    {
+        $this->auth->do_logout($id);
+    }
 }
