@@ -13,7 +13,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Main</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
                             <li class="breadcrumb-item active"><?= @$title ?></li>
                         </ol>
                     </div>
@@ -24,12 +24,12 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
-                        <button title="Tambah" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#modal-form-kelompok"><i class="mdi mdi-account-plus"></i> <span class="d-none d-lg-inline">Tambah</span></button>
+                    <div class="card-header bg-primary text-white">
+                        <button title="Tambah" class="btn btn-light btn-sm float-end" data-bs-toggle="modal" data-bs-target="#modal-form-kelompok"><i class="mdi mdi-account-plus"></i> <span class="d-none d-lg-inline">Tambah</span></button>
                         <h5>Daftar <?= @$title ?></h5>
                     </div>
                     <div class="card-body">
-                        <table id="list" class="table dt-responsive w-100 nowrap"></table>
+                        <table id="list" class="table table-success table-bordered dt-responsive w-100 nowrap"></table>
                     </div>
                 </div>
             </div>
@@ -40,9 +40,9 @@
 <div class="modal fade" id="modal-form-kelompok" tabindex="-1" aria-labelledby="fm-modal-title" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Tambah Kelompok</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">Tambah <?= @$title ?></h5>
+                <a href="javascript:void(0)" data-bs-dismiss="modal"><i class="mdi mdi-close text-white"></i></a>
             </div>
             <form id="fm-kelompok" action="<?= base_url('simpan-kelompok') ?>" method="POST">
                 <input type="hidden" id="kelompok_id" name="kelompok_id">
@@ -86,8 +86,8 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="mb-3">
-                                <label for="user_id" class="form-label">Pembimbing Lapangan</label>
-                                <select id="user_id" name="user_id" class="form-control"></select>
+                                <label for="pembimbing_id" class="form-label">Pembimbing Lapangan</label>
+                                <select id="pembimbing_id" name="pembimbing_id" class="form-control"></select>
                             </div>
                         </div>
                     </div>
@@ -198,7 +198,7 @@
                     }
                 },
                 {
-                    data: 'nama_user',
+                    data: 'nama_pembimbing',
                     responsivePriority: 5,
                     title: 'Pemb. Lapangan',
                     render: function(value, type, row) {
@@ -210,11 +210,12 @@
                     title: 'Info',
                     responsivePriority: 7,
                     render: function(value, type, row) {
-                        var s = "";
+                        var s = "<details><summary><span class=\"badge bg-primary\">Detail</span></summary>";
                         s += "Created at " + row.created_at;
-                        s += (row.created_by != '' && row.created_by != null ? "<br>Created By " + row.created_by : '');
+                        s += (row.created_by != '' && row.created_by != null ? "<br>Created by " + row.created_by : '');
                         s += (row.updated_at != '' && row.updated_at != null ? "<br>Updated at " + row.updated_at : '');
-                        s += (row.updated_by != '' && row.updated_by != null ? "<br>Updated By " + row.updated_by : '');
+                        s += (row.updated_by != '' && row.updated_by != null ? "<br>Updated by " + row.updated_by : '');
+                        s += "</details>";
                         return s;
                     }
                 },
@@ -325,9 +326,9 @@
             }
         });
 
-        $("#user_id").select2({
+        $("#pembimbing_id").select2({
             minimumResultsForSearch: 10,
-            dropdownParent: $('#user_id').parent(),
+            dropdownParent: $('#pembimbing_id').parent(),
             placeholder: 'Pilih...',
             theme: "bootstrap-5",
             ajax: {
@@ -435,8 +436,8 @@
         if (data.siswa_id != '') {
             select2SetVal('#siswa_id', data.nama_siswa, data.siswa_id, true);
         }
-        if (data.user_id > 0) {
-            select2SetVal('#user_id', data.nama_user + ' - ' + data.nama_industri, data.user_id, false);
+        if (data.pembimbing_id > 0) {
+            select2SetVal('#pembimbing_id', data.nama_pembimbing + ' - ' + data.nama_industri, data.pembimbing_id, false);
         }
         $(".dtr-bs-modal").find('[data-bs-dismiss="modal"]').click();
         modal_form_kelompok_id.querySelector('.modal-title').textContent = 'Edit Kelompok';

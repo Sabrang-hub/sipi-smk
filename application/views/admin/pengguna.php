@@ -23,12 +23,12 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
-                        <button title="Tambah" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#modal-form-pengguna"><i class="mdi mdi-account-plus"></i> <span class="d-none d-lg-inline">Tambah</span></button>
+                    <div class="card-header bg-primary text-white">
+                        <button title="Tambah" class="btn btn-light btn-sm float-end" data-bs-toggle="modal" data-bs-target="#modal-form-pengguna"><i class="mdi mdi-account-plus"></i> <span class="d-none d-lg-inline">Tambah</span></button>
                         <h5>Daftar Pengguna</h5>
                     </div>
                     <div class="card-body">
-                        <table id="list" class="table dt-responsive w-100 nowrap"></table>
+                        <table id="list" class="table table-success table-bordered dt-responsive w-100 nowrap"></table>
                     </div>
                 </div>
             </div>
@@ -39,9 +39,9 @@
 <div class="modal fade" id="modal-form-pengguna" tabindex="-1" aria-labelledby="fm-modal-title" aria-hidden="true">
     <div class="modal-dialog">
         <div class=" modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Tambah Akun</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">Tambah <?= @$title ?></h5>
+                <a href="javascript:void(0)" data-bs-dismiss="modal"><i class="mdi mdi-close text-white"></i></a>
             </div>
             <form id="fm-pengguna" action="<?= base_url('simpan-pengguna') ?>" method="POST">
                 <input type="hidden" id="user_id" name="user_id" />
@@ -277,11 +277,12 @@
                     title: 'Info',
                     responsivePriority: 6,
                     render: function(value, type, row) {
-                        var s = "";
+                        var s = "<details><summary><span class=\"badge bg-primary\">Detail</span></summary>";
                         s += "Created at " + row.created_at;
-                        s += (row.created_by != '' && row.created_by != null ? "<br>Created By " + row.created_by : '');
+                        s += (row.created_by != '' && row.created_by != null ? "<br>Created by " + row.created_by : '');
                         s += (row.updated_at != '' && row.updated_at != null ? "<br>Updated at " + row.updated_at : '');
-                        s += (row.updated_by != '' && row.updated_by != null ? "<br>Updated By " + row.updated_by : '');
+                        s += (row.updated_by != '' && row.updated_by != null ? "<br>Updated by " + row.updated_by : '');
+                        s += "</details>";
                         return s;
                     }
                 },
@@ -485,7 +486,11 @@
     }
 
     function hapus_akun(id, user, e) {
-        var $this = $(e.target);
+        if ($(e.target).html() == '') {
+            var $this = $(e.target).parent();
+        } else {
+            var $this = $(e.target);
+        }
         var src = $this.html();
         $this.prop('disabled', true);
         $this.html(

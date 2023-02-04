@@ -37,14 +37,13 @@
                         <div class="card-body p-4 py-2">
 
                             <div class="text-center w-75 m-auto">
-                                <h4 class="text-dark-50 text-center pb-0 fw-bold"><?= client('site_name') ?></h4>
-                                <p class="text-muted mb-4">Masukkan nama pengguna dan kata sandi</p>
+                                <img src="<?= base_url('assets/images/logo-sipi.png') ?>" class="img-fluid w-50" alt="SIP-PKL">
+                                <h4>Sistem Pelaporan<br />Praktik Kerja Lapangan</h4>
                             </div>
 
                             <form id="fm-login" action="<?= base_url('do-login') ?>" method="POST">
 
                                 <div class="mb-3">
-                                    <label for="group_id" class="form-label">Sebagai</label>
                                     <select class="form-select" id="group_id" name="group_id" required>
                                         <option value="">Pilih...</option>
                                         <?php
@@ -57,12 +56,10 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="username" class="form-label">Name Pengguna</label>
-                                    <input class="form-control" type="text" id="username" name="username" required="" placeholder="Masukkan nama pengguna">
+                                    <input class="form-control" type="text" id="username" name="username" required="" placeholder="Nama Pengguna">
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Kata Sandi</label>
+                                <div class="mb-1">
                                     <div class="input-group input-group-merge">
                                         <input type="password" id="password" name="password" class="form-control" placeholder="Masukkan kata sandi">
                                         <div class="input-group-text" data-password="false">
@@ -71,20 +68,24 @@
                                     </div>
                                 </div>
 
-                                <div class="mb-3 mb-3">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="checkbox-signin">
-                                        <label class="form-check-label" for="checkbox-signin">Remember me</label>
-                                    </div>
+                                <div class="form-check mb-3">
+                                    <input type="checkbox" class="form-check-input" id="checkbox-signin">
+                                    <label class="form-check-label" for="checkbox-signin">Remember me</label>
                                 </div>
-
-                                <div class="mb-3 mb-0 text-center">
+                                <div class="text-center">
                                     <button class="btn btn-primary" type="submit"> Login </button>
                                 </div>
 
                             </form>
 
-                        </div> <!-- end card-body -->
+                        </div>
+
+                        <div class="card-footer text-center">
+                            2022 - <script>
+                                document.write(new Date().getFullYear())
+                            </script> © <?= client('site_name') ?>
+                        </div>
+
                     </div>
                     <!-- end card -->
 
@@ -94,32 +95,31 @@
         </div>
         <!-- end container -->
     </div>
-
-    <footer class="footer footer-alt">
-        2022 - <script>
-            document.write(new Date().getFullYear())
-        </script> © <?= client('site_name') ?>
-    </footer>
     <!-- end page -->
     <?php $this->load->view('layout/partials/_script') ?>
     <script>
         const rmCheck = document.getElementById("checkbox-signin"),
-            usr = document.getElementById("username");
+            usr = document.getElementById("username"),
+            group_id = document.getElementById("group_id");
 
         if (localStorage.checkbox && localStorage.checkbox !== "") {
             rmCheck.setAttribute("checked", "checked");
             usr.value = localStorage.username;
+            group_id.value = localStorage.group_id;
         } else {
             rmCheck.removeAttribute("checked");
             usr.value = "";
+            group_id.value = "";
         }
 
         function lsRememberMe() {
             if (rmCheck.checked && usr.value !== "") {
                 localStorage.username = usr.value;
+                localStorage.group_id = group_id.value;
                 localStorage.checkbox = rmCheck.value;
             } else {
                 localStorage.username = "";
+                localStorage.group_id = "";
                 localStorage.checkbox = "";
             }
         }
@@ -204,6 +204,23 @@
                     },
                 });
             });
+
+            group_id.onchange = evt => {
+                const [group] = group_id.value
+                if (group == 1) {
+                    username.value = 'admin';
+                    password.value = 'admin';
+                } else if (group == 2) {
+                    username.value = '195801081987032001';
+                    password.value = '195801081987032001';
+                } else if (group == 3) {
+                    username.value = '1429041001';
+                    password.value = '1429041001';
+                } else if (group == 4) {
+                    username.value = 'rido';
+                    password.value = 'rido';
+                }
+            }
         });
     </script>
 

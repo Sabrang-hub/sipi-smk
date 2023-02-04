@@ -94,9 +94,14 @@ $route['siswa-kelompok'] = 'main/get_list_siswa_kelompok';
 $route['pembimbing-kelompok'] = 'main/get_list_pembimbing_kelompok';
 
 $route['logbook'] = 'main/logbook';
+$route['logbook/detail'] = 'main/logbook';
+$route['logbook/detail/(:any)'] = 'main/logbook_detail/$1';
 $route['list-logbook'] = 'main/get_list_data_logbook';
 $route['simpan-logbook'] = 'main/simpan_logbook';
 $route['hapus-logbook'] = 'main/hapus_logbook';
+$route['simpan-keterangan-logbook'] = 'main/simpan_keterangan_logbook';
+$route['list-siswa-logbook'] = 'main/get_list_data_siswa_logbook';
+$route['list-siswa-detail-logbook'] = 'main/get_list_data_siswa_detail_logbook';
 
 $route['profil-instansi'] = 'master/profil_instansi';
 $route['simpan-profil-instansi'] = 'master/simpan_profil_instansi';
