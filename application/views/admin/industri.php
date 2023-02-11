@@ -403,7 +403,7 @@
                         Swal.fire({
                             icon: 'danger',
                             title: "Status: " + status + "<br> Error: " + error,
-                            html: JSON.stringify(xhr),
+                            html: xhr.responseText,
                             allowOutsideClick: false,
                             allowEscapeKey: false,
                         });

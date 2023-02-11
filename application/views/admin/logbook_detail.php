@@ -190,17 +190,13 @@
                     data: 'verifikasi_stat',
                     className: 'text-nowrap',
                     render: function(value, type, row) {
-                        if (value == 1) {
-                            value = "<span class=\"badge bg-success\">Diverifikasi</span";
-                        } else if (value == 2) {
-                            value = "<span class=\"badge bg-warning\">Revisi</span";
-                        } else if (value == 3) {
-                            value = "<span class=\"badge bg-info\">Selesai Revisi</span";
-                        } else if (value == 4) {
-                            value = "<span class=\"badge bg-danger\">Tolak</span";
-                        } else {
-                            value = "<span class=\"badge bg-secondary text-light\">Belum Diverifikasi</span";
-                        }
+                        value = "<select class=\"form-control form-control-sm\" style=\"width:142px;\" onchange=\"edit_status(" + row.id + ",this)\">\
+                                        <option value=\"0\" " + (value == 0 ? 'selected' : '') + ">Belum Diverifikasi</option>\
+                                        <option value=\"1\" " + (value == 1 ? 'selected' : '') + ">Verifikasi</option>\
+                                        <option value=\"2\" " + (value == 2 ? 'selected' : '') + ">Perbaiki</option>\
+                                        <option value=\"3\" " + (value == 3 ? 'selected' : '') + ">Telah Diperbaiki</option>\
+                                        <option value=\"4\" " + (value == 4 ? 'selected' : '') + ">Tolak</option>\
+                                    </select>";
                         return value;
                     }
                 },
@@ -282,6 +278,49 @@
                 });
                 $this.html(src);
                 $this.prop('disabled', false);
+            }
+
+        });
+    }
+
+    function edit_status(id, e) {
+        var $this = $(e);
+        $.ajax({
+            url: '<?= base_url() ?>simpan-status-logbook',
+            data: ({
+                id,
+                verifikasi_stat: $this.parent().find('select').val(),
+            }),
+            dataType: 'json',
+            type: 'post',
+            success: function(data) {
+                if (data.stat == true) {
+                    Swal.fire({
+                        title: 'Ok',
+                        html: data.msg,
+                        icon: 'success',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    });
+                    $("#list").DataTable().ajax.reload(null, false);
+                } else {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        html: data.msg,
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    });
+                }
+            },
+            error: function(xhr, status, error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: "Status: " + status + "<br> Error: " + error,
+                    html: xhr.responseText,
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                });
             }
 
         });

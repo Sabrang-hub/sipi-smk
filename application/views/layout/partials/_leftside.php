@@ -51,7 +51,7 @@
             <li class="side-nav-item">
                 <a href="<?= base_url() ?>" class="side-nav-link">
                     <i class="mdi mdi-home-outline"></i>
-                    <span> Dashboards </span>
+                    <span> Beranda </span>
                 </a>
             </li>
             <?php

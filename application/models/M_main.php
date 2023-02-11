@@ -352,6 +352,26 @@ class M_main extends CI_Model
         }
     }
 
+    public function simpan_status_logbook()
+    {
+        $data = $this->input->post();
+        $data['verifikasi_at'] = date('Y-m-d H:i:d');
+        $data['verifikasi_by'] = $this->session->userdata('nama');
+        $sql = $this->db->where('id', $data['id'])->update('tbl_logbook', $data);
+
+        if ($sql) {
+            return [
+                'stat' => true,
+                'msg' => 'Data tersimpan',
+            ];
+        } else {
+            return [
+                'stat' => false,
+                'msg' => $this->db->error(),
+            ];
+        }
+    }
+
     public function hapus_logbook()
     {
         $id = $this->input->post('id');

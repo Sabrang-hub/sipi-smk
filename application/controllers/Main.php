@@ -183,6 +183,19 @@ class Main extends CI_Controller
 		echo json_encode($response);
 	}
 
+	public function simpan_status_logbook()
+	{
+		if ($this->session->userdata('is_login')) {
+			$response =  $this->main->simpan_status_logbook();
+		} else {
+			$response =  [
+				'stat' => false,
+				'msg' => 'Sesi telah berakhir. Silahkan Login kembali!'
+			];
+		}
+		echo json_encode($response);
+	}
+
 	public function hapus_logbook()
 	{
 		if ($this->session->userdata('is_login')) {
