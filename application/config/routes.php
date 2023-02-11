@@ -119,3 +119,5 @@ $route['master-kelas'] = 'master/get_list_kelas';
 $route['master-golongan'] = 'master/get_list_golongan';
 $route['master-guru'] = 'master/get_list_guru';
 $route['master-kode'] = 'master/get_list_kode';
+
+$route['laporan_pkl'] = 'laporan/laporan_pkl';

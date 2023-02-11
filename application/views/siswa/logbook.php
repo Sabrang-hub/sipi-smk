@@ -21,11 +21,12 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" id="main-table">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
-                        <button title="Tambah" class="btn btn-light btn-sm float-end" data-bs-toggle="modal" data-bs-target="#modal-form-logbook"><i class="mdi mdi-book-plus"></i> <span class="d-none d-lg-inline">Tambah</span></button>
+                        <button title="Tambah" class="btn btn-light btn-sm float-end ms-1" data-bs-toggle="modal" data-bs-target="#modal-form-logbook"><i class="mdi mdi-book-plus"></i> <span class="d-none d-lg-inline">Tambah</span></button>
+                        <button title="Laporan" class="btn btn-light btn-sm float-end ms-1 btn-laporan"><i class="mdi mdi-file-document"></i> <span class="d-none d-lg-inline">Laporan</span></button>
                         <h5>Daftar <?= @$title ?></h5>
                     </div>
                     <div class="card-body">
@@ -43,6 +44,19 @@
                                 </tr>
                             </thead>
                         </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="main-laporan" style="display: none;">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <button title="Kembali" class="btn btn-light btn-sm float-end ms-1 btn-laporan-kembali"><i class="mdi mdi mdi-window-close"></i> <span class="d-none d-lg-inline">Kembali</span></button>
+                        <h5>Pratinjau <?= @$title ?></h5>
+                    </div>
+                    <div class="card-body">
+                        <iframe src="" frameborder="0" width="100%" height="100vh"></iframe>
                     </div>
                 </div>
             </div>
@@ -310,6 +324,17 @@
                 img_preview.src = URL.createObjectURL(file);
             }
         }
+
+        $('.btn-laporan').click(function() {
+            $('#main-table').hide();
+            $('iframe').css('height', $(window).height() - 360).attr('src', '<?= base_url('laporan_pkl?id=') . $this->encrypt->encode($this->session->userdata('kode')) ?>');
+            $('#main-laporan').show();
+        });
+
+        $('.btn-laporan-kembali').click(function() {
+            $('#main-table').show();
+            $('#main-laporan').hide();
+        });
 
     });
 
