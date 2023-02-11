@@ -19,463 +19,345 @@
     <meta name="ShareDoc" content="false" />
 
     <style type="text/css">
-        body,
-        div,
-        table,
-        thead,
-        tbody,
-        tfoot,
-        tr,
-        th,
-        td,
-        p {
-            font-family: "Calibri";
-            font-size: x-small
-        }
-
-        a.comment-indicator:hover+comment {
-            background: #ffd;
-            position: absolute;
-            display: block;
-            border: 1px solid black;
-            padding: 0.5em;
-        }
-
-        a.comment-indicator {
-            background: red;
-            display: inline-block;
-            border: 1px solid black;
-            width: 0.5em;
-            height: 0.5em;
-        }
-
-        comment {
-            display: none;
+        * {
+            font-size: 12pt;
         }
     </style>
 
 </head>
 
 <body>
-    <table cellspacing="0" border="0" style="border-collapse: collapse; width:29.7cm">
+    <table cellspacing="0" border="0" cellpadding="4" style="border-collapse: collapse; width:29.7cm">
         <colgroup width="36"></colgroup>
         <colgroup width="119"></colgroup>
         <colgroup span="2" width="224"></colgroup>
         <colgroup width="101"></colgroup>
         <colgroup span="2" width="240"></colgroup>
         <tr>
-            <td colspan=7 height="21" align="center" valign=bottom><b>
-                    <font face="Times New Roman" size=3 color="#000000">LAPORAN KEGIATAN</font>
-                </b></td>
-        </tr>
-        <tr>
-            <td colspan=7 height="21" align="center" valign=bottom><b>
-                    <font face="Times New Roman" size=3 color="#000000">PRAKTEK KERJA LAPANGAN (PKL)</font>
-                </b></td>
-        </tr>
-        <tr>
-            <td colspan=7 height="21" align="center" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td colspan=7 align="center" valign=top>
+                <b>
+                    LAPORAN KEGIATAN
+                </b>
             </td>
         </tr>
         <tr>
-            <td colspan=2 height="21" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000">NAMA</font>
-            </td>
-            <td colspan=5 align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000">: <?= strtoupper($data['nama']) ?></font>
-            </td>
-        </tr>
-        <tr>
-            <td colspan=2 height="21" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000">NIS</font>
-            </td>
-            <td colspan=5 align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000">: <?= strtoupper($data['nis']) ?></font>
+            <td colspan=7 align="center" valign=top>
+                <b>
+                    PRAKTEK KERJA LAPANGAN (PKL)
+                </b>
             </td>
         </tr>
         <tr>
-            <td colspan=2 height="21" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000">JURUSAN</font>
-            </td>
-            <td colspan=5 align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000">: <?= strtoupper($data['nama_jurusan']) ?></font>
+            <td colspan=7 align="center" valign=top>
+                <br>
             </td>
         </tr>
         <tr>
-            <td colspan=2 height="21" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000">INSTANSI</font>
+            <td colspan=2 align="left" valign=top>
+                NAMA
             </td>
-            <td colspan=5 align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000">: <?= strtoupper(client('nama_instansi')) ?></font>
-            </td>
-        </tr>
-        <tr>
-            <td height="21" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td colspan=5 align="left" valign=top>
+                : <?= strtoupper($data['nama_siswa']) ?>
             </td>
         </tr>
         <tr>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="28" align="center" valign=middle>
-                <font face="Times New Roman" size=3 color="#000000">NO</font>
+            <td colspan=2 align="left" valign=top>
+                NIS
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-                <font face="Times New Roman" size=3 color="#000000">TGL KEGIATAN</font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-                <font face="Times New Roman" size=3 color="#000000">KEGIATAN</font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-                <font face="Times New Roman" size=3 color="#000000">DOKUMENTASI</font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-                <font face="Times New Roman" size=3 color="#000000">VERIFIKASI</font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-                <font face="Times New Roman" size=3 color="#000000">KOMENTAR PEMB. LAPANGAN</font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-                <font face="Times New Roman" size=3 color="#000000">KOMENTAR PEMB. SEKOLAH</font>
+            <td colspan=5 align="left" valign=top>
+                : <?= strtoupper($data['siswa_id']) ?>
             </td>
         </tr>
         <tr>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="21" align="center" valign=middle sdval="1" sdnum="1033;">
-                <font face="Times New Roman" size=3 color="#000000">1</font>
+            <td colspan=2 align="left" valign=top>
+                JURUSAN
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td colspan=5 align="left" valign=top>
+                : <?= strtoupper($data['nama_jurusan']) ?>
             </td>
         </tr>
         <tr>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="21" align="center" valign=middle sdval="2" sdnum="1033;">
-                <font face="Times New Roman" size=3 color="#000000">2</font>
+            <td colspan=2 align="left" valign=top>
+                INSTANSI
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td colspan=5 align="left" valign=top>
+                : <?= strtoupper($data['nama_industri']) ?>
             </td>
         </tr>
         <tr>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="21" align="center" valign=middle sdval="3" sdnum="1033;">
-                <font face="Times New Roman" size=3 color="#000000">3</font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-        </tr>
-        <tr>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="21" align="center" valign=middle sdval="4" sdnum="1033;">
-                <font face="Times New Roman" size=3 color="#000000">4</font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
         </tr>
         <tr>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="21" align="center" valign=middle sdval="5" sdnum="1033;">
-                <font face="Times New Roman" size=3 color="#000000">5</font>
+            <td style="border: 1px solid black;" height="28" align="center" valign=middle>
+                NO
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td style="border: 1px solid black;" align="center" valign=middle>
+                TGL KEGIATAN
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td style="border: 1px solid black;" align="center" valign=middle>
+                KEGIATAN
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td style="border: 1px solid black;" align="center" valign=middle>
+                DOKUMENTASI
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td style="border: 1px solid black;" align="center" valign=middle>
+                VERIFIKASI
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td style="border: 1px solid black;" align="center" valign=middle>
+                KOMENTAR PEMB. LAPANGAN
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td style="border: 1px solid black;" align="center" valign=middle>
+                KOMENTAR PEMB. SEKOLAH
+            </td>
+        </tr>
+        <?php
+        $no = 1;
+        foreach ($log as $row) {
+        ?>
+            <tr>
+                <td style="border: 1px solid black;" align="center" valign=top sdval="1" sdnum="1033;">
+                    <?= $no ?>
+                </td>
+                <td style="border: 1px solid black;" align="center" valign=top>
+                    <?= $row->tanggal ?>
+                </td>
+                <td style="border: 1px solid black;" align="justify" valign=top>
+                    <?= $row->uraian ?>
+                </td>
+                <td style="border: 1px solid black;" align="center" valign=top>
+                    <?= ($row->file_foto != '' ? "<img src=\"" . base_url($row->file_foto) . "\" width=\"180px\">" : "") ?>
+                </td>
+                <td style="border: 1px solid black;" align="center" valign=top>
+                    <?= ($row->verifikasi_stat == 1 ? 'Verifikasi' : 'Tidak') ?>
+                </td>
+                <td style="border: 1px solid black;" valign=top>
+                    <?php
+                    $res = $this->db->where(['logbook_id' => $row->id, 'jenis' => 2])->order_by('id', 'asc')->get('tbl_keterangan');
+                    if ($res->num_rows() > 0) {
+                        $html = "<ul style=\"padding-left: 12px;\">";
+                        foreach ($res->result() as $ket) {
+                            $html .= "<li>$ket->keterangan</li>";
+                        }
+                        $html .= "</ul>";
+                        echo $html;
+                    }
+                    ?>
+                </td>
+                <td style="border: 1px solid black;" valign=top>
+                    <?php
+                    $res = $this->db->where(['logbook_id' => $row->id, 'jenis' => 1])->order_by('id', 'asc')->get('tbl_keterangan');
+                    if ($res->num_rows() > 0) {
+                        $html = "<ul style=\"padding-left: 12px;\">";
+                        foreach ($res->result() as $ket) {
+                            $html .= "<li>$ket->keterangan</li>";
+                        }
+                        $html .= "</ul>";
+                        echo $html;
+                    }
+                    ?>
+                </td>
+            </tr>
+        <?php
+            $no++;
+        }
+        ?>
+
+        <tr>
+            <td align="left" valign=top>
+                <br>
+            </td>
+            <td align="left" valign=top>
+                <br>
+            </td>
+            <td align="left" valign=top>
+                <br>
+            </td>
+            <td align="left" valign=top>
+                <br>
+            </td>
+            <td align="left" valign=top>
+                <br>
+            </td>
+            <td align="left" valign=top>
+                <br>
+            </td>
+            <td align="left" valign=top>
+                <br>
             </td>
         </tr>
         <tr>
-            <td height="21" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-        </tr>
-        <tr>
-            <td height="21" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
         </tr>
         <tr>
-            <td height="21" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-        </tr>
-        <tr>
-            <td height="21" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><?= strtoupper(client('kab_kota')) ?>, 00-00-2023</font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
         </tr>
         <tr>
-            <td height="21" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000">PEMBIMBING LAPANGAN</font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top colspan="2">
+                <?= strtoupper(client('kab_kota')) ?>, <?= strtoupper(tanggal(date('Y-m-d'))) ?>
             </td>
         </tr>
         <tr>
-            <td height="21" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                PEMBIMBING LAPANGAN
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-        </tr>
-        <tr>
-            <td height="21" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
-            </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
         </tr>
         <tr>
-            <td height="21" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
         </tr>
         <tr>
-            <td height="21" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td style="border-bottom: 1px solid #000000" align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"></font>
+            <td align="left" valign=top>
+                <br>
             </td>
-            <td align="left" valign=bottom>
-                <font face="Times New Roman" size=3 color="#000000"><br></font>
+            <td align="left" valign=top>
+                <br>
+            </td>
+        </tr>
+        <tr>
+            <td align="left" valign=top>
+                <br>
+            </td>
+            <td align="left" valign=top>
+                <br>
+            </td>
+            <td align="left" valign=top>
+                <br>
+            </td>
+            <td align="left" valign=top>
+                <br>
+            </td>
+            <td align="left" valign=top>
+                <br>
+            </td>
+            <td align="left" valign=top colspan="2">
+                <u><?= $data['nama_pembimbing'] ?></u>
             </td>
         </tr>
     </table>

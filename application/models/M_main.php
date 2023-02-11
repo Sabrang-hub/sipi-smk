@@ -458,7 +458,8 @@ class M_main extends CI_Model
             $aksi = "";
             $no++;
             $row->no = $no;
-            $aksi .= "<a href=\"" . base_url('logbook/detail/' . $row->siswa_id) . "\" title=\"Detail\" type=\"button\" class=\"btn btn-primary btn-sm me-1\" onclick=\"detail_logbook('" . $index . "',event)\"><i class=\"mdi mdi-clipboard-file-outline\"></i></a>";
+            $aksi .= "<a href=\"" . base_url('laporan_pkl?id=') . encrypt_url($row->siswa_id) . "\" title=\"Cetak\" type=\"button\" class=\"btn btn-primary btn-sm me-1\" target=\"_blank\"><i class=\"mdi mdi-printer\"></i></a>";
+            $aksi .= "<a href=\"" . base_url('logbook/detail/' . encrypt_url($row->siswa_id)) . "\" title=\"Detail\" type=\"button\" class=\"btn btn-primary btn-sm me-1\" onclick=\"detail_logbook('" . $index . "',event)\"><i class=\"mdi mdi-text-box-search-outline\"></i></a>";
             $row->aksi = $aksi;
             if ($row->created_at <> null && $row->created_at <> '0000-00-00 00:00:00') {
                 $row->created_at = date('j M Y h:i A', strtotime($row->created_at));

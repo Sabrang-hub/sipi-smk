@@ -52,11 +52,12 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
-                        <button title="Kembali" class="btn btn-light btn-sm float-end ms-1 btn-laporan-kembali"><i class="mdi mdi mdi-window-close"></i> <span class="d-none d-lg-inline">Kembali</span></button>
+                        <button title="Kembali" class="btn btn-light btn-sm float-end ms-1 btn-laporan-kembali"><i class="mdi mdi-window-close"></i> <span class="d-none d-lg-inline">Kembali</span></button>
+                        <button title="Print" class="btn btn-light btn-sm float-end ms-1 btn-laporan-cetak"><i class="mdi mdi-printer"></i> <span class="d-none d-lg-inline">Cetak</span></button>
                         <h5>Pratinjau <?= @$title ?></h5>
                     </div>
-                    <div class="card-body">
-                        <iframe src="" frameborder="0" width="100%" height="100vh"></iframe>
+                    <div class="card-body p-1">
+                        <iframe id="print" src="" frameborder="0" width="100%"></iframe>
                     </div>
                 </div>
             </div>
@@ -327,13 +328,17 @@
 
         $('.btn-laporan').click(function() {
             $('#main-table').hide();
-            $('iframe').css('height', $(window).height() - 360).attr('src', '<?= base_url('laporan_pkl?id=') . $this->encrypt->encode($this->session->userdata('kode')) ?>');
+            $('iframe').css('height', '100vh').attr('src', '<?= base_url('laporan_pkl?id=') . encrypt_url($this->session->userdata('kode')) ?>');
             $('#main-laporan').show();
         });
 
         $('.btn-laporan-kembali').click(function() {
             $('#main-table').show();
             $('#main-laporan').hide();
+        });
+
+        $('.btn-laporan-cetak').click(function() {
+            window.open('<?= base_url('laporan_pkl?id=') . encrypt_url($this->session->userdata('kode')) ?>');
         });
 
     });

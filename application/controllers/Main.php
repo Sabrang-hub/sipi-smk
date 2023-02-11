@@ -246,6 +246,7 @@ class Main extends CI_Controller
 	{
 		if ($this->session->userdata('is_login')) {
 			if ($siswa_id != '') {
+				$siswa_id = decrypt_url($siswa_id);
 				$data['title'] = 'Laporan Harian Siswa';
 				$data['siswa'] = $this->db->where('a.nis', $siswa_id)->join('tbl_kelompok b', 'a.nis=b.siswa_id', 'inner')->get('m_siswa a')->row_array();
 				$data['siswa']['tanggal_awal'] = date('d-m-Y', strtotime($data['siswa']['tanggal_awal']));
