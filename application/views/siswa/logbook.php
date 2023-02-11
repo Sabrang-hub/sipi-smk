@@ -167,7 +167,7 @@
                     orderable: false,
                     render: function(value, type, row) {
                         if (value.length > 0) {
-                            s = '<details open=""><summary><span class="badge bg-primary">Detail</span></summary>';
+                            s = '<details open=""><summary><span class="badge bg-secondary">Detail</span></summary>';
                             s += "<ul style=\"padding-left: 12px;\">";
                             for (let i = 0; i < value.length; i++) {
                                 s += "<li>" + value[i].keterangan + "</li>";
@@ -185,7 +185,7 @@
                     orderable: false,
                     render: function(value, type, row) {
                         if (value.length > 0) {
-                            s = '<details><summary><span class="badge bg-primary">Detail</span></summary>';
+                            s = '<details open=""><summary><span class="badge bg-secondary">Detail</span></summary>';
                             s += "<ul style=\"padding-left: 12px;\">";
                             for (let i = 0; i < value.length; i++) {
                                 s += "<li>" + value[i].keterangan + "</li>";
@@ -219,7 +219,7 @@
                     data: 'created_at',
                     className: 'text-nowrap',
                     render: function(value, type, row) {
-                        var s = "<details><summary><span class=\"badge bg-primary\">Detail</span></summary>";
+                        var s = "<details><summary><span class=\"badge bg-secondary\">Detail</span></summary>";
                         s += "Created at " + row.created_at;
                         s += (row.created_by != '' && row.created_by != null ? "<br>Created by " + row.created_by : '');
                         s += (row.updated_at != '' && row.updated_at != null ? "<br>Updated at " + row.updated_at : '');

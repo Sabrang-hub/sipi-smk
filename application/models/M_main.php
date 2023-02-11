@@ -352,6 +352,25 @@ class M_main extends CI_Model
         }
     }
 
+    public function hapus_keterangan_logbook()
+    {
+        $id = $this->input->post('id');
+
+        $sql = $this->db->where('id', $id)->delete('tbl_keterangan');
+
+        if ($sql) {
+            return [
+                'stat' => true,
+                'msg' => 'Data terhapus',
+            ];
+        } else {
+            return [
+                'stat' => false,
+                'msg' => $this->db->error(),
+            ];
+        }
+    }
+
     public function simpan_status_logbook()
     {
         $data = $this->input->post();

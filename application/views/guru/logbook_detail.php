@@ -146,10 +146,10 @@
                     orderable: false,
                     render: function(value, type, row) {
                         if (value.length > 0) {
-                            s = '<details open=""><summary><span class="badge bg-primary">Detail</span></summary>';
+                            s = '<details open=""><summary><span class="badge bg-secondary">Detail</span></summary>';
                             s += "<ul style=\"padding-left: 12px;\">";
                             for (let i = 0; i < value.length; i++) {
-                                s += "<li>" + value[i].keterangan + "</li>";
+                                s += "<li>" + value[i].keterangan + "<a onclick=\"hapus_keterangan(" + value[i].id + ",this)\" href=\"javascript:void(0)\" title=\"Hapus Keterangan\" class=\"text-danger ms-1\"><i class=\"mdi mdi-close\"></i></a></li>";
                             }
                             s += "</ul>";
                             s += '</details>';
@@ -185,7 +185,7 @@
                     data: 'created_at',
                     className: 'text-nowrap',
                     render: function(value, type, row) {
-                        var s = "<details><summary><span class=\"badge bg-primary\">Detail</span></summary>";
+                        var s = "<details><summary><span class=\"badge bg-secondary\">Detail</span></summary>";
                         s += "Created at " + row.created_at;
                         s += (row.created_by != '' && row.created_by != null ? "<br>Created by " + row.created_by : '');
                         s += (row.updated_at != '' && row.updated_at != null ? "<br>Updated at " + row.updated_at : '');
@@ -261,6 +261,76 @@
                 $this.prop('disabled', false);
             }
 
+        });
+    }
+
+    function hapus_keterangan(id, e) {
+        var $this = $(e);
+        var src = $this.html();
+        $this.prop('disabled', true);
+        $this.html(
+            $('<i>', {
+                class: "mdi mdi-loading mdi-spin"
+            })
+        );
+        keterangan = $this.parent().text();
+        Swal.fire({
+            title: 'Anda yakin?',
+            html: "Keterangan \"" + keterangan + "\" akan dihapus.",
+            icon: 'question',
+            showCancelButton: true,
+            cancelButtonText: 'Batal',
+            confirmButtonText: 'Ya, Hapus',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: '<?= base_url() ?>hapus-keterangan-logbook',
+                    data: ({
+                        id
+                    }),
+                    dataType: 'json',
+                    type: 'post',
+                    success: function(data) {
+                        if (data.stat == true) {
+                            Swal.fire({
+                                title: 'Ok',
+                                html: data.msg,
+                                icon: 'success',
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                            });
+                            $("#list").DataTable().ajax.reload(null, false);
+                        } else {
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Oops...',
+                                html: data.msg,
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                            });
+                            $this.html(src);
+                            $this.prop('disabled', false);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        Swal.fire({
+                            icon: 'danger',
+                            title: "Status: " + status + "<br> Error: " + error,
+                            html: xhr.responseText,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                        });
+                        $this.html(src);
+                        $this.prop('disabled', false);
+                    }
+
+                });
+            } else {
+                $this.html(src);
+                $this.prop('disabled', false);
+            }
         });
     }
 </script>

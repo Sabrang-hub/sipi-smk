@@ -100,6 +100,7 @@ $route['list-logbook'] = 'main/get_list_data_logbook';
 $route['simpan-logbook'] = 'main/simpan_logbook';
 $route['hapus-logbook'] = 'main/hapus_logbook';
 $route['simpan-keterangan-logbook'] = 'main/simpan_keterangan_logbook';
+$route['hapus-keterangan-logbook'] = 'main/hapus_keterangan_logbook';
 $route['simpan-status-logbook'] = 'main/simpan_status_logbook';
 $route['list-siswa-logbook'] = 'main/get_list_data_siswa_logbook';
 $route['list-siswa-detail-logbook'] = 'main/get_list_data_siswa_detail_logbook';
