@@ -268,4 +268,24 @@ class Main extends CI_Controller
 			redirect(base_url('auth'));
 		}
 	}
+
+	public function absensi()
+	{
+		if ($this->session->userdata('is_login')) {
+			$data['title'] = 'Absensi';
+			if ($this->session->userdata('group_id') == 1) {
+				$this->load->view('admin/absensi', $data);
+			} elseif ($this->session->userdata('group_id') == 2) {
+				$this->load->view('guru/absensi', $data);
+			} elseif ($this->session->userdata('group_id') == 3) {
+				$this->load->view('siswa/absensi', $data);
+			} elseif ($this->session->userdata('group_id') == 4) {
+				$this->load->view('pembimbing/absensi', $data);
+			} else {
+				redirect(base_url('auth'));
+			}
+		} else {
+			redirect(base_url('auth'));
+		}
+	}
 }

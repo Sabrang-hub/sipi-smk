@@ -69,6 +69,7 @@ $route['industri'] = 'master/industri';
 $route['list-industri'] = 'master/get_list_data_industri';
 $route['simpan-industri'] = 'master/simpan_industri';
 $route['hapus-industri'] = 'master/hapus_industri';
+$route['simpan-hari-kerja-industri'] = 'master/simpan_hari_kerja_industri';
 
 $route['kelas'] = 'master/kelas';
 $route['list-kelas'] = 'master/get_list_data_kelas';
@@ -104,6 +105,8 @@ $route['hapus-keterangan-logbook'] = 'main/hapus_keterangan_logbook';
 $route['simpan-status-logbook'] = 'main/simpan_status_logbook';
 $route['list-siswa-logbook'] = 'main/get_list_data_siswa_logbook';
 $route['list-siswa-detail-logbook'] = 'main/get_list_data_siswa_detail_logbook';
+
+$route['absensi'] = 'main/absensi';
 
 $route['profil-instansi'] = 'master/profil_instansi';
 $route['simpan-profil-instansi'] = 'master/simpan_profil_instansi';

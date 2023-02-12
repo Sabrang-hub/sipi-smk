@@ -63,6 +63,12 @@
                         <span> Laporan Harian </span>
                     </a>
                 </li>
+                <li class="side-nav-item">
+                    <a href="<?= base_url('absensi') ?>" class="side-nav-link">
+                        <i class="mdi mdi-clock-edit-outline"></i>
+                        <span> Absensi </span>
+                    </a>
+                </li>
             <?php
             }
             if ($this->session->userdata('group_id') != 3 && $this->session->userdata('group_id') != 4) {

@@ -503,7 +503,8 @@ class m_master extends CI_Model
             $no++;
             $row->no = $no;
             $row->industri_id = $row->id;
-            $aksi .= "<button title=\"Edit\" type=\"button\" class=\"btn btn-info btn-sm me-1\" onclick=\"edit_industri('" . $index . "',event)\"><i class=\"mdi mdi-account-edit-outline\"></i></button>";
+            $aksi .= "<button title=\"Edit Hari Kerja\" type=\"button\" class=\"btn btn-primary btn-sm me-1\" onclick=\"edit_hari_kerja_industri('" . $index . "',event)\"><i class=\"mdi mdi-calendar-edit\"></i></button>";
+            $aksi .= "<button title=\"Edit\" type=\"button\" class=\"btn btn-info btn-sm me-1\" onclick=\"edit_industri('" . $index . "',event)\"><i class=\"mdi mdi-store-edit-outline\"></i></button>";
             $aksi .= "<button title=\"Hapus\" type=\"button\" class=\"btn btn-danger btn-sm me-1\" onclick=\"hapus_industri('" . $row->id . "','" . $row->nama . "',event)\"><i class=\"mdi mdi-trash-can-outline\"></i></button>";
             $row->aksi = $aksi;
             if ($row->created_at <> null && $row->created_at <> '0000-00-00 00:00:00') {
@@ -512,6 +513,7 @@ class m_master extends CI_Model
             if ($row->updated_at <> null && $row->updated_at <> '0000-00-00 00:00:00') {
                 $row->updated_at = date('j M Y h:i A', strtotime($row->updated_at));
             }
+            $row->hari_kerja = $this->db->where('industri_id', $row->id)->get('m_hari_kerja')->result();
             $data[] = $row;
             $index++;
         }
@@ -597,6 +599,42 @@ class m_master extends CI_Model
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),
+            ];
+        }
+    }
+
+    public function simpan_hari_kerja_industri()
+    {
+        $this->db->trans_begin();
+        $data = $this->input->post();
+        $this->db->where('industri_id', $data['industri_id'])->delete('m_hari_kerja');
+        $data_hari = [];
+        foreach ($data['hari_id'] as $key => $value) {
+            $data_hari[] = array(
+                'industri_id' => $data['industri_id'],
+                'nama_industri' => $data['nama_industri'],
+                'hari_id' => $value,
+                'nama_hari' => nama('m_hari', 'nama', ['id' => $value]),
+                'waktu_masuk' => $data['waktu_masuk'][$value - 1],
+                'waktu_pulang' => $data['waktu_pulang'][$value - 1],
+                'created_at' => date('Y-m-d H:i:s'),
+                'created_by' => $this->session->userdata('nama'),
+            );
+        }
+        $this->db->insert_batch('m_hari_kerja', $data_hari);
+
+
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_roleback();
+            return [
+                'stat' => false,
+                'msg' => $this->db->error(),
+            ];
+        } else {
+            $this->db->trans_commit();
+            return [
+                'stat' => true,
+                'msg' => 'Data tersimpan',
             ];
         }
     }

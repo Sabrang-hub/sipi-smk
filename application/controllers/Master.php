@@ -314,6 +314,19 @@ class Master extends CI_Controller
         echo json_encode($response);
     }
 
+    public function simpan_hari_kerja_industri()
+    {
+        if ($this->session->userdata('is_login')) {
+            $response =  $this->master->simpan_hari_kerja_industri();
+        } else {
+            $response =  [
+                'stat' => false,
+                'msg' => 'Sesi telah berakhir. Silahkan Login kembali!'
+            ];
+        }
+        echo json_encode($response);
+    }
+
     public function kelas()
     {
         if ($this->session->userdata('is_login')) {

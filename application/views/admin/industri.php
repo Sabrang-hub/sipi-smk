@@ -3,6 +3,7 @@
 <link href="<?= base_url() ?>assets/vendor/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" />
 <link href="<?= base_url() ?>assets/vendor/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
 <link href="<?= base_url() ?>assets/node_modules/select2-bootstrap-5-theme/dist/select2-bootstrap-5-theme.min.css" rel="stylesheet">
+<link href="<?= base_url() ?>assets/vendor/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />
 <?php $this->layout->endSection() ?>
 <?php $this->layout->section('content') ?>
 <div class="content">
@@ -88,17 +89,78 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modal-form-hari-kerja-industri" tabindex="-1" aria-labelledby="fm-modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class=" modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">Tambah <?= @$title ?></h5>
+                <a href="javascript:void(0)" data-bs-dismiss="modal"><i class="mdi mdi-close text-white"></i></a>
+            </div>
+            <form id="fm-hari-kerja-industri" action="<?= base_url('simpan-hari-kerja-industri') ?>" method="POST">
+                <input type="hidden" id="industri_id" name="industri_id" />
+                <div class="modal-body">
+
+                    <div class="my-3">
+                        <label for="nama_industri" class="form-label">Nama Industri</label>
+                        <input type="text" id="nama_industri" name="nama_industri" class="form-control" readonly="">
+                    </div>
+                    <h6 class="font-15 mt-3">Hari Kerja</h6>
+                    <?php
+                    $hari = [1 => 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+                    for ($i = 1; $i <= 7; $i++) {
+                    ?>
+                        <hr class="my-1" />
+                        <div class="row">
+                            <div class="col-12 col-lg-3">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="hari_<?= $i ?>" name="hari_id[]" value="<?= $i ?>">
+                                    <label class="form-check-label" for="hari_<?= $i ?>"><?= $hari[$i] ?></label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <div class="mb-3">
+                                    <label for="waktu_masuk_<?= $i ?>" class="form-label">Waktu Masuk</label>
+                                    <input type="time" id="waktu_masuk_<?= $i ?>" name="waktu_masuk[]" class="form-control form-control-sm">
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <div class="mb-3">
+                                    <label for="waktu_pulang_<?= $i ?>" class="form-label">Waktu Pulang</label>
+                                    <input type="time" id="waktu_pulang_<?= $i ?>" name="waktu_pulang[]" class="form-control form-control-sm">
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" title="Simpan" class="btn btn-primary btn-sm"><i class="mdi mdi-content-save"></i> <span class="d-none d-lg-inline">Simpan</span></button>
+                    <button type="button" title="Batal" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"><i class="mdi mdi-window-close"></i> <span class="d-none d-lg-inline">Batal</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <?php $this->layout->endSection() ?>
 <?php $this->layout->section('script') ?>
 <script src="<?= base_url() ?>assets/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?= base_url() ?>assets/vendor/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
 <script src="<?= base_url() ?>assets/vendor/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?= base_url() ?>assets/vendor/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
+<script src="<?= base_url() ?>assets/vendor/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
 <script src="<?= base_url() ?>assets/vendor/select2/js/select2.min.js"></script>
 <script>
     var data_src = [];
     var modal_form_industri_id = document.getElementById("modal-form-industri");
     var modal_form_industri = new bootstrap.Modal(modal_form_industri_id, {
+        backdrop: 'static',
+        keyboard: false,
+    });
+    var modal_form_hari_kerja_industri_id = document.getElementById("modal-form-hari-kerja-industri");
+    var modal_form_hari_kerja_industri = new bootstrap.Modal(modal_form_hari_kerja_industri_id, {
         backdrop: 'static',
         keyboard: false,
     });
@@ -325,10 +387,70 @@
             });
         });
 
+        $('#fm-hari-kerja-industri').submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: this.getAttribute('action'),
+                type: this.getAttribute('method'),
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                cache: false,
+                async: true,
+                dataType: "JSON",
+                beforeSend: function() {
+                    Swal.fire({
+                        title: 'Loading...',
+                        html: 'Menyimpan industri',
+                        didOpen: () => {
+                            Swal.showLoading()
+                        },
+                        allowOutsideClick: () => !Swal.isLoading(),
+                        allowEscapeKey: () => !Swal.isLoading(),
+                    });
+                },
+                success: function(data) {
+                    if (data.stat == true) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Ok',
+                            text: data.msg,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                        });
+                        $("#list").DataTable().ajax.reload();
+                        modal_form_industri.hide();
+                    } else {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Oops...',
+                            text: data.msg,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: status,
+                        text: error,
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    });
+                },
+            });
+        });
+
         modal_form_industri_id.addEventListener('hidden.bs.modal', function(event) {
             modal_form_industri_id.querySelector('.modal-title').textContent = 'Tambah Industri';
-            industri_id.value = '';
+            $('#fm-industri #industri_id').val('');
             $('#fm-industri').trigger("reset");
+        });
+
+        modal_form_hari_kerja_industri_id.addEventListener('hidden.bs.modal', function(event) {
+            $('#fm-hari-kerja-industri #industri_id').val('');
+            $('#fm-hari-kerja-industri').trigger("reset");
         });
 
     });
@@ -337,14 +459,28 @@
         var data = data_src[index];
         $.each(data, function(i, v) {
             if (i == 'jenis_usaha_id' && v > 0) {
-                select2SetVal('#jenis_usaha_id', data.nama_jenis_usaha, data.jenis_usaha_id);
+                select2SetVal('#fm-industri #jenis_usaha_id', data.nama_jenis_usaha, data.jenis_usaha_id);
             } else {
-                $('#' + i).val(v);
+                $('#fm-industri #' + i).val(v);
             }
         });
         $(".dtr-bs-modal").find('[data-bs-dismiss="modal"]').click();
-        modal_form_industri_id.querySelector('.modal-title').textContent = 'Edit industri';
+        modal_form_industri_id.querySelector('.modal-title').textContent = 'Edit Industri';
         modal_form_industri.show();
+    }
+
+    function edit_hari_kerja_industri(index, e) {
+        var data = data_src[index];
+        $('#fm-hari-kerja-industri #industri_id').val(data.id);
+        $('#fm-hari-kerja-industri #nama_industri').val(data.nama);
+        for (let i = 0; i < data.hari_kerja.length; i++) {
+            d = data.hari_kerja[i];
+            $('input[type=checkbox][value=' + d.hari_id + ']').prop('checked', true);
+            $('#waktu_masuk_' + d.hari_id).val(d.waktu_masuk.substring(0, 5));
+            $('#waktu_pulang_' + d.hari_id).val(d.waktu_pulang.substring(0, 5));
+        }
+        $(".dtr-bs-modal").find('[data-bs-dismiss="modal"]').click();
+        modal_form_hari_kerja_industri.show();
     }
 
     function hapus_industri(id, industri, e) {
