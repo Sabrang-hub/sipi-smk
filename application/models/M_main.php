@@ -484,4 +484,106 @@ class M_main extends CI_Model
         );
         return $output;
     }
+
+    public function get_list_data_absensi()
+    {
+        $siswa_id = $this->session->userdata('kode');
+        $data_kel = $this->db->where('siswa_id', $siswa_id)->get('tbl_kelompok')->row_array();
+        $period = new DatePeriod(new DateTime($data_kel['tanggal_awal']), new DateInterval('P1D'), new DateTime($data_kel['tanggal_akhir']));
+        $data = [];
+        $index = 0;
+        foreach ($period as $value) {
+            $data_absen = $this->db->where(['siswa_id' => $siswa_id, 'tanggal' => $value->format('Y-m-d')])->get('tbl_absen')->row_array();
+            $data_hari_kerja = $this->db->where(['industri_id' => $data_kel['industri_id'], 'hari_id' => $value->format('N')])->get('m_hari_kerja')->row_array();
+            if ($data_absen['status'] == 2) {
+                $status = "<span class=\"badge bg-primary\">Izin</span>";
+            } elseif ($data_absen['status'] == 3) {
+                $status = "<span class=\"badge bg-info\">Sakit</span>";
+            } elseif ($data_absen['waktu_masuk'] == null && $data_absen['waktu_pulang'] != null) {
+                $status = "<span class=\"badge bg-waring\">Terlambat</span>";
+            } elseif ($data_absen['waktu_masuk'] != null) {
+                $selectedTime = date('H:i:s', strtotime($data_hari_kerja['waktu_masuk']));
+                $endTime = strtotime("+30 minutes", strtotime($selectedTime));
+                $waktu_max = date('H:i:s', $endTime);
+                if ($data_absen['waktu_masuk'] > $waktu_max) {
+                    $status = "<span class=\"badge bg-warning\">Terlambat</span>";
+                } else {
+                    $status = "<span class=\"badge bg-success\">Hadir</span>";
+                }
+            } elseif ($value->format('Y-m-d') == date('Y-m-d')) {
+                $status = "<span class=\"badge bg-secondary\">Belum Absen</span>";
+            } else {
+                $status = "<span class=\"badge bg-danger\">Alpa</span>";
+            }
+            if ($value->format('Y-m-d') == date('Y-m-d') && ($data_absen['waktu_masuk'] == null || $data_absen['waktu_pulang'] == null)) {
+                $aksi = "<button class=\"btn btn-info btn-sm me-1\" onclick=\"edit_absensi($index,event)\"><i class=\"mdi mdi-file-sign\"></i></button>";
+            } else {
+                $aksi = "<span class=\"badge bg-light text-dark\"><i>Selesai</i></span>";
+            }
+            $data[] = array(
+                'id' => $data_absen['id'],
+                'siswa_id' => $data_kel['siswa_id'],
+                'nama_siswa' => $data_kel['nama_siswa'],
+                'tanggal' => $value->format('Y-m-d'),
+                'waktu_masuk' => ($data_absen['waktu_masuk'] != null ? date('H:i:s', strtotime($data_absen['waktu_masuk'])) : ''),
+                'waktu_pulang' => ($data_absen['waktu_pulang'] != null ? date('H:i:s', strtotime($data_absen['waktu_pulang'])) : ''),
+                'status' => $status,
+                'keterangan_siswa' => $data_absen['keterangan_siswa'],
+                'verifikasi_stat' => $data_absen['verifikasi_stat'],
+                'verifikasi_at' => $data_absen['verifikasi_at'],
+                'verifikasi_by' => $data_absen['verifikasi_by'],
+                'verifikasi_ket' => $data_absen['verifikasi_ket'],
+                'created_at' => $data_absen['created_at'],
+                'created_by' => $data_absen['created_by'],
+                'updated_at' => $data_absen['updated_at'],
+                'updated_by' => $data_absen['updated_by'],
+                'aksi' => $aksi,
+            );
+            $index++;
+            if ($value->format('Y-m-d') == date('Y-m-d')) {
+                break;
+            }
+        }
+        return $data;
+    }
+
+    public function simpan_absensi()
+    {
+        $data = $this->input->post();
+        $data['siswa_id'] = $this->session->userdata('kode');
+        $data['nama_siswa'] = $this->session->userdata('nama');
+        $data['waktu_masuk'] = date('H:i:s');
+        $data['created_at'] = date('Y-m-d H:i:d');
+        $data['created_by'] = $this->session->userdata('nama');
+
+        $cek = $this->db->where(['siswa_id' => $data['siswa_id'], 'tanggal' => $data['tanggal']])->get('tbl_absen');
+        if ($cek->num_rows() > 0) {
+            if (isset($_POST['field'])) {
+                $sql = $this->db->where(['siswa_id' => $data['siswa_id'], 'tanggal' => $data['tanggal']])->update('tbl_absen', [
+                    'waktu_pulang' => date('H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:d'),
+                    'updated_by' => $this->session->userdata('nama'),
+                ]);
+            } else {
+                $sql = $this->db->where(['siswa_id' => $data['siswa_id'], 'tanggal' => $data['tanggal']])->update('tbl_absen', $data);
+            }
+        } else {
+            if ($data['status'] == 2 || $data['status'] == 3) {
+                $data['waktu_pulang'] = $data['waktu_masuk'];
+            }
+            $sql = $this->db->insert('tbl_absen', $data);
+        }
+
+        if ($sql) {
+            return [
+                'stat' => true,
+                'msg' => 'Data tersimpan',
+            ];
+        } else {
+            return [
+                'stat' => false,
+                'msg' => $this->db->error(),
+            ];
+        }
+    }
 }

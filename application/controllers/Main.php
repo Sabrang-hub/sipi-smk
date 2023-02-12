@@ -288,4 +288,27 @@ class Main extends CI_Controller
 			redirect(base_url('auth'));
 		}
 	}
+
+	public function get_list_data_absensi()
+	{
+		if ($this->session->userdata('is_login')) {
+			$response = $this->main->get_list_data_absensi();
+		} else {
+			$response =  [];
+		}
+		echo json_encode($response);
+	}
+
+	public function simpan_absensi()
+	{
+		if ($this->session->userdata('is_login')) {
+			$response =  $this->main->simpan_absensi();
+		} else {
+			$response =  [
+				'stat' => false,
+				'msg' => 'Sesi telah berakhir. Silahkan Login kembali!'
+			];
+		}
+		echo json_encode($response);
+	}
 }

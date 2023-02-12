@@ -107,6 +107,8 @@ $route['list-siswa-logbook'] = 'main/get_list_data_siswa_logbook';
 $route['list-siswa-detail-logbook'] = 'main/get_list_data_siswa_detail_logbook';
 
 $route['absensi'] = 'main/absensi';
+$route['list-absensi'] = 'main/get_list_data_absensi';
+$route['simpan-absensi'] = 'main/simpan_absensi';
 
 $route['profil-instansi'] = 'master/profil_instansi';
 $route['simpan-profil-instansi'] = 'master/simpan_profil_instansi';
