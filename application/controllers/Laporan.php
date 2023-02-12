@@ -22,4 +22,18 @@ class Laporan extends CI_Controller
             redirect(base_url('auth'));
         }
     }
+
+    public function laporan_absensi()
+    {
+        if ($this->session->userdata('is_login')) {
+            $html =  $this->laporan->laporan_absensi();
+            $mpdf = new \Mpdf\Mpdf();
+            $mpdf->SetFooter('Printed SIP-PKL on @ {DATE j-m-Y H:i:s} || Page {PAGENO} of {nb}');
+            $mpdf->AddPage('L');
+            $mpdf->WriteHTML($html);
+            $mpdf->Output();
+        } else {
+            redirect(base_url('auth'));
+        }
+    }
 }
