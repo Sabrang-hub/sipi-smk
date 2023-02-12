@@ -18,7 +18,7 @@ class M_laporan extends CI_Model
         $siswa_id = decrypt_url($id);
         $data_kel = $this->db->where('siswa_id', $siswa_id)->get('tbl_kelompok')->row_array();
         $period = new DatePeriod(new DateTime($data_kel['tanggal_awal']), new DateInterval('P1D'), new DateTime($data_kel['tanggal_akhir']));
-        $data = [];
+        $res = [];
         foreach ($period as $value) {
             $data_absen = $this->db->where(['siswa_id' => $siswa_id, 'tanggal' => $value->format('Y-m-d')])->get('tbl_absen')->row_array();
             $data_hari_kerja = $this->db->where(['industri_id' => $data_kel['industri_id'], 'hari_id' => $value->format('N')])->get('m_hari_kerja')->row_array();
@@ -42,7 +42,7 @@ class M_laporan extends CI_Model
             } else {
                 $status = "<span class=\"badge bg-danger\">Alpa</span>";
             }
-            $data[] = array(
+            $res[] = array(
                 'id' => $data_absen['id'],
                 'siswa_id' => $data_kel['siswa_id'],
                 'nama_siswa' => $data_kel['nama_siswa'],
@@ -64,6 +64,8 @@ class M_laporan extends CI_Model
                 break;
             }
         }
+        $data['data'] = $this->db->where('a.siswa_id', $siswa_id)->join('m_siswa b', 'a.siswa_id=b.nis', 'left')->get('tbl_kelompok a')->row_array();
+        $data['absensi'] = $res;
         return $this->load->view('laporan/laporan_absensi', $data, true);
     }
 }

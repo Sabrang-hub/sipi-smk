@@ -126,3 +126,4 @@ $route['master-guru'] = 'master/get_list_guru';
 $route['master-kode'] = 'master/get_list_kode';
 
 $route['laporan_pkl'] = 'laporan/laporan_pkl';
+$route['laporan_absensi'] = 'laporan/laporan_absensi';

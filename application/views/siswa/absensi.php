@@ -24,7 +24,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
-                        <a href="<?= base_url('laporan_absensi?id=') . encrypt_url($this->session->userdata('kode')) ?>" title="Cetak" class="btn btn-light btn-sm float-end"><i class="mdi mdi mdi-printer"></i> <span class="d-none d-lg-inline">Cetak</span></a>
+                        <a href="<?= base_url('laporan_absensi?id=') . encrypt_url($this->session->userdata('kode')) ?>" title="Cetak" class="btn btn-light btn-sm float-end" target="_blank"><i class="mdi mdi mdi-printer"></i> <span class="d-none d-lg-inline">Cetak</span></a>
                         <h5>Daftar <?= @$title ?></h5>
                     </div>
                     <div class="card-body">
