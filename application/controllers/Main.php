@@ -47,6 +47,17 @@ class Main extends CI_Controller
 							$data['jumlah_alpa']++;
 						}
 					}
+
+					$cek_absen = $this->db->where(['siswa_id' => $this->session->userdata('kode'), 'tanggal' => date('Y-m-d')])->get('tbl_absen');
+					if ($cek_absen->num_rows() > 0) {
+						if ($cek_absen->row('waktu_pulang') == null) {
+							$data['status_absen_hari_ini'] = 1;
+						} else {
+							$data['status_absen_hari_ini'] = 2;
+						}
+					} else {
+						$data['status_absen_hari_ini'] = 0;
+					}
 					break;
 
 				case '4':

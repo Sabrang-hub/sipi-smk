@@ -17,23 +17,34 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <a href="<?= base_url('absensi') ?>">
-                    <div class="card cta-box bg-danger text-white">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="w-100 overflow-hidden">
-                                    <h2 class="mt-0"><i class="mdi mdi-bullhorn-outline"></i></h2>
-                                    <h3 class="m-0 fw-normal cta-box-title"> Anda belum melakukan absensi! <i class="mdi mdi-arrow-right-bold-outline"></i></h3>
+        <?php if ($status_absen_hari_ini < 2) : ?>
+            <div class="row">
+                <div class="col-12">
+                    <a href="<?= base_url('absensi') ?>">
+                        <div class="card cta-box bg-danger text-white">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="w-100 overflow-hidden">
+                                        <h2 class="mt-0"><i class="mdi mdi-bullhorn-outline"></i></h2>
+                                        <h3 class="m-0 fw-normal cta-box-title">
+                                            <?php
+                                            if ($status_absen_hari_ini == 1) {
+                                                echo "Jangan lupa absen pulang!";
+                                            } elseif ($status_absen_hari_ini == 0) {
+                                                echo "Anda belum melakukan absensi!";
+                                            }
+                                            ?>
+                                            <i class="mdi mdi-arrow-right-bold-outline"></i>
+                                        </h3>
+                                    </div>
+                                    <img class="ms-3" src="assets/images/svg/email-campaign.svg" alt="Generic placeholder image" width="120">
                                 </div>
-                                <img class="ms-3" src="assets/images/svg/email-campaign.svg" alt="Generic placeholder image" width="120">
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
-        </div>
+        <?php endif; ?>
         <div class="row">
             <div class="col-lg-4 col-12">
                 <div class="card text-center">
