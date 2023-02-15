@@ -26,6 +26,27 @@ class Main extends CI_Controller
 				case '3':
 					$data['title'] = 'Beranda';
 					$data['page'] = 'siswa/beranda';
+					$data['data'] = $this->db->where('a.nis', $this->session->userdata('kode'))->join('tbl_kelompok b', 'a.nis=b.siswa_id', 'left')->get('m_siswa a')->row_array();
+					$data['jumlah_laporan_harian'] = $this->db->select("IFNULL(count(id),0) as jml")->where('siswa_id', $this->session->userdata('kode'))->get('tbl_logbook')->row('jml');
+					$rekap_kahadiran = $this->main->rekap_kahadiran();
+					$data['jumlah_hadir'] = 0;
+					$data['jumlah_terlambat'] = 0;
+					$data['jumlah_izin_sakit'] = 0;
+					$data['jumlah_alpa'] = 0;
+					foreach ($rekap_kahadiran as $row) {
+						if ($row['status'] == 1) {
+							$data['jumlah_hadir']++;
+						}
+						if ($row['status'] == 4) {
+							$data['jumlah_terlambat']++;
+						}
+						if ($row['status'] == 2 || $row['status'] == 3) {
+							$data['jumlah_izin_sakit']++;
+						}
+						if ($row['status'] == 5) {
+							$data['jumlah_alpa']++;
+						}
+					}
 					break;
 
 				case '4':
