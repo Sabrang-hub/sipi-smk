@@ -1,3 +1,79 @@
+<?php $this->layout->section('style') ?>
+<style>
+    .gd-purple {
+        background: hsla(262, 44%, 59%, 1);
+
+        background: linear-gradient(315deg, hsla(262, 44%, 59%, 1) 0%, hsla(244, 47%, 53%, 1) 100%);
+
+        background: -moz-linear-gradient(315deg, hsla(262, 44%, 59%, 1) 0%, hsla(244, 47%, 53%, 1) 100%);
+
+        background: -webkit-linear-gradient(315deg, hsla(262, 44%, 59%, 1) 0%, hsla(244, 47%, 53%, 1) 100%);
+
+        filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#8A68C5", endColorstr="#5750C0", GradientType=1);
+    }
+
+    .gd-danger {
+        background: hsla(342, 84%, 65%, 1);
+
+        background: linear-gradient(315deg, hsla(342, 84%, 65%, 1) 0%, hsla(317, 44%, 57%, 1) 100%);
+
+        background: -moz-linear-gradient(315deg, hsla(342, 84%, 65%, 1) 0%, hsla(317, 44%, 57%, 1) 100%);
+
+        background: -webkit-linear-gradient(315deg, hsla(342, 84%, 65%, 1) 0%, hsla(317, 44%, 57%, 1) 100%);
+
+        filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#F15D8A", endColorstr="#C262A7", GradientType=1);
+    }
+
+    .gd-warning {
+        background: hsla(39, 100%, 58%, 1);
+
+        background: linear-gradient(315deg, hsla(39, 100%, 58%, 1) 0%, hsla(17, 100%, 67%, 1) 100%);
+
+        background: -moz-linear-gradient(315deg, hsla(39, 100%, 58%, 1) 0%, hsla(17, 100%, 67%, 1) 100%);
+
+        background: -webkit-linear-gradient(315deg, hsla(39, 100%, 58%, 1) 0%, hsla(17, 100%, 67%, 1) 100%);
+
+        filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#FFB42B", endColorstr="#FF8655", GradientType=1);
+    }
+
+    .gd-primary {
+        background: hsla(200, 89%, 59%, 1);
+
+        background: linear-gradient(315deg, hsla(200, 89%, 59%, 1) 0%, hsla(216, 50%, 56%, 1) 100%);
+
+        background: -moz-linear-gradient(315deg, hsla(200, 89%, 59%, 1) 0%, hsla(216, 50%, 56%, 1) 100%);
+
+        background: -webkit-linear-gradient(315deg, hsla(200, 89%, 59%, 1) 0%, hsla(216, 50%, 56%, 1) 100%);
+
+        filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#39B7F4", endColorstr="#5783C7", GradientType=1);
+    }
+
+    .gd-success {
+        background: hsla(188, 45%, 64%, 1);
+
+        background: linear-gradient(315deg, hsla(188, 45%, 64%, 1) 0%, hsla(188, 75%, 28%, 1) 100%);
+
+        background: -moz-linear-gradient(315deg, hsla(188, 45%, 64%, 1) 0%, hsla(188, 75%, 28%, 1) 100%);
+
+        background: -webkit-linear-gradient(315deg, hsla(188, 45%, 64%, 1) 0%, hsla(188, 75%, 28%, 1) 100%);
+
+        filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#78C1CC", endColorstr="#126D7C", GradientType=1);
+    }
+
+    .gd-info {
+        background: hsla(187, 72%, 56%, 1);
+
+        background: linear-gradient(315deg, hsla(187, 72%, 56%, 1) 0%, hsla(202, 90%, 37%, 1) 100%);
+
+        background: -moz-linear-gradient(315deg, hsla(187, 72%, 56%, 1) 0%, hsla(202, 90%, 37%, 1) 100%);
+
+        background: -webkit-linear-gradient(315deg, hsla(187, 72%, 56%, 1) 0%, hsla(202, 90%, 37%, 1) 100%);
+
+        filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#3DCCE0", endColorstr="#0976B4", GradientType=1);
+    }
+</style>
+<?php $this->layout->endSection() ?>
+
 <?php $this->layout->section('content') ?>
 
 <div class="content">
@@ -91,59 +167,93 @@
             </div>
             <div class="col-lg-8 col-12">
                 <div class="row">
-                    <div class="col-lg-3 col-6">
-                        <div class="card text-white bg-success overflow-hidden">
+                    <div class="col-lg-4 col-12">
+                        <div class="card text-white gd-purple overflow-hidden">
                             <div class="card-body">
-                                <div class="toll-free-box text-center">
-                                    <h4> <i class="mdi mdi-check-decagram-outline mdi-rotate-315"></i> Hadir<br /><span class="fs-3"><?= $jumlah_hadir ?></span></h4>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="text-left">
+                                        <img src="<?= base_url() ?>assets/images/small/to-do-list-success.png" alt="" class="img-fluid" width="75%">
+                                    </div>
+                                    <div class="text-end text-nowrap">
+                                        <h4>On - Time</h4>
+                                        <span class="fs-1 fw-bold"><?= $jumlah_hadir ?></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-6">
-                        <div class="card text-white bg-warning overflow-hidden">
+                    <div class="col-lg-4 col-12">
+                        <div class="card text-white gd-danger overflow-hidden">
                             <div class="card-body">
-                                <div class="toll-free-box text-center">
-                                    <h4> <i class="mdi mdi-alert-circle-outline"></i> Terlambat<br /><span class="fs-3"><?= $jumlah_terlambat ?></span></h4>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="text-left">
+                                        <img src="<?= base_url() ?>assets/images/small/to-do-list-danger.png" alt="" class="img-fluid" width="75%">
+                                    </div>
+                                    <div class="text-end text-nowrap">
+                                        <h4>Terlambat</h4>
+                                        <span class="fs-1 fw-bold"><?= $jumlah_terlambat ?></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-6">
-                        <div class="card text-white bg-info overflow-hidden">
+                    <div class="col-lg-4 col-12">
+                        <div class="card text-white gd-warning overflow-hidden">
                             <div class="card-body">
-                                <div class="toll-free-box text-center">
-                                    <h4> <i class="mdi mdi-file-document-multiple-outline"></i> Izin / Sakit<br /><span class="fs-3"><?= $jumlah_izin_sakit ?></span></h4>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="text-left">
+                                        <img src="<?= base_url() ?>assets/images/small/hourglass.png" alt="" class="img-fluid" width="98%">
+                                    </div>
+                                    <div class="text-end text-nowrap">
+                                        <h4>Belum Absen</h4>
+                                        <span class="fs-1 fw-bold"><?= $jumlah_belum_absen ?></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-6">
-                        <div class="card text-white bg-danger overflow-hidden">
+                    <div class="col-lg-4 col-12">
+                        <div class="card text-white gd-primary overflow-hidden">
                             <div class="card-body">
-                                <div class="toll-free-box text-center">
-                                    <h4> <i class="mdi mdi-alert-remove-outline"></i> Alpa<br /><span class="fs-3"><?= $jumlah_alpa ?></span></h4>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="text-left">
+                                        <img src="<?= base_url() ?>assets/images/small/envelope.png" alt="" class="img-fluid" width="53%">
+                                    </div>
+                                    <div class="text-end text-nowrap">
+                                        <h4>Izin</h4>
+                                        <span class="fs-1 fw-bold"><?= $jumlah_izin ?></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                Laporan Harian Terbaru
-                            </div>
+                    <div class="col-lg-4 col-12">
+                        <div class="card text-white gd-success overflow-hidden">
                             <div class="card-body">
-                                <table class="table table-centered">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Keterangan</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                </table>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="text-left">
+                                        <img src="<?= base_url() ?>assets/images/small/masker.png" alt="" class="img-fluid" width="56%">
+                                    </div>
+                                    <div class="text-end text-nowrap">
+                                        <h4>Sakit</h4>
+                                        <span class="fs-1 fw-bold"><?= $jumlah_sakit ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12">
+                        <div class="card text-white gd-info overflow-hidden">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="text-left">
+                                        <img src="<?= base_url() ?>assets/images/small/file-danger.png" alt="" class="img-fluid" width="55%">
+                                    </div>
+                                    <div class="text-end text-nowrap">
+                                        <h4>Alpa</h4>
+                                        <span class="fs-1 fw-bold"><?= $jumlah_hadir ?></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

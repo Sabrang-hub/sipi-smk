@@ -29,19 +29,27 @@ class Main extends CI_Controller
 					$data['data'] = $this->db->where('a.nis', $this->session->userdata('kode'))->join('tbl_kelompok b', 'a.nis=b.siswa_id', 'left')->get('m_siswa a')->row_array();
 					$data['jumlah_laporan_harian'] = $this->db->select("IFNULL(count(id),0) as jml")->where('siswa_id', $this->session->userdata('kode'))->get('tbl_logbook')->row('jml');
 					$rekap_kahadiran = $this->main->rekap_kahadiran();
+					$data['jumlah_belum_absen'] = 0;
 					$data['jumlah_hadir'] = 0;
 					$data['jumlah_terlambat'] = 0;
-					$data['jumlah_izin_sakit'] = 0;
+					$data['jumlah_izin'] = 0;
+					$data['jumlah_sakit'] = 0;
 					$data['jumlah_alpa'] = 0;
 					foreach ($rekap_kahadiran as $row) {
+						if ($row['status'] == 0) {
+							$data['jumlah_belum_absen']++;
+						}
 						if ($row['status'] == 1) {
 							$data['jumlah_hadir']++;
 						}
 						if ($row['status'] == 4) {
 							$data['jumlah_terlambat']++;
 						}
-						if ($row['status'] == 2 || $row['status'] == 3) {
-							$data['jumlah_izin_sakit']++;
+						if ($row['status'] == 2) {
+							$data['jumlah_izin']++;
+						}
+						if ($row['status'] == 3) {
+							$data['jumlah_sakit']++;
 						}
 						if ($row['status'] == 5) {
 							$data['jumlah_alpa']++;
