@@ -1,4 +1,5 @@
 <?php $this->layout->section('style') ?>
+<link href="<?= base_url() ?>assets/vendor/cropperjs/cropper.css" rel="stylesheet">
 <style>
     .gd-purple {
         background: hsla(262, 44%, 59%, 1);
@@ -125,7 +126,7 @@
             <div class="col-lg-4 col-12">
                 <div class="card text-center">
                     <div class="card-body">
-                        <img src="<?= base_url($this->session->userdata('foto')) ?>" class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
+                        <img src="<?= base_url($this->session->userdata('file_foto')) ?>" class="rounded-circle avatar-lg img-thumbnail file_foto" alt="profile-image" data-bs-toggle="modal" data-bs-target="#modal-foto" role="button">
 
                         <h4 class="mb-0 mt-2"><?= $data['nama'] ?></h4>
                         <p class="text-muted font-14"><?= $data['nis'] ?></p>
@@ -258,6 +259,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <a href="http://" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success"><i class="mdi mdi-clipboard-file-outline"></i> Download Lembar Penilaian</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -265,5 +275,145 @@
 
 </div>
 
+<div class="modal fade" id="modal-foto" tabindex="-1" role="dialog" aria-labelledby="modal-foto-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-foto-label">Foto</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+            </div>
+            <form id="fm-foto" action="<?= base_url('simpan-foto-siswa') ?>" method="POST">
+                <input type="hidden" id="siswa_id" name="siswa_id" value="<?= $this->session->userdata('kode') ?>" />
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="file_foto" class="form-label">File Foto</label>
+                                <input type="file" id="file_foto" class="form-control" placeholder="Masukkan foto">
+                            </div>
+                        </div>
+                        <div class="col-12 text-center overflow-hidden">
+                            <img id="img_preview" src="" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" title="Simpan" class="btn btn-primary btn-sm"><i class="mdi mdi-content-save"></i> <span class="d-none d-lg-inline">Simpan</span></button>
+                    <button type="button" title="Batal" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"><i class="mdi mdi-window-close"></i> <span class="d-none d-lg-inline">Batal</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<?php $this->layout->endSection() ?>
+<?php $this->layout->section('script') ?>
+<script src="<?= base_url() ?>assets/vendor/cropperjs/cropper.js"></script>
+<script>
+    var cropper;
+    var modal_foto_id = document.getElementById("modal-foto");
+    var modal_foto = new bootstrap.Modal(modal_foto_id, {
+        backdrop: 'static',
+        keyboard: false,
+    });
+    var image = document.querySelector('#img_preview');
+    $(document).ready(function(e) {
+
+        $('#fm-foto').submit(function(e) {
+            e.preventDefault();
+            var formdata = new FormData(this);
+            canvas = cropper.getCroppedCanvas();
+            if (canvas != null) {
+                formdata.append('file_foto', canvas.toDataURL());
+            }
+
+            $.ajax({
+                url: this.getAttribute('action'),
+                type: this.getAttribute('method'),
+                data: formdata,
+                processData: false,
+                contentType: false,
+                cache: false,
+                async: true,
+                dataType: "JSON",
+                beforeSend: function() {
+                    Swal.fire({
+                        title: 'Loading...',
+                        html: 'Menyimpan foto',
+                        didOpen: () => {
+                            Swal.showLoading()
+                        },
+                        allowOutsideClick: () => !Swal.isLoading(),
+                        allowEscapeKey: () => !Swal.isLoading(),
+                    });
+                },
+                success: function(data) {
+                    if (data.stat == true) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Ok',
+                            text: data.msg,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                        });
+                        modal_foto.hide();
+                        $('.file_foto').attr('src', '<?= base_url() ?>' + data.file_foto);
+                    } else {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Oops...',
+                            text: data.msg,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: status,
+                        text: error,
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    });
+                },
+            });
+        });
+
+        file_foto.onchange = evt => {
+            const [file] = file_foto.files
+            if (file) {
+                img_preview.src = URL.createObjectURL(file);
+                cropper.replace(URL.createObjectURL(file));
+            }
+        }
+
+        modal_foto_id.addEventListener('shown.bs.modal', function(event) {
+            cropper = new Cropper(image, {
+                dragMode: 'move',
+                aspectRatio: 1 / 1,
+                autoCropArea: 1,
+                restore: true,
+                guides: true,
+                center: true,
+                highlight: false,
+                cropBoxMovable: true,
+                cropBoxResizable: true,
+                toggleDragModeOnDblclick: false,
+                movable: false,
+                zoomable: false,
+                rotatable: false,
+                scalable: false
+            });
+        });
+
+        modal_foto_id.addEventListener('hidden.bs.modal', function(event) {
+            file_foto.value = '';
+            cropper.destroy();
+            cropper = null;
+        });
+
+    });
+</script>
 <?php $this->layout->endSection() ?>
 <?php $this->layout->extend('layout/_template') ?>

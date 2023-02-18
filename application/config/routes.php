@@ -84,6 +84,7 @@ $route['hapus-guru'] = 'master/hapus_guru';
 $route['siswa'] = 'master/siswa';
 $route['list-siswa'] = 'master/get_list_data_siswa';
 $route['simpan-siswa'] = 'master/simpan_siswa';
+$route['simpan-foto-siswa'] = 'master/simpan_foto_siswa';
 $route['hapus-siswa'] = 'master/hapus_siswa';
 
 $route['kelompok'] = 'main/kelompok';
