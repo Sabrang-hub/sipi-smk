@@ -28,13 +28,27 @@
                         <h5>Daftar <?= @$title ?></h5>
                     </div>
                     <div class="card-body">
+                        <div class="card cta-box bg-danger text-white p-2">
+                            <h4><i class="mdi mdi-bullhorn-outline mdi-24px"></i> Hari Kerja</h4>
+                            <div class="d-flex align-items-center">
+                                <div class="w-100 overflow-hidden">
+                                    <?php foreach ($hari_kerja as $row) : ?>
+                                        <div class="row mb-1">
+                                            <div class="col-lg-2 col-5 ps-lg-3 <?= (date('N') == $row['hari_id'] ? 'fw-bold' : '') ?>"><?= $row['nama_hari'] ?></div>
+                                            <div class="col-lg-10 col-7 <?= (date('N') == $row['hari_id'] ? 'fw-bold' : '') ?>"><i class="mdi mdi-clock-outline"></i> <?= date('H:i', strtotime($row['waktu_masuk'])) ?> - <?= date('H:i', strtotime($row['waktu_pulang'])) ?> <?= (date('N') == $row['hari_id'] ? '<i class="mdi mdi-arrow-left-bold-outline"></i>' : '') ?></div>
+                                        </div>
+                                    <?php endforeach ?>
+                                </div>
+                                <img class="ms-3 d-none d-lg-block" src="assets/images/svg/email-campaign.svg" alt="Generic placeholder image" width="26%">
+                            </div>
+                        </div>
                         <table id="list" class="table table-success table-bordered dt-responsive w-100">
                             <thead>
                                 <tr>
                                     <th class="text-center">No</th>
                                     <th class="text-center">Tanggal</th>
-                                    <th class="text-center">Waktu Masuk</th>
-                                    <th class="text-center">Waktu Pulang</th>
+                                    <th class="text-center">Absen Masuk</th>
+                                    <th class="text-center">Absen Pulang</th>
                                     <th class="text-center">Status Kehadiran</th>
                                     <th class="text-center">Keterangan</th>
                                     <th class="text-center">Aksi</th>
@@ -59,6 +73,8 @@
             </div>
             <form id="fm-absensi" action="<?= base_url('simpan-absensi') ?>" method="POST">
                 <input type="hidden" id="tanggal" name="tanggal" />
+                <input type="hidden" id="waktu_masuk" name="waktu_masuk" />
+                <input type="hidden" id="waktu_pulang" name="waktu_pulang" />
                 <div class="modal-body">
                     <h6 class="font-15 mt-3">Pilih Jenis Absensi</h6>
                     <div class="form-check form-radio-success form-check-inline">
@@ -195,7 +211,7 @@
                 var no = data.length;
                 for (let i = 0; i < data.length; i++) {
                     d = data[i];
-                    $('#list').DataTable().row.add([no, d.tanggal, d.waktu_masuk, d.waktu_pulang, d.status, d.keterangan_siswa, d.aksi]).draw(false);
+                    $('#list').DataTable().row.add([no, d.tanggal, d.absen_masuk, d.absen_pulang, d.status, d.keterangan_siswa, d.aksi]).draw(false);
                     no--;
                 }
             },
@@ -214,8 +230,10 @@
 
     function edit_absensi(index, e) {
         var data = data_src[index];
-        if (data.waktu_masuk == '') {
+        if (data.absen_masuk == '') {
             tanggal.value = data.tanggal;
+            waktu_masuk.value = data.waktu_masuk;
+            waktu_pulang.value = data.waktu_pulang;
             modal_form_absensi.show();
         } else {
             Swal.fire({

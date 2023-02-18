@@ -172,7 +172,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="text-left">
-                                        <img src="<?= base_url() ?>assets/images/small/to-do-list-success.png" alt="" class="img-fluid" width="75%">
+                                        <img src="<?= base_url() ?>assets/images/small/to-do-list-success.png" alt="" class="img-fluid" width="65px">
                                     </div>
                                     <div class="text-end text-nowrap">
                                         <h4>On - Time</h4>
@@ -187,7 +187,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="text-left">
-                                        <img src="<?= base_url() ?>assets/images/small/to-do-list-danger.png" alt="" class="img-fluid" width="75%">
+                                        <img src="<?= base_url() ?>assets/images/small/to-do-list-danger.png" alt="" class="img-fluid" width="65px">
                                     </div>
                                     <div class="text-end text-nowrap">
                                         <h4>Terlambat</h4>
@@ -202,7 +202,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="text-left">
-                                        <img src="<?= base_url() ?>assets/images/small/hourglass.png" alt="" class="img-fluid" width="98%">
+                                        <img src="<?= base_url() ?>assets/images/small/hourglass.png" alt="" class="img-fluid" width="55px">
                                     </div>
                                     <div class="text-end text-nowrap">
                                         <h4>Belum Absen</h4>
@@ -217,7 +217,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="text-left">
-                                        <img src="<?= base_url() ?>assets/images/small/envelope.png" alt="" class="img-fluid" width="53%">
+                                        <img src="<?= base_url() ?>assets/images/small/envelope.png" alt="" class="img-fluid" width="55px">
                                     </div>
                                     <div class="text-end text-nowrap">
                                         <h4>Izin</h4>
@@ -232,7 +232,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="text-left">
-                                        <img src="<?= base_url() ?>assets/images/small/masker.png" alt="" class="img-fluid" width="56%">
+                                        <img src="<?= base_url() ?>assets/images/small/masker.png" alt="" class="img-fluid" width="73px">
                                     </div>
                                     <div class="text-end text-nowrap">
                                         <h4>Sakit</h4>
@@ -247,11 +247,11 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="text-left">
-                                        <img src="<?= base_url() ?>assets/images/small/file-danger.png" alt="" class="img-fluid" width="55%">
+                                        <img src="<?= base_url() ?>assets/images/small/file-danger.png" alt="" class="img-fluid" width="65px">
                                     </div>
                                     <div class="text-end text-nowrap">
                                         <h4>Alpa</h4>
-                                        <span class="fs-1 fw-bold"><?= $jumlah_hadir ?></span>
+                                        <span class="fs-1 fw-bold"><?= $jumlah_alpa ?></span>
                                     </div>
                                 </div>
                             </div>

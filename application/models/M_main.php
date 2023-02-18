@@ -499,13 +499,13 @@ class M_main extends CI_Model
                 $status = 2; //Izin
             } elseif ($data_absen['status'] == 3) {
                 $status = 3; //Sakit
-            } elseif ($data_absen['waktu_masuk'] == null && $data_absen['waktu_pulang'] != null) {
+            } elseif ($data_absen['absen_masuk'] == null && $data_absen['absen_pulang'] != null) {
                 $status = 4; //Terlambat
-            } elseif ($data_absen['waktu_masuk'] != null) {
-                $selectedTime = date('H:i:s', strtotime($data_hari_kerja['waktu_masuk']));
+            } elseif ($data_absen['absen_masuk'] != null) {
+                $selectedTime = date('H:i:s', strtotime($data_absen['waktu_masuk']));
                 $endTime = strtotime("+30 minutes", strtotime($selectedTime));
                 $waktu_max = date('H:i:s', $endTime);
-                if ($data_absen['waktu_masuk'] > $waktu_max) {
+                if ($data_absen['absen_masuk'] > $waktu_max) {
                     $status = 4; //Terlambat
                 } else {
                     $status = 1; //Hadir
@@ -520,8 +520,10 @@ class M_main extends CI_Model
                 'siswa_id' => $data_kel['siswa_id'],
                 'nama_siswa' => $data_kel['nama_siswa'],
                 'tanggal' => $value->format('Y-m-d'),
-                'waktu_masuk' => ($data_absen['waktu_masuk'] != null ? date('H:i:s', strtotime($data_absen['waktu_masuk'])) : ''),
-                'waktu_pulang' => ($data_absen['waktu_pulang'] != null ? date('H:i:s', strtotime($data_absen['waktu_pulang'])) : ''),
+                'waktu_masuk' => ($data_absen['waktu_masuk'] != null ? date('H:i:s', strtotime($data_absen['waktu_masuk'])) : date('H:i:s', strtotime($data_hari_kerja['waktu_masuk']))),
+                'waktu_pulang' => ($data_absen['waktu_pulang'] != null ? date('H:i:s', strtotime($data_absen['waktu_pulang'])) : date('H:i:s', strtotime($data_hari_kerja['waktu_pulang']))),
+                'absen_masuk' => ($data_absen['absen_masuk'] != null ? date('H:i:s', strtotime($data_absen['absen_masuk'])) : ''),
+                'absen_pulang' => ($data_absen['absen_pulang'] != null ? date('H:i:s', strtotime($data_absen['absen_pulang'])) : ''),
                 'status' => $status,
                 'keterangan_siswa' => $data_absen['keterangan_siswa'],
                 'verifikasi_stat' => $data_absen['verifikasi_stat'],
@@ -555,13 +557,13 @@ class M_main extends CI_Model
                 $status = "<span class=\"badge bg-primary\">Izin</span>";
             } elseif ($data_absen['status'] == 3) {
                 $status = "<span class=\"badge bg-info\">Sakit</span>";
-            } elseif ($data_absen['waktu_masuk'] == null && $data_absen['waktu_pulang'] != null) {
+            } elseif ($data_absen['absen_masuk'] == null && $data_absen['absen_pulang'] != null) {
                 $status = "<span class=\"badge bg-waring\">Terlambat</span>";
-            } elseif ($data_absen['waktu_masuk'] != null) {
-                $selectedTime = date('H:i:s', strtotime($data_hari_kerja['waktu_masuk']));
+            } elseif ($data_absen['absen_masuk'] != null) {
+                $selectedTime = date('H:i:s', strtotime($data_absen['waktu_masuk']));
                 $endTime = strtotime("+30 minutes", strtotime($selectedTime));
                 $waktu_max = date('H:i:s', $endTime);
-                if ($data_absen['waktu_masuk'] > $waktu_max) {
+                if ($data_absen['absen_masuk'] > $waktu_max) {
                     $status = "<span class=\"badge bg-warning\">Terlambat</span>";
                 } else {
                     $status = "<span class=\"badge bg-success\">Hadir</span>";
@@ -571,7 +573,7 @@ class M_main extends CI_Model
             } else {
                 $status = "<span class=\"badge bg-danger\">Alpa</span>";
             }
-            if ($value->format('Y-m-d') == date('Y-m-d') && ($data_absen['waktu_masuk'] == null || $data_absen['waktu_pulang'] == null)) {
+            if ($value->format('Y-m-d') == date('Y-m-d') && ($data_absen['absen_masuk'] == null || $data_absen['absen_pulang'] == null)) {
                 $aksi = "<button class=\"btn btn-info btn-sm me-1\" onclick=\"edit_absensi($index,event)\"><i class=\"mdi mdi-file-sign\"></i></button>";
             } else {
                 $aksi = "<span class=\"badge bg-light text-dark\"><i>Selesai</i></span>";
@@ -581,8 +583,10 @@ class M_main extends CI_Model
                 'siswa_id' => $data_kel['siswa_id'],
                 'nama_siswa' => $data_kel['nama_siswa'],
                 'tanggal' => $value->format('Y-m-d'),
-                'waktu_masuk' => ($data_absen['waktu_masuk'] != null ? date('H:i:s', strtotime($data_absen['waktu_masuk'])) : ''),
-                'waktu_pulang' => ($data_absen['waktu_pulang'] != null ? date('H:i:s', strtotime($data_absen['waktu_pulang'])) : ''),
+                'waktu_masuk' => ($data_absen['waktu_masuk'] != null ? date('H:i:s', strtotime($data_absen['waktu_masuk'])) : date('H:i:s', strtotime($data_hari_kerja['waktu_masuk']))),
+                'waktu_pulang' => ($data_absen['waktu_pulang'] != null ? date('H:i:s', strtotime($data_absen['waktu_pulang'])) : date('H:i:s', strtotime($data_hari_kerja['waktu_pulang']))),
+                'absen_masuk' => ($data_absen['absen_masuk'] != null ? date('H:i:s', strtotime($data_absen['absen_masuk'])) : ''),
+                'absen_pulang' => ($data_absen['absen_pulang'] != null ? date('H:i:s', strtotime($data_absen['absen_pulang'])) : ''),
                 'status' => $status,
                 'keterangan_siswa' => $data_absen['keterangan_siswa'],
                 'verifikasi_stat' => $data_absen['verifikasi_stat'],
@@ -608,7 +612,7 @@ class M_main extends CI_Model
         $data = $this->input->post();
         $data['siswa_id'] = $this->session->userdata('kode');
         $data['nama_siswa'] = $this->session->userdata('nama');
-        $data['waktu_masuk'] = date('H:i:s');
+        $data['absen_masuk'] = date('H:i:s');
         $data['created_at'] = date('Y-m-d H:i:d');
         $data['created_by'] = $this->session->userdata('nama');
 
@@ -616,7 +620,7 @@ class M_main extends CI_Model
         if ($cek->num_rows() > 0) {
             if (isset($_POST['field'])) {
                 $sql = $this->db->where(['siswa_id' => $data['siswa_id'], 'tanggal' => $data['tanggal']])->update('tbl_absen', [
-                    'waktu_pulang' => date('H:i:s'),
+                    'absen_pulang' => date('H:i:s'),
                     'updated_at' => date('Y-m-d H:i:d'),
                     'updated_by' => $this->session->userdata('nama'),
                 ]);
@@ -625,7 +629,7 @@ class M_main extends CI_Model
             }
         } else {
             if ($data['status'] == 2 || $data['status'] == 3) {
-                $data['waktu_pulang'] = $data['waktu_masuk'];
+                $data['absen_pulang'] = $data['absen_masuk'];
             }
             $sql = $this->db->insert('tbl_absen', $data);
         }

@@ -318,6 +318,7 @@ class Main extends CI_Controller
 			} elseif ($this->session->userdata('group_id') == 2) {
 				$this->load->view('guru/absensi', $data);
 			} elseif ($this->session->userdata('group_id') == 3) {
+				$data['hari_kerja'] = $this->db->where('b.siswa_id', $this->session->userdata('kode'))->join('tbl_kelompok b', 'a.industri_id=b.industri_id', 'right')->get('m_hari_kerja a')->result_array();
 				$this->load->view('siswa/absensi', $data);
 			} elseif ($this->session->userdata('group_id') == 4) {
 				$this->load->view('pembimbing/absensi', $data);
