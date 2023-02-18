@@ -30,7 +30,7 @@
                         <h5>Daftar <?= @$title ?></h5>
                     </div>
                     <div class="card-body">
-                        <table id="list" class="table table-success table-bordered" style="width: 1733px;">
+                        <table id="list" class="table bg-success bg-opacity-10 table-bordered" style="width: 1733px;">
                             <thead>
                                 <tr>
                                     <th style="width:150px">Aksi</th>

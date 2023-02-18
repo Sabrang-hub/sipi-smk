@@ -28,7 +28,7 @@
                         <h5>Daftar <?= @$title ?></h5>
                     </div>
                     <div class="card-body">
-                        <table id="list" class="table table-success table-bordered dt-responsive w-100 nowrap"></table>
+                        <table id="list" class="table bg-success bg-opacity-10 table-bordered dt-responsive w-100 nowrap"></table>
                     </div>
                 </div>
             </div>

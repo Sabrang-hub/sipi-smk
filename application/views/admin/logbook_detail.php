@@ -29,7 +29,7 @@
                         <h5>Detail <?= @$title ?></h5>
                     </div>
                     <div class="card-body">
-                        <div class="alert" style="background-color: #cef5ea;">
+                        <div class="alert bg-success bg-opacity-10">
                             <div class="row mb-2 text-dark">
                                 <div class="col-lg-3 col-12 fw-bold">Nomor Induk Siswa</div>
                                 <div class="col-lg-9 col-12"><span class="d-lg-inline-block d-none">:</span> <?= $siswa['nis'] ?></div>
@@ -63,7 +63,7 @@
                                 <div class="col-lg-9 col-12"><span class="d-lg-inline-block d-none">:</span> <?= $siswa['tanggal_awal'] ?> s/d <?= $siswa['tanggal_akhir'] ?></div>
                             </div>
                         </div>
-                        <table id="list" class="table table-success table-bordered" style="width: 1283px;">
+                        <table id="list" class="table bg-success bg-opacity-10 table-bordered" style="width: 1283px;">
                             <thead>
                                 <tr>
                                     <th style="width:20px">No</th>

@@ -42,7 +42,7 @@
                                 <img class="ms-3 d-none d-lg-block" src="assets/images/svg/email-campaign.svg" alt="Generic placeholder image" width="26%">
                             </div>
                         </div>
-                        <table id="list" class="table table-success table-bordered dt-responsive w-100">
+                        <table id="list" class="table bg-success bg-opacity-10 table-bordered dt-responsive w-100">
                             <thead>
                                 <tr>
                                     <th class="text-center">No</th>
