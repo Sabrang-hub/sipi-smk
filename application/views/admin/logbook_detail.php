@@ -190,13 +190,42 @@
                     data: 'verifikasi_stat',
                     className: 'text-nowrap',
                     render: function(value, type, row) {
-                        value = "<select class=\"form-control form-control-sm\" style=\"width:142px;\" onchange=\"edit_status(" + row.id + ",this)\">\
-                                        <option value=\"0\" " + (value == 0 ? 'selected' : '') + ">Belum Diverifikasi</option>\
-                                        <option value=\"1\" " + (value == 1 ? 'selected' : '') + ">Verifikasi</option>\
-                                        <option value=\"2\" " + (value == 2 ? 'selected' : '') + ">Perbaiki</option>\
-                                        <option value=\"3\" " + (value == 3 ? 'selected' : '') + ">Telah Diperbaiki</option>\
-                                        <option value=\"4\" " + (value == 4 ? 'selected' : '') + ">Tolak</option>\
+                        if (value == 1) {
+                            value = "<select class=\"form-control form-control-sm\" style=\"width:142px;\" onchange=\"edit_status(" + row.id + ",this)\">\
+                                        <option value=\"0\">Belum Diverifikasi</option>\
+                                        <option value=\"1\" selected>Diverifikasi</option>\
+                                        <option value=\"2\">Perbaiki</option>\
+                                        <option value=\"4\">Tolak</option>\
                                     </select>";
+                        } else if (value == 2) {
+                            value = "<select class=\"form-control form-control-sm\" style=\"width:142px;\" onchange=\"edit_status(" + row.id + ",this)\">\
+                                        <option value=\"0\">Belum Diverifikasi</option>\
+                                        <option value=\"1\">Verifikasi</option>\
+                                        <option value=\"2\" selected>Perbaikan</option>\
+                                        <option value=\"4\">Tolak</option>\
+                                    </select>";
+                        } else if (value == 3) {
+                            value = "<select class=\"form-control form-control-sm\" style=\"width:142px;\" onchange=\"edit_status(" + row.id + ",this)\">\
+                                        <option value=\"3\" selected>Telah Diperbaiki</option>\
+                                        <option value=\"1\">Verifikasi</option>\
+                                        <option value=\"2\">Perbaiki</option>\
+                                        <option value=\"4\">Tolak</option>\
+                                    </select>";
+                        } else if (value == 4) {
+                            value = "<select class=\"form-control form-control-sm\" style=\"width:142px;\" onchange=\"edit_status(" + row.id + ",this)\">\
+                                        <option value=\"0\">Belum Diverifikasi</option>\
+                                        <option value=\"1\">Verifikasi</option>\
+                                        <option value=\"2\">Perbaiki</option>\
+                                        <option value=\"4\" selected>Ditolak</option>\
+                                    </select>";
+                        } else {
+                            value = "<select class=\"form-control form-control-sm\" style=\"width:142px;\" onchange=\"edit_status(" + row.id + ",this)\">\
+                                        <option value=\"0\" disabled selected>Belum Diverifikasi</option>\
+                                        <option value=\"1\">Verifikasi</option>\
+                                        <option value=\"2\">Perbaiki</option>\
+                                        <option value=\"4\">Tolak</option>\
+                                    </select>";
+                        }
                         return value;
                     }
                 },
