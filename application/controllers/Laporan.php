@@ -36,4 +36,18 @@ class Laporan extends CI_Controller
             redirect(base_url('auth'));
         }
     }
+
+    public function lembar_penilaian()
+    {
+        if ($this->session->userdata('is_login')) {
+            $html =  $this->laporan->lembar_penilaian();
+            $mpdf = new \Mpdf\Mpdf();
+            $mpdf->SetFooter('Printed SIP-PKL on @ {DATE j-m-Y H:i:s} || Page {PAGENO} of {nb}');
+            $mpdf->AddPage('P');
+            $mpdf->WriteHTML($html);
+            $mpdf->Output();
+        } else {
+            redirect(base_url('auth'));
+        }
+    }
 }

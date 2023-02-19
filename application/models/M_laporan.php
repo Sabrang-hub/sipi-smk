@@ -26,13 +26,13 @@ class M_laporan extends CI_Model
                 $status = "<span class=\"badge bg-primary\">Izin</span>";
             } elseif ($data_absen['status'] == 3) {
                 $status = "<span class=\"badge bg-info\">Sakit</span>";
-            } elseif ($data_absen['waktu_masuk'] == null && $data_absen['waktu_pulang'] != null) {
+            } elseif ($data_absen['absen_masuk'] == null && $data_absen['absen_pulang'] != null) {
                 $status = "<span class=\"badge bg-waring\">Terlambat</span>";
-            } elseif ($data_absen['waktu_masuk'] != null) {
-                $selectedTime = date('H:i:s', strtotime($data_hari_kerja['waktu_masuk']));
+            } elseif ($data_absen['absen_masuk'] != null) {
+                $selectedTime = date('H:i:s', strtotime($data_absen['waktu_masuk']));
                 $endTime = strtotime("+30 minutes", strtotime($selectedTime));
                 $waktu_max = date('H:i:s', $endTime);
-                if ($data_absen['waktu_masuk'] > $waktu_max) {
+                if ($data_absen['absen_masuk'] > $waktu_max) {
                     $status = "<span class=\"badge bg-warning\">Terlambat</span>";
                 } else {
                     $status = "<span class=\"badge bg-success\">Hadir</span>";
@@ -47,8 +47,10 @@ class M_laporan extends CI_Model
                 'siswa_id' => $data_kel['siswa_id'],
                 'nama_siswa' => $data_kel['nama_siswa'],
                 'tanggal' => $value->format('Y-m-d'),
-                'waktu_masuk' => ($data_absen['waktu_masuk'] != null ? date('H:i:s', strtotime($data_absen['waktu_masuk'])) : ''),
-                'waktu_pulang' => ($data_absen['waktu_pulang'] != null ? date('H:i:s', strtotime($data_absen['waktu_pulang'])) : ''),
+                'waktu_masuk' => ($data_absen['waktu_masuk'] != null ? date('H:i:s', strtotime($data_absen['waktu_masuk'])) : date('H:i:s', strtotime($data_hari_kerja['waktu_masuk']))),
+                'waktu_pulang' => ($data_absen['waktu_pulang'] != null ? date('H:i:s', strtotime($data_absen['waktu_pulang'])) : date('H:i:s', strtotime($data_hari_kerja['waktu_pulang']))),
+                'absen_masuk' => ($data_absen['absen_masuk'] != null ? date('H:i:s', strtotime($data_absen['absen_masuk'])) : ''),
+                'absen_pulang' => ($data_absen['absen_pulang'] != null ? date('H:i:s', strtotime($data_absen['absen_pulang'])) : ''),
                 'status' => $status,
                 'keterangan_siswa' => $data_absen['keterangan_siswa'],
                 'verifikasi_stat' => $data_absen['verifikasi_stat'],
@@ -67,5 +69,13 @@ class M_laporan extends CI_Model
         $data['data'] = $this->db->where('a.siswa_id', $siswa_id)->join('m_siswa b', 'a.siswa_id=b.nis', 'left')->get('tbl_kelompok a')->row_array();
         $data['absensi'] = $res;
         return $this->load->view('laporan/laporan_absensi', $data, true);
+    }
+
+    public function lembar_penilaian()
+    {
+        $id = $this->input->get('id');
+        $id = decrypt_url($id);
+        $data['data'] = $this->db->where('a.siswa_id', $id)->join('m_siswa b', 'a.siswa_id=b.nis', 'left')->get('tbl_kelompok a')->row_array();
+        return $this->load->view('laporan/lembar_penilaian', $data, true);
     }
 }

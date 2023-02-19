@@ -263,7 +263,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <a href="http://" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success"><i class="mdi mdi-clipboard-file-outline"></i> Download Lembar Penilaian</a>
+                                <a href="<?= base_url('lembar_penilaian?id=') . encrypt_url($this->session->userdata('kode')) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success"><i class="mdi mdi-clipboard-file-outline"></i> Download Lembar Penilaian</a>
                             </div>
                         </div>
                     </div>
