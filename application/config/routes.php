@@ -79,6 +79,7 @@ $route['hapus-kelas'] = 'master/hapus_kelas';
 $route['guru'] = 'master/guru';
 $route['list-guru'] = 'master/get_list_data_guru';
 $route['simpan-guru'] = 'master/simpan_guru';
+$route['simpan-foto-guru'] = 'master/simpan_foto_guru';
 $route['hapus-guru'] = 'master/hapus_guru';
 
 $route['siswa'] = 'master/siswa';
@@ -95,6 +96,11 @@ $route['hapus-kelompok'] = 'main/hapus_kelompok';
 $route['siswa-kelompok'] = 'main/get_list_siswa_kelompok';
 $route['pembimbing-kelompok'] = 'main/get_list_pembimbing_kelompok';
 
+$route['simpan-foto-pembimbing'] = 'master/simpan_foto_pembimbing';
+
+$route['monitoring-siswa'] = 'main/monitoring_siswa';
+$route['list-monitoring-siswa'] = 'main/get_list_data_monitoring_siswa';
+
 $route['logbook'] = 'main/logbook';
 $route['logbook/detail'] = 'main/logbook';
 $route['logbook/detail/(:any)'] = 'main/logbook_detail/$1';
@@ -104,12 +110,14 @@ $route['hapus-logbook'] = 'main/hapus_logbook';
 $route['simpan-keterangan-logbook'] = 'main/simpan_keterangan_logbook';
 $route['hapus-keterangan-logbook'] = 'main/hapus_keterangan_logbook';
 $route['simpan-status-logbook'] = 'main/simpan_status_logbook';
-$route['list-siswa-logbook'] = 'main/get_list_data_siswa_logbook';
 $route['list-siswa-detail-logbook'] = 'main/get_list_data_siswa_detail_logbook';
 
 $route['absensi'] = 'main/absensi';
 $route['list-absensi'] = 'main/get_list_data_absensi';
 $route['simpan-absensi'] = 'main/simpan_absensi';
+
+$route['absensi-siswa/(:any)'] = 'main/absensi_siswa/$1';
+$route['simpan-verifikasi-absensi'] = 'main/simpan_verifikasi_absensi';
 
 $route['profil-instansi'] = 'master/profil_instansi';
 $route['simpan-profil-instansi'] = 'master/simpan_profil_instansi';

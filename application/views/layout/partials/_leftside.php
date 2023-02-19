@@ -81,9 +81,9 @@
                 </li>
 
                 <li class="side-nav-item">
-                    <a href="<?= base_url('logbook') ?>" class="side-nav-link">
+                    <a href="<?= base_url('monitoring-siswa') ?>" class="side-nav-link">
                         <i class="mdi mdi-book-clock-outline"></i>
-                        <span> Laporan Harian Siswa</span>
+                        <span> Monitoring Siswa</span>
                     </a>
                 </li>
 
@@ -138,9 +138,9 @@
             if ($this->session->userdata('group_id') == 4) {
             ?>
                 <li class="side-nav-item">
-                    <a href="<?= base_url('logbook') ?>" class="side-nav-link">
+                    <a href="<?= base_url('monitoring-siswa') ?>" class="side-nav-link">
                         <i class="mdi mdi-book-clock-outline"></i>
-                        <span> Laporan Harian Siswa</span>
+                        <span> Monitoring Siswa</span>
                     </a>
                 </li>
             <?php

@@ -86,7 +86,7 @@
                 }
             },
             ajax: {
-                url: '<?= base_url() ?>list-siswa-logbook',
+                url: '<?= base_url() ?>list-monitoring-siswa',
                 type: 'POST',
                 data: function(d) {},
                 dataSrc: function(data) {
@@ -121,26 +121,21 @@
                     title: 'Pemb. Lapangan',
                 },
                 {
-                    data: 'created_at',
-                    title: 'Info',
-                    responsivePriority: 7,
+                    data: 'id',
+                    title: 'Laporan Harian',
+                    orderable: false,
+                    responsivePriority: 6,
                     render: function(value, type, row) {
-                        var s = "<details><summary><span class=\"badge bg-primary\">Detail</span></summary>";
-                        s += "Created at " + row.created_at;
-                        s += (row.created_by != '' && row.created_by != null ? "<br>Created by " + row.created_by : '');
-                        s += (row.updated_at != '' && row.updated_at != null ? "<br>Updated at " + row.updated_at : '');
-                        s += (row.updated_by != '' && row.updated_by != null ? "<br>Updated by " + row.updated_by : '');
-                        s += "</details>";
-                        return s;
+                        return row.aksi_logbook;
                     }
                 },
                 {
                     data: 'id',
-                    title: 'Aksi',
+                    title: 'Absensi',
                     orderable: false,
-                    responsivePriority: 6,
+                    responsivePriority: 7,
                     render: function(value, type, row) {
-                        return row.aksi;
+                        return row.aksi_absensi;
                     }
                 },
             ],

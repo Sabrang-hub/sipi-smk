@@ -327,6 +327,20 @@ class Master extends CI_Controller
         echo json_encode($response);
     }
 
+
+    public function simpan_foto_pembimbing()
+    {
+        if ($this->session->userdata('is_login')) {
+            $response =  $this->master->simpan_foto_pembimbing();
+        } else {
+            $response =  [
+                'stat' => false,
+                'msg' => 'Sesi telah berakhir. Silahkan Login kembali!'
+            ];
+        }
+        echo json_encode($response);
+    }
+
     public function kelas()
     {
         if ($this->session->userdata('is_login')) {
@@ -397,6 +411,19 @@ class Master extends CI_Controller
     {
         if ($this->session->userdata('is_login')) {
             $response =  $this->master->simpan_guru();
+        } else {
+            $response =  [
+                'stat' => false,
+                'msg' => 'Sesi telah berakhir. Silahkan Login kembali!'
+            ];
+        }
+        echo json_encode($response);
+    }
+
+    public function simpan_foto_guru()
+    {
+        if ($this->session->userdata('is_login')) {
+            $response =  $this->master->simpan_foto_guru();
         } else {
             $response =  [
                 'stat' => false,
