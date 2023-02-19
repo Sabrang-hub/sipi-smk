@@ -264,6 +264,11 @@
                         <div class="card">
                             <div class="card-body">
                                 <a href="<?= base_url('lembar_penilaian?id=') . encrypt_url($this->session->userdata('kode')) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success"><i class="mdi mdi-clipboard-file-outline"></i> Download Lembar Penilaian</a>
+                                <div class="mt-2">
+                                    <label class="form-label">Upload Lembar Penilaian <a href="<?= ($data['file_nilai'] != '' ? base_url($data['file_nilai']) : '#') ?>" target="_blank" class="badge bg-success text-white p-1 fw-bold ms-2 file_nilai" <?= ($data['file_nilai'] != '' ? '' : 'style="display: none;"') ?>>Lihat File</a></label>
+                                    <input class="form-control" type="file" id="file_nilai" name="file_nilai" accept="application/pdf">
+                                    <span class="help-block"><small>Lembar penilaian yang telah ditanda tangani oleh pembimbing industri. Di scan dan diupload dalam bentuk PDF.</small></span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -412,6 +417,54 @@
             cropper.destroy();
             cropper = null;
         });
+
+        $("#file_nilai").change(function() {
+            var file = this.files[0];
+            if (file.lenght <= 0) {
+                return false;
+            }
+            var formData = new FormData();
+            formData.append('file_nilai', file);
+            formData.append('siswa_id', '<?= $this->session->userdata('kode') ?>');
+            $.ajax({
+                url: '<?= base_url('simpan-lembar-nilai') ?>',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                dataType: 'json',
+                success: function(data) {
+                    if (data.stat == true) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Ok',
+                            text: data.msg,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                        });
+                        $('.file_nilai').attr('href', '<?= base_url() ?>' + data.file_nilai).show();
+                    } else {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Oops...',
+                            text: data.msg,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                        });
+                    }
+                    $('#file_nilai').val('');
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: status,
+                        html: xhr.responseText,
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    });
+                },
+            });
+        })
 
     });
 </script>

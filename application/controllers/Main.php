@@ -352,4 +352,17 @@ class Main extends CI_Controller
 		}
 		echo json_encode($response);
 	}
+
+	public function simpan_lembar_nilai()
+	{
+		if ($this->session->userdata('is_login')) {
+			$response =  $this->main->simpan_lembar_nilai();
+		} else {
+			$response =  [
+				'stat' => false,
+				'msg' => 'Sesi telah berakhir. Silahkan Login kembali!'
+			];
+		}
+		echo json_encode($response);
+	}
 }

@@ -646,4 +646,46 @@ class M_main extends CI_Model
             ];
         }
     }
+
+    public function simpan_lembar_nilai()
+    {
+        $data = $this->input->post();
+        $dir = date('Ymd');
+        if (!is_dir('./data/' . $dir)) {
+            mkdir('./data/' . $dir, 0755);
+        }
+        $config['upload_path']      = 'data/' . $dir . '/';
+        $config['allowed_types']    = 'pdf';
+        $config['encrypt_name']     = true;
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('file_nilai')) {
+            $upload_data = $this->upload->data();
+            $data['file_nilai'] = 'data/' . $dir . '/' . $upload_data['file_name'];
+        } else {
+            return [
+                'stat' => false,
+                'msg' => $this->upload->display_errors(),
+            ];
+        }
+        $this->db->trans_begin();
+
+        $data['updated_at'] = date('Y-m-d H:i:s');
+        $data['updated_by'] = $this->session->userdata('nama');
+        $this->db->where('siswa_id', $data['siswa_id'])->update('tbl_kelompok', $data);
+
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_roleback();
+            return [
+                'stat' => false,
+                'msg' => $this->db->error(),
+            ];
+        } else {
+            $this->db->trans_commit();
+            return [
+                'stat' => true,
+                'msg' => 'Data tersimpan',
+                'file_nilai' => $data['file_nilai'],
+            ];
+        }
+    }
 }
