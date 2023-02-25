@@ -783,7 +783,11 @@ class M_main extends CI_Model
     public function rekap_tahun_pkl()
     {
         $res = $this->db->select("YEAR(tanggal_awal) label,COUNT(id) jumlah")->from("tbl_kelompok")->group_by("year(tanggal_awal)")->get();
-        $data = [];
+        $data = [
+            'label' => [''],
+            'data' => ['0'],
+            'total' => 0,
+        ];
         $total = 0;
         foreach ($res->result() as $row) {
             $data['label'][] = $row->label;
@@ -797,7 +801,11 @@ class M_main extends CI_Model
     public function rekap_industri_pkl()
     {
         $res = $this->db->select("nama_industri label,COUNT(id) jumlah")->from("tbl_kelompok")->group_by("industri_id")->get();
-        $data = [];
+        $data = [
+            'label' => [''],
+            'data' => ['0'],
+            'total' => 0,
+        ];
         $total = 0;
         foreach ($res->result() as $row) {
             $data['label'][] = $row->label;
