@@ -504,4 +504,17 @@ class Master extends CI_Controller
         }
         echo json_encode($response);
     }
+
+    public function simpan_foto()
+    {
+        if ($this->session->userdata('is_login')) {
+            $response =  $this->master->simpan_foto();
+        } else {
+            $response =  [
+                'stat' => false,
+                'msg' => 'Sesi telah berakhir. Silahkan Login kembali!'
+            ];
+        }
+        echo json_encode($response);
+    }
 }

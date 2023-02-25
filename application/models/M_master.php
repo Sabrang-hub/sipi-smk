@@ -1143,4 +1143,45 @@ class m_master extends CI_Model
             ];
         }
     }
+
+    public function simpan_foto()
+    {
+        $this->load->library('Base64upload');
+        $upload   = new Base64upload();
+        $id = $this->input->post('user_id');
+        $data = $this->input->post();
+        unset($data['user_id']);
+        $data['id'] = $id;
+        if (isset($data['file_foto'])) {
+            $dir = date('Ymd');
+            if (!is_dir('./data/' . $dir)) {
+                mkdir('./data/' . $dir, 0755);
+            }
+            $res = $upload->do_uploads('data/' . $dir . '/', $data['file_foto']);
+            if ($res['status']) {
+                $data['file_foto'] = $res['with_path'];
+            }
+        }
+        $this->db->trans_begin();
+
+        $data['updated_at'] = date('Y-m-d H:i:s');
+        $data['updated_by'] = $this->session->userdata('nama');
+        $this->db->where('id', $data['id'])->update('m_user', $data);
+
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_roleback();
+            return [
+                'stat' => false,
+                'msg' => $this->db->error(),
+            ];
+        } else {
+            $this->db->trans_commit();
+            $this->session->set_userdata('file_foto', $data['file_foto']);
+            return [
+                'stat' => true,
+                'msg' => 'Data tersimpan',
+                'file_foto' => $data['file_foto'],
+            ];
+        }
+    }
 }

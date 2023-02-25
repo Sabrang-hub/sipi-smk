@@ -16,6 +16,12 @@ class Main extends CI_Controller
 				case '1':
 					$data['title'] = 'Beranda';
 					$data['page'] = 'admin/beranda';
+					$data['rekap_tahun_pkl'] = $this->main->rekap_tahun_pkl();
+					$data['rekap_industri_pkl'] = $this->main->rekap_industri_pkl();
+					$data['jumlah_pengguna'] = $this->db->select("IFNULL(count(id),0) jml")->where('status_user_id', 1)->get('m_user')->row('jml');
+					$data['jumlah_jurusan'] = $this->db->select("IFNULL(count(id),0) jml")->get('m_jurusan')->row('jml');
+					$data['jumlah_kelas'] = $this->db->select("IFNULL(count(id),0) jml")->get('m_kelas')->row('jml');
+					$data['jumlah_guru'] = $this->db->select("IFNULL(count(id),0) jml")->get('m_guru')->row('jml');
 					break;
 
 				case '2':

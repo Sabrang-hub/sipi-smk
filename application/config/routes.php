@@ -139,3 +139,4 @@ $route['laporan_absensi'] = 'laporan/laporan_absensi';
 $route['lembar_penilaian'] = 'laporan/lembar_penilaian';
 
 $route['simpan-lembar-nilai'] = 'main/simpan_lembar_nilai';
+$route['simpan-foto'] = 'master/simpan_foto';
