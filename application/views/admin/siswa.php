@@ -23,9 +23,9 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="modal-header bg-primary text-white">
-                        <h5 class="modal-title">Tambah <?= @$title ?></h5>
-                        <a href="javascript:void(0)" data-bs-dismiss="modal"><i class="mdi mdi-close text-white"></i></a>
+                    <div class="card-header bg-primary text-white">
+                        <button title="Tambah" class="btn btn-light btn-sm float-end" data-bs-toggle="modal" data-bs-target="#modal-form-siswa"><i class="mdi mdi-account-plus"></i> <span class="d-none d-lg-inline">Tambah</span></button>
+                        <h5>Daftar <?= @$title ?></h5>
                     </div>
                     <div class="card-body">
                         <table id="list" class="table bg-success bg-opacity-10 table-bordered dt-responsive w-100 nowrap"></table>

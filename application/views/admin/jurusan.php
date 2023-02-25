@@ -287,6 +287,7 @@
                                 allowOutsideClick: false,
                                 allowEscapeKey: false,
                             });
+                            $("#list").DataTable().ajax.reload(null, false);
                         } else {
                             Swal.fire({
                                 icon: 'warning',

@@ -342,8 +342,8 @@ class m_master extends CI_Model
             $aksi = "";
             $no++;
             $row->no = $no;
-            $aksi .= "<button title=\"Edit\" type=\"button\" class=\"btn btn-info btn-sm me-1\" onclick=\"edit_kelas('" . $index . "',event)\"><i class=\"mdi mdi-account-edit-outline\"></i></button>";
-            $aksi .= "<button title=\"Hapus\" type=\"button\" class=\"btn btn-danger btn-sm me-1\" onclick=\"hapus_kelas('" . $row->id . "','" . $row->nama . "',event)\"><i class=\"mdi mdi-trash-can-outline\"></i></button>";
+            $aksi .= "<button title=\"Edit\" type=\"button\" class=\"btn btn-info btn-sm me-1\" onclick=\"edit_jurusan('" . $index . "',event)\"><i class=\"mdi mdi-account-edit-outline\"></i></button>";
+            $aksi .= "<button title=\"Hapus\" type=\"button\" class=\"btn btn-danger btn-sm me-1\" onclick=\"hapus_jurusan('" . $row->id . "','" . $row->nama . "',event)\"><i class=\"mdi mdi-trash-can-outline\"></i></button>";
             $row->aksi = $aksi;
             if ($row->created_at <> null && $row->created_at <> '0000-00-00 00:00:00') {
                 $row->created_at = date('j M Y h:i A', strtotime($row->created_at));
@@ -423,7 +423,7 @@ class m_master extends CI_Model
     {
         $id = $this->input->post('id');
 
-        $sql = $this->db->delete_where('m_jurusan', ['id' => $id]);
+        $sql = $this->db->where(['id' => $id])->delete('m_jurusan');
 
         if ($sql) {
             return [
@@ -588,7 +588,7 @@ class m_master extends CI_Model
     {
         $id = $this->input->post('id');
 
-        $sql = $this->db->delete_where('m_industri', ['id' => $id]);
+        $sql = $this->db->where(['id' => $id])->delete('m_industri');
 
         if ($sql) {
             return [
@@ -777,7 +777,7 @@ class m_master extends CI_Model
     {
         $id = $this->input->post('id');
 
-        $sql = $this->db->delete_where('m_kelas', ['id' => $id]);
+        $sql = $this->db->where(['id' => $id])->delete('m_kelas');
 
         if ($sql) {
             return [
@@ -909,7 +909,6 @@ class m_master extends CI_Model
         $id = $this->input->post('guru_id');
         $data = $this->input->post();
         unset($data['guru_id']);
-        $data['id'] = $id;
         if (isset($data['file_foto'])) {
             $dir = date('Ymd');
             if (!is_dir('./data/' . $dir)) {
@@ -924,8 +923,8 @@ class m_master extends CI_Model
 
         $data['updated_at'] = date('Y-m-d H:i:s');
         $data['updated_by'] = $this->session->userdata('nama');
-        $this->db->where('kode', $data['id'])->update('m_user', $data);
-        $this->db->where('nip', $data['id'])->update('m_guru', $data);
+        $this->db->where('nip', $id)->update('m_guru', $data);
+        $this->db->where('kode', $id)->update('m_user', $data);
 
         if ($this->db->trans_status() === FALSE) {
             $this->db->trans_roleback();
@@ -1086,7 +1085,6 @@ class m_master extends CI_Model
         $id = $this->input->post('siswa_id');
         $data = $this->input->post();
         unset($data['siswa_id']);
-        $data['id'] = $id;
         if (isset($data['file_foto'])) {
             $dir = date('Ymd');
             if (!is_dir('./data/' . $dir)) {
@@ -1101,8 +1099,8 @@ class m_master extends CI_Model
 
         $data['updated_at'] = date('Y-m-d H:i:s');
         $data['updated_by'] = $this->session->userdata('nama');
-        $this->db->where('kode', $data['id'])->update('m_user', $data);
-        $this->db->where('nis', $data['id'])->update('m_siswa', $data);
+        $this->db->where('kode', $id)->update('m_user', $data);
+        $this->db->where('nis', $id)->update('m_siswa', $data);
 
         if ($this->db->trans_status() === FALSE) {
             $this->db->trans_roleback();

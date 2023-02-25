@@ -568,7 +568,7 @@ class M_main extends CI_Model
     public function get_list_data_absensi()
     {
         $siswa_id = $this->input->post('siswa_id');
-        $row = $this->db->where('siswa_id', $siswa_id)->get('tbl_kelompok')->row_array();
+        $data_kel = $this->db->where('siswa_id', $siswa_id)->get('tbl_kelompok')->row_array();
         $period = new DatePeriod(new DateTime($data_kel['tanggal_awal']), new DateInterval('P1D'), new DateTime($data_kel['tanggal_akhir']));
         $data = [];
         $index = 0;
@@ -783,11 +783,15 @@ class M_main extends CI_Model
     public function rekap_tahun_pkl()
     {
         $res = $this->db->select("YEAR(tanggal_awal) label,COUNT(id) jumlah")->from("tbl_kelompok")->group_by("year(tanggal_awal)")->get();
-        $data = [
-            'label' => [''],
-            'data' => ['0'],
-            'total' => 0,
-        ];
+        if ($res->num_rows() <= 0) {
+            $data = [
+                'label' => [''],
+                'data' => ['0'],
+                'total' => 0,
+            ];
+        } else {
+            $data = [];
+        }
         $total = 0;
         foreach ($res->result() as $row) {
             $data['label'][] = $row->label;
@@ -801,11 +805,15 @@ class M_main extends CI_Model
     public function rekap_industri_pkl()
     {
         $res = $this->db->select("nama_industri label,COUNT(id) jumlah")->from("tbl_kelompok")->group_by("industri_id")->get();
-        $data = [
-            'label' => [''],
-            'data' => ['0'],
-            'total' => 0,
-        ];
+        if ($res->num_rows() <= 0) {
+            $data = [
+                'label' => [''],
+                'data' => ['0'],
+                'total' => 0,
+            ];
+        } else {
+            $data = [];
+        }
         $total = 0;
         foreach ($res->result() as $row) {
             $data['label'][] = $row->label;

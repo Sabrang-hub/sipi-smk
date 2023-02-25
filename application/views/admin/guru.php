@@ -288,6 +288,7 @@
         modal_form_guru_id.addEventListener('hidden.bs.modal', function(event) {
             modal_form_guru_id.querySelector('.modal-title').textContent = 'Tambah Guru';
             guru_id.value = '';
+            golongan_id.innerHTML = '';
             $('#fm-guru').trigger("reset");
         });
 

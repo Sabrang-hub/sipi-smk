@@ -445,6 +445,7 @@
         modal_form_industri_id.addEventListener('hidden.bs.modal', function(event) {
             modal_form_industri_id.querySelector('.modal-title').textContent = 'Tambah Industri';
             $('#fm-industri #industri_id').val('');
+            $('#jenis_usaha_id').html('');
             $('#fm-industri').trigger("reset");
         });
 
@@ -523,6 +524,7 @@
                                 allowOutsideClick: false,
                                 allowEscapeKey: false,
                             });
+                            $('#list').DataTable().ajax.reload(null, false);
                         } else {
                             Swal.fire({
                                 icon: 'warning',
