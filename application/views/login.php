@@ -205,22 +205,22 @@
                 });
             });
 
-            group_id.onchange = evt => {
-                const [group] = group_id.value
-                if (group == 1) {
-                    username.value = 'admin';
-                    password.value = 'admin';
-                } else if (group == 2) {
-                    username.value = '195801081987032001';
-                    password.value = '195801081987032001';
-                } else if (group == 3) {
-                    username.value = '1429041001';
-                    password.value = '1429041001';
-                } else if (group == 4) {
-                    username.value = 'rido';
-                    password.value = 'rido';
-                }
-            }
+            // group_id.onchange = evt => {
+            //     const [group] = group_id.value
+            //     if (group == 1) {
+            //         username.value = 'admin';
+            //         password.value = 'admin';
+            //     } else if (group == 2) {
+            //         username.value = '195801081987032001';
+            //         password.value = '195801081987032001';
+            //     } else if (group == 3) {
+            //         username.value = '1429041001';
+            //         password.value = '1429041001';
+            //     } else if (group == 4) {
+            //         username.value = 'rido';
+            //         password.value = 'rido';
+            //     }
+            // }
         });
     </script>
 
