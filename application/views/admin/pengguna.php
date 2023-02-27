@@ -276,6 +276,7 @@
                     data: 'created_at',
                     title: 'Info',
                     responsivePriority: 6,
+                    orderable: false,
                     render: function(value, type, row) {
                         var s = "<details><summary><span class=\"badge bg-primary\">Detail</span></summary>";
                         s += "Created at " + row.created_at;
@@ -476,7 +477,11 @@
         keterangan.value = data.keterangan;
 
         if (data.kode > 0 && data.group_id != 1) {
-            select2SetVal('#kode', data.nama, data.kode);
+            if (data.group_id == 4) {
+                select2SetVal('#kode', data.nama_industri, data.kode);
+            } else {
+                select2SetVal('#kode', data.nama, data.kode);
+            }
         }
         $('#group_id,#kode').prop('disabled', true);
         select2SetVal('#status_user_id', data.nama_status_user, data.status_user_id);

@@ -454,7 +454,11 @@
         keterangan.value = data.keterangan;
 
         if (data.kode > 0 && data.group_id != 1) {
-            select2SetVal('#kode', data.nama_industri, data.kode);
+            if (data.group_id == 4) {
+                select2SetVal('#kode', data.nama_industri, data.kode);
+            } else {
+                select2SetVal('#kode', data.nama, data.kode);
+            };
         }
 
         $('#group_id,#kode').prop('disabled', true);

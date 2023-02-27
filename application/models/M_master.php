@@ -186,6 +186,15 @@ class m_master extends CI_Model
     public function get_list_data_pengguna()
     {
         $group_id = $this->session->userdata('group_id');
+        if ($group_id == 2) {
+            $industri = $this->db->where('guru_id', $this->session->userdata('kode'))->group_by('industri_id')->get('tbl_kelompok');
+            $n = $industri->num_rows();
+            $i = 1;
+            $industri_id = [];
+            foreach ($industri->result() as $row) {
+                $industri_id[] = $row->industri_id;
+            }
+        }
         $this->load->model('m_table', 'table');
         $query = $this->db->select("a.*,b.nama as nama_group,c.nama as nama_status_user,d.nama_jurusan,d.nama_kelas")
             ->from("m_user a")
@@ -193,10 +202,10 @@ class m_master extends CI_Model
             ->join("m_status_user c", "a.status_user_id=c.id", "LEFT")
             ->join("m_siswa d", "a.kode=d.nis", "LEFT");
         if ($group_id == 2) {
-            $this->db->where('a.user_id', $this->session->userdata('id'));
+            $this->db->where('a.group_id', 4)->where_in('a.kode', $industri_id);
         }
-        $column_order  = array(null, null, 'a.username', 'a.group_id', 'a.nama,b.nama,c.nama,d.nama,e.nama', 'a.status', 'a.deleted_at,a.updated_at,a.created_at');
-        $column_search = array("a.username");
+        $column_order  = array(null, 'a.username', 'a.group_id', 'a.nama,b.nama,c.nama,d.nama', 'a.kode', 'a.last_login', 'a.last_logout', 'd.nama_jurusan', 'd.nama_kelas', 'a.status_user_id', 'a.updated_at,a.created_at', null);
+        $column_search = array('a.username', 'a.nama', 'b.nama', 'c.nama', 'd.nama', 'a.kode', 'a.last_login', 'a.last_logout', 'd.nama_jurusan', 'd.nama_kelas');
         $order         = array("a.updated_at,a.created_at" => "desc");
         $list          = $this->table->get_datatables($query, $column_order, $column_search, $order);
         $no            = $_POST['start'];

@@ -110,32 +110,34 @@
         <?php
         $no = 1;
         foreach ($absensi as $row) {
+            if ($row['status'] != 0) {
         ?>
-            <tr>
-                <td style="border: 1px solid #000000;" height="21" align="center" valign=top sdval="1" sdnum="1033;">
-                    <?= $no ?>
-                </td>
-                <td style="border: 1px solid #000000;" align="center" valign=top>
-                    <?= date('d-m-Y', strtotime($row['tanggal'])) ?>
-                </td>
-                <td style="border: 1px solid #000000;" align="center" valign=top>
-                    <?= $row['waktu_masuk'] ?>
-                </td>
-                <td style="border: 1px solid #000000;" align="center" valign=top>
-                    <?= $row['waktu_pulang'] ?>
-                </td>
-                <td style="border: 1px solid #000000;" align="center" valign=top>
-                    <?= $row['status'] ?>
-                </td>
-                <td style="border: 1px solid #000000;" align="justify" valign=top>
-                    <?= $row['keterangan_siswa'] ?>
-                </td>
-                <td style="border: 1px solid #000000;" align="center" valign=top>
-                    <br>
-                </td>
-            </tr>
+                <tr>
+                    <td style="border: 1px solid #000000;" height="21" align="center" valign=top sdval="1" sdnum="1033;">
+                        <?= $no ?>
+                    </td>
+                    <td style="border: 1px solid #000000;" align="center" valign=top>
+                        <?= date('d-m-Y', strtotime($row['tanggal'])) ?>
+                    </td>
+                    <td style="border: 1px solid #000000;" align="center" valign=top>
+                        <?= $row['waktu_masuk'] ?>
+                    </td>
+                    <td style="border: 1px solid #000000;" align="center" valign=top>
+                        <?= $row['waktu_pulang'] ?>
+                    </td>
+                    <td style="border: 1px solid #000000;" align="center" valign=top>
+                        <?= $row['nama_status'] ?>
+                    </td>
+                    <td style="border: 1px solid #000000;" align="justify" valign=top>
+                        <?= $row['keterangan_siswa'] ?>
+                    </td>
+                    <td style="border: 1px solid #000000;" align="center" valign=top>
+                        <?= ($row['verifikasi_stat'] == 1 ? 'Diverifikasi' : 'Belum') ?>
+                    </td>
+                </tr>
         <?php
-            $no++;
+                $no++;
+            }
         }
         ?>
         <tr>
