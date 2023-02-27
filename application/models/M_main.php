@@ -68,6 +68,7 @@ class M_main extends CI_Model
                 $data['nama_industri'] = nama('m_industri', 'nama', ['id' => $data['industri_id']]);
                 $data['nama_guru'] = nama('m_guru', 'nama', ['nip' => $data['guru_id']]);
                 $data['nama_siswa'] = nama('m_siswa', 'nama', ['nis' => $data['siswa_id']]);
+                $data['nama_pembimbing'] = nama('m_user', 'nama', ['id' => $data['pembimbing_id']]);
             }
             if ($group_id == 2) {
                 $data['nama_pembimbing'] = nama('m_user', 'nama', ['id' => $data['pembimbing_id']]);
