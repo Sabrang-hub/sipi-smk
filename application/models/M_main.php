@@ -155,7 +155,7 @@ class M_main extends CI_Model
         if ($group_id == 2) {
             $this->db->where('user_id', $user_id);
         }
-        $res = $this->db->select('a.*')->where('group_id', 4)->get('m_user a')->result();
+        $res = $this->db->select('a.*,b.nama as nama_industri')->where('group_id', 4)->join('m_industri b', 'a.kode=b.id', 'left')->get('m_user a')->result();
         $data = [];
         foreach ($res as $row) {
             $data[] = [
