@@ -33,10 +33,12 @@
                             <div class="d-flex align-items-center">
                                 <div class="w-100 overflow-hidden">
                                     <?php foreach ($hari_kerja as $row) : ?>
-                                        <div class="row mb-1">
-                                            <div class="col-lg-2 col-5 ps-lg-3 <?= (date('N') == $row['hari_id'] ? 'fw-bold' : '') ?>"><?= $row['nama_hari'] ?></div>
-                                            <div class="col-lg-10 col-7 <?= (date('N') == $row['hari_id'] ? 'fw-bold' : '') ?>"><i class="mdi mdi-clock-outline"></i> <?= date('H:i', strtotime($row['waktu_masuk'])) ?> - <?= date('H:i', strtotime($row['waktu_pulang'])) ?> <?= (date('N') == $row['hari_id'] ? '<i class="mdi mdi-arrow-left-bold-outline"></i>' : '') ?></div>
-                                        </div>
+                                        <?php if ($row['nama_hari'] != '') : ?>
+                                            <div class="row mb-1">
+                                                <div class="col-lg-2 col-5 ps-lg-3 <?= (date('N') == $row['hari_id'] ? 'fw-bold' : '') ?>"><?= $row['nama_hari'] ?></div>
+                                                <div class="col-lg-10 col-7 <?= (date('N') == $row['hari_id'] ? 'fw-bold' : '') ?>"><i class="mdi mdi-clock-outline"></i> <?= date('H:i', strtotime($row['waktu_masuk'])) ?> - <?= date('H:i', strtotime($row['waktu_pulang'])) ?> <?= (date('N') == $row['hari_id'] ? '<i class="mdi mdi-arrow-left-bold-outline"></i>' : '') ?></div>
+                                            </div>
+                                        <?php endif ?>
                                     <?php endforeach ?>
                                 </div>
                                 <img class="ms-3 d-none d-lg-block" src="assets/images/svg/email-campaign.svg" alt="Generic placeholder image" width="26%">
