@@ -598,26 +598,35 @@ class M_main extends CI_Model
             } else {
                 $status = "<span class=\"badge bg-danger\">Alpa</span>";
             }
-            if (count($data_hari_kerja) > 0) {
 
-                if ($this->session->userdata('group_id') == 3) {
-                    if ($value->format('Y-m-d') == date('Y-m-d') && ($data_absen['absen_masuk'] == null || $data_absen['absen_pulang'] == null)) {
+            if ($this->session->userdata('group_id') == 3) {
+                if ($value->format('Y-m-d') == date('Y-m-d') && ($data_absen['absen_masuk'] == null || $data_absen['absen_pulang'] == null)) {
+                    if (count($data_hari_kerja) > 0 || $data_absen['waktu_masuk'] != null || $data_absen['waktu_pulang'] != null) {
                         $aksi = "<button class=\"btn btn-info btn-sm me-1\" onclick=\"edit_absensi($index,event)\"><i class=\"mdi mdi-file-sign\"></i></button>";
                     } else {
-                        $aksi = "<span class=\"badge bg-light text-dark\"><i>Selesai</i></span>";
-                    }
-                } elseif ($this->session->userdata('group_id') != 1 && $this->session->userdata('group_id') != 3) {
-                    if ($value->format('Y-m-d') == date('Y-m-d')) {
-                        $aksi = "<button class=\"btn btn-info btn-sm me-1\" onclick=\"edit_absensi($index,event)\"><i class=\"mdi mdi-file-sign\"></i></button>";
-                    } else {
-                        $aksi = "<span class=\"badge bg-light text-dark\"><i>Selesai</i></span>";
+                        $aksi = "<span class=\"badge bg-light text-dark\"><i>Jadwal Kosong</i></span>";
                     }
                 } else {
-                    $aksi = "<button class=\"btn btn-info btn-sm me-1\" onclick=\"edit_absensi($index,event)\"><i class=\"mdi mdi-file-sign\"></i></button>";
+                    $aksi = "<span class=\"badge bg-light text-dark\"><i>Selesai</i></span>";
+                }
+            } elseif ($this->session->userdata('group_id') != 1 && $this->session->userdata('group_id') != 3) {
+                if ($value->format('Y-m-d') == date('Y-m-d')) {
+                    if (count($data_hari_kerja) > 0 || $data_absen['waktu_masuk'] != null || $data_absen['waktu_pulang'] != null) {
+                        $aksi = "<button class=\"btn btn-info btn-sm me-1\" onclick=\"edit_absensi($index,event)\"><i class=\"mdi mdi-file-sign\"></i></button>";
+                    } else {
+                        $aksi = "<span class=\"badge bg-light text-dark\"><i>Jadwal Kosong</i></span>";
+                    }
+                } else {
+                    $aksi = "<span class=\"badge bg-light text-dark\"><i>Selesai</i></span>";
                 }
             } else {
-                $aksi = "<span class=\"badge bg-light text-dark\"><i>Jadwal Kosong</i></span>";
+                if (count($data_hari_kerja) > 0 || $data_absen['waktu_masuk'] != null || $data_absen['waktu_pulang'] != null) {
+                    $aksi = "<button class=\"btn btn-info btn-sm me-1\" onclick=\"edit_absensi($index,event)\"><i class=\"mdi mdi-file-sign\"></i></button>";
+                } else {
+                    $aksi = "<span class=\"badge bg-light text-dark\"><i>Jadwal Kosong</i></span>";
+                }
             }
+
             $data[] = array(
                 'id' => $data_absen['id'],
                 'siswa_id' => $data_kel['siswa_id'],
