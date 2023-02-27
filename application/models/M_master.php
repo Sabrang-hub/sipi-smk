@@ -251,15 +251,13 @@ class m_master extends CI_Model
                     ];
                 }
             }
-            // if ($data['group_id'] == 2) {
-            //     $data['nama'] = nama('m_guru', 'nama', ['nip' => $data['kode']]);
-            // } elseif ($data['group_id'] == 3) {
-            //     $data['nama_jurusan'] = nama('m_jurusan', 'nama', ['id' => $data['jurusan_id']]);
-            //     $data['nama_kelas'] = nama('m_kelas', 'nama', ['id' => $data['kelas_id']]);
-            //     $data['nama'] = nama('m_siswa', 'nama', ['nis' => $data['kode']]);
-            // } elseif ($data['group_id'] == 4) {
-            //     $data['nama_industri'] = nama('m_industri', 'nama', ['id' => $data['kode']]);
-            // }
+            if ($data['group_id'] == 2) {
+                $data['nama'] = nama('m_guru', 'nama', ['nip' => $data['kode']]);
+            } elseif ($data['group_id'] == 3) {
+                $data['nama'] = nama('m_siswa', 'nama', ['nis' => $data['kode']]);
+            } elseif ($data['group_id'] == 4) {
+                $data['nama_industri'] = nama('m_industri', 'nama', ['id' => $data['kode']]);
+            }
             $data['password'] = $this->encrypt->encode($data['password']);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['updated_by'] = $this->session->userdata('nama');
@@ -278,8 +276,6 @@ class m_master extends CI_Model
             if ($data['group_id'] == 2) {
                 $data['nama'] = nama('m_guru', 'nama', ['nip' => $data['kode']]);
             } elseif ($data['group_id'] == 3) {
-                $data['nama_jurusan'] = nama('m_jurusan', 'nama', ['id' => $data['jurusan_id']]);
-                $data['nama_kelas'] = nama('m_kelas', 'nama', ['id' => $data['kelas_id']]);
                 $data['nama'] = nama('m_siswa', 'nama', ['nis' => $data['kode']]);
             } elseif ($data['group_id'] == 4) {
                 $data['nama_industri'] = nama('m_industri', 'nama', ['id' => $data['kode']]);
