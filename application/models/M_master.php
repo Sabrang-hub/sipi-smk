@@ -251,12 +251,14 @@ class m_master extends CI_Model
                     ];
                 }
             }
-            if ($data['group_id'] == 2) {
-                $data['nama'] = nama('m_guru', 'nama', ['nip' => $data['kode']]);
-            } elseif ($data['group_id'] == 3) {
-                $data['nama'] = nama('m_siswa', 'nama', ['nis' => $data['kode']]);
-            } elseif ($data['group_id'] == 4) {
-                $data['nama_industri'] = nama('m_industri', 'nama', ['id' => $data['kode']]);
+            if (isset($data['kode'])) {
+                if ($data['group_id'] == 2) {
+                    $data['nama'] = nama('m_guru', 'nama', ['nip' => $data['kode']]);
+                } elseif ($data['group_id'] == 3) {
+                    $data['nama'] = nama('m_siswa', 'nama', ['nis' => $data['kode']]);
+                } elseif ($data['group_id'] == 4) {
+                    $data['nama_industri'] = nama('m_industri', 'nama', ['id' => $data['kode']]);
+                }
             }
             $data['password'] = $this->encrypt->encode($data['password']);
             $data['updated_at'] = date('Y-m-d H:i:s');
@@ -273,12 +275,14 @@ class m_master extends CI_Model
                     'msg' => 'Nama pengguna sudah ada',
                 ];
             }
-            if ($data['group_id'] == 2) {
-                $data['nama'] = nama('m_guru', 'nama', ['nip' => $data['kode']]);
-            } elseif ($data['group_id'] == 3) {
-                $data['nama'] = nama('m_siswa', 'nama', ['nis' => $data['kode']]);
-            } elseif ($data['group_id'] == 4) {
-                $data['nama_industri'] = nama('m_industri', 'nama', ['id' => $data['kode']]);
+            if (isset($data['kode'])) {
+                if ($data['group_id'] == 2) {
+                    $data['nama'] = nama('m_guru', 'nama', ['nip' => $data['kode']]);
+                } elseif ($data['group_id'] == 3) {
+                    $data['nama'] = nama('m_siswa', 'nama', ['nis' => $data['kode']]);
+                } elseif ($data['group_id'] == 4) {
+                    $data['nama_industri'] = nama('m_industri', 'nama', ['id' => $data['kode']]);
+                }
             }
             $data['password'] = $this->encrypt->encode($data['password']);
             $data['created_at'] = date('Y-m-d H:i:s');
