@@ -615,6 +615,8 @@ class M_main extends CI_Model
                 } else {
                     $aksi = "<button class=\"btn btn-info btn-sm me-1\" onclick=\"edit_absensi($index,event)\"><i class=\"mdi mdi-file-sign\"></i></button>";
                 }
+            } else {
+                $aksi = "<span class=\"badge bg-light text-dark\"><i>Jadwal Kosong</i></span>";
             }
             $data[] = array(
                 'id' => $data_absen['id'],
