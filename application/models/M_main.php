@@ -598,20 +598,23 @@ class M_main extends CI_Model
             } else {
                 $status = "<span class=\"badge bg-danger\">Alpa</span>";
             }
-            if ($this->session->userdata('group_id') == 3) {
-                if ($value->format('Y-m-d') == date('Y-m-d') && ($data_absen['absen_masuk'] == null || $data_absen['absen_pulang'] == null)) {
-                    $aksi = "<button class=\"btn btn-info btn-sm me-1\" onclick=\"edit_absensi($index,event)\"><i class=\"mdi mdi-file-sign\"></i></button>";
+            if (count($data_hari_kerja) > 0) {
+
+                if ($this->session->userdata('group_id') == 3) {
+                    if ($value->format('Y-m-d') == date('Y-m-d') && ($data_absen['absen_masuk'] == null || $data_absen['absen_pulang'] == null)) {
+                        $aksi = "<button class=\"btn btn-info btn-sm me-1\" onclick=\"edit_absensi($index,event)\"><i class=\"mdi mdi-file-sign\"></i></button>";
+                    } else {
+                        $aksi = "<span class=\"badge bg-light text-dark\"><i>Selesai</i></span>";
+                    }
+                } elseif ($this->session->userdata('group_id') != 1 && $this->session->userdata('group_id') != 3) {
+                    if ($value->format('Y-m-d') == date('Y-m-d')) {
+                        $aksi = "<button class=\"btn btn-info btn-sm me-1\" onclick=\"edit_absensi($index,event)\"><i class=\"mdi mdi-file-sign\"></i></button>";
+                    } else {
+                        $aksi = "<span class=\"badge bg-light text-dark\"><i>Selesai</i></span>";
+                    }
                 } else {
-                    $aksi = "<span class=\"badge bg-light text-dark\"><i>Selesai</i></span>";
-                }
-            } elseif ($this->session->userdata('group_id') != 1 && $this->session->userdata('group_id') != 3) {
-                if ($value->format('Y-m-d') == date('Y-m-d')) {
                     $aksi = "<button class=\"btn btn-info btn-sm me-1\" onclick=\"edit_absensi($index,event)\"><i class=\"mdi mdi-file-sign\"></i></button>";
-                } else {
-                    $aksi = "<span class=\"badge bg-light text-dark\"><i>Selesai</i></span>";
                 }
-            } else {
-                $aksi = "<button class=\"btn btn-info btn-sm me-1\" onclick=\"edit_absensi($index,event)\"><i class=\"mdi mdi-file-sign\"></i></button>";
             }
             $data[] = array(
                 'id' => $data_absen['id'],
