@@ -138,10 +138,13 @@
 
         $('#fm-absensi').submit(function(e) {
             e.preventDefault();
+            formdata = new FormData(this);
+            formdata.append('siswa_id', '<?= $this->session->userdata('kode') ?>');
+            formdata.append('field', 'absen_masuk');
             $.ajax({
                 url: this.getAttribute('action'),
                 type: this.getAttribute('method'),
-                data: new FormData(this),
+                data: formdata,
                 processData: false,
                 contentType: false,
                 cache: false,
@@ -254,8 +257,12 @@
                     $.ajax({
                         url: '<?= base_url() ?>simpan-absensi',
                         data: ({
-                            field: 'waktu_pulang',
+                            status: 1,
+                            field: 'absen_pulang',
                             tanggal: data.tanggal,
+                            waktu_masuk: data.waktu_masuk,
+                            waktu_pulang: data.waktu_pulang,
+                            siswa_id: '<?= $this->session->userdata('kode') ?>',
                         }),
                         dataType: 'json',
                         type: 'post',

@@ -35,6 +35,12 @@ class Main extends CI_Controller
 					$data['jumlah_izin'] = 0;
 					$data['jumlah_sakit'] = 0;
 					$data['jumlah_alpa'] = 0;
+					//0 Belum Absen 
+					//1 Hadir 
+					//2 Izin
+					//3 Sakit
+					//4 Alpa
+					//5 Terlambat
 					foreach ($rekap_kahadiran as $row) {
 						if ($row['status'] == 0) {
 							$data['jumlah_belum_absen']++;
@@ -42,17 +48,17 @@ class Main extends CI_Controller
 						if ($row['status'] == 1) {
 							$data['jumlah_hadir']++;
 						}
-						if ($row['status'] == 4) {
-							$data['jumlah_terlambat']++;
-						}
 						if ($row['status'] == 2) {
 							$data['jumlah_izin']++;
 						}
 						if ($row['status'] == 3) {
 							$data['jumlah_sakit']++;
 						}
-						if ($row['status'] == 5) {
+						if ($row['status'] == 4) {
 							$data['jumlah_alpa']++;
+						}
+						if ($row['status'] == 5) {
+							$data['jumlah_terlambat']++;
 						}
 					}
 					break;
@@ -68,6 +74,12 @@ class Main extends CI_Controller
 					$data['jumlah_izin'] = 0;
 					$data['jumlah_sakit'] = 0;
 					$data['jumlah_alpa'] = 0;
+					//0 Belum Absen 
+					//1 Hadir 
+					//2 Izin
+					//3 Sakit
+					//4 Alpa
+					//5 Terlambat
 					foreach ($rekap_kahadiran as $row) {
 						if ($row['status'] == 0) {
 							$data['jumlah_belum_absen']++;
@@ -75,23 +87,23 @@ class Main extends CI_Controller
 						if ($row['status'] == 1) {
 							$data['jumlah_hadir']++;
 						}
-						if ($row['status'] == 4) {
-							$data['jumlah_terlambat']++;
-						}
 						if ($row['status'] == 2) {
 							$data['jumlah_izin']++;
 						}
 						if ($row['status'] == 3) {
 							$data['jumlah_sakit']++;
 						}
-						if ($row['status'] == 5) {
+						if ($row['status'] == 4) {
 							$data['jumlah_alpa']++;
+						}
+						if ($row['status'] == 5) {
+							$data['jumlah_terlambat']++;
 						}
 					}
 
 					$cek_absen = $this->db->where(['siswa_id' => $this->session->userdata('kode'), 'tanggal' => date('Y-m-d')])->get('tbl_absen');
-					if ($cek_absen->num_rows() > 0) {
-						if ($cek_absen->row('waktu_pulang') == null) {
+					if ($cek_absen->num_rows() > 0 && $cek_absen->row('status') > 0) {
+						if ($cek_absen->row('absen_pulang') == null) {
 							$data['status_absen_hari_ini'] = 1;
 						} else {
 							$data['status_absen_hari_ini'] = 2;
@@ -112,6 +124,12 @@ class Main extends CI_Controller
 					$data['jumlah_izin'] = 0;
 					$data['jumlah_sakit'] = 0;
 					$data['jumlah_alpa'] = 0;
+					//0 Belum Absen 
+					//1 Hadir 
+					//2 Izin
+					//3 Sakit
+					//4 Alpa
+					//5 Terlambat
 					foreach ($rekap_kahadiran as $row) {
 						if ($row['status'] == 0) {
 							$data['jumlah_belum_absen']++;
@@ -119,17 +137,17 @@ class Main extends CI_Controller
 						if ($row['status'] == 1) {
 							$data['jumlah_hadir']++;
 						}
-						if ($row['status'] == 4) {
-							$data['jumlah_terlambat']++;
-						}
 						if ($row['status'] == 2) {
 							$data['jumlah_izin']++;
 						}
 						if ($row['status'] == 3) {
 							$data['jumlah_sakit']++;
 						}
-						if ($row['status'] == 5) {
+						if ($row['status'] == 4) {
 							$data['jumlah_alpa']++;
+						}
+						if ($row['status'] == 5) {
+							$data['jumlah_terlambat']++;
 						}
 					}
 					break;
@@ -391,6 +409,7 @@ class Main extends CI_Controller
 
 	public function absensi()
 	{
+
 		if ($this->session->userdata('is_login')) {
 			$data['title'] = 'Absensi';
 			if ($this->session->userdata('group_id') == 1) {

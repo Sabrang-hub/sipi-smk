@@ -27,22 +27,20 @@ CREATE TABLE `ci_sessions` (
 /*Data for the table `ci_sessions` */
 
 insert  into `ci_sessions`(`id`,`ip_address`,`timestamp`,`data`) values 
-('qp63d5lot7llm2tvslnq02pn252h09oa','127.0.0.1',1677333937,'__ci_last_regenerate|i:1677333678;id|s:1:\"1\";username|s:5:\"admin\";password|s:88:\"/ZthFL9VBx2NQYcnpiVAPa/Z/9zdeURJzWaRZRpwg/+IBGjD02K2G7BQpKDYr1R3QieOHBsI/cRBZciojXC4hQ==\";group_id|s:1:\"1\";kode|s:0:\"\";nama|s:13:\"Administrator\";email|s:17:\"sabrang@gmail.com\";nama_industri|s:0:\"\";keterangan|s:13:\"Administrator\";last_login|s:19:\"2023-02-25 15:41:30\";last_logout|s:19:\"2023-02-25 15:40:48\";status_user_id|s:1:\"1\";user_id|s:1:\"0\";file_foto|s:50:\"data/20230225/b993ea89c674ef3a04484947f99db139.png\";created_at|s:19:\"2023-01-07 21:34:10\";created_by|s:0:\"\";updated_at|s:19:\"2023-02-25 17:22:55\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:5:\"Admin\";'),
-('6vdgr6h7vl35djrolj2luugs07sb2922','127.0.0.1',1677333950,'__ci_last_regenerate|i:1677333950;'),
-('2k9dt6ccmu4e2bbh6elshfumlha4cr8g','127.0.0.1',1677333950,'__ci_last_regenerate|i:1677333950;'),
-('qh6jjbgpde25g2a8i2oictnv8il5ceou','127.0.0.1',1677334094,'__ci_last_regenerate|i:1677334005;id|s:1:\"1\";username|s:5:\"admin\";password|s:88:\"/ZthFL9VBx2NQYcnpiVAPa/Z/9zdeURJzWaRZRpwg/+IBGjD02K2G7BQpKDYr1R3QieOHBsI/cRBZciojXC4hQ==\";group_id|s:1:\"1\";kode|s:0:\"\";nama|s:13:\"Administrator\";email|s:17:\"sabrang@gmail.com\";nama_industri|s:0:\"\";keterangan|s:13:\"Administrator\";last_login|s:19:\"2023-02-25 15:41:30\";last_logout|s:19:\"2023-02-25 15:40:48\";status_user_id|s:1:\"1\";user_id|s:1:\"0\";file_foto|s:50:\"data/20230225/b993ea89c674ef3a04484947f99db139.png\";created_at|s:19:\"2023-01-07 21:34:10\";created_by|s:0:\"\";updated_at|s:19:\"2023-02-25 17:22:55\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:5:\"Admin\";'),
-('l86mdac8hstlumnatnidhmh08ks61bst','127.0.0.1',1677334650,'__ci_last_regenerate|i:1677334324;id|s:1:\"1\";username|s:5:\"admin\";password|s:88:\"/ZthFL9VBx2NQYcnpiVAPa/Z/9zdeURJzWaRZRpwg/+IBGjD02K2G7BQpKDYr1R3QieOHBsI/cRBZciojXC4hQ==\";group_id|s:1:\"1\";kode|s:0:\"\";nama|s:13:\"Administrator\";email|s:17:\"sabrang@gmail.com\";nama_industri|s:0:\"\";keterangan|s:13:\"Administrator\";last_login|s:19:\"2023-02-25 15:41:30\";last_logout|s:19:\"2023-02-25 15:40:48\";status_user_id|s:1:\"1\";user_id|s:1:\"0\";file_foto|s:50:\"data/20230225/b993ea89c674ef3a04484947f99db139.png\";created_at|s:19:\"2023-01-07 21:34:10\";created_by|s:0:\"\";updated_at|s:19:\"2023-02-25 17:22:55\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:5:\"Admin\";'),
-('9d5i7g4ceq8qqfh9odk39c2pav4d31vj','127.0.0.1',1677334676,'__ci_last_regenerate|i:1677334676;'),
-('ei7lng8u7tnei71votd9bjbnca1qe6e1','127.0.0.1',1677334868,'__ci_last_regenerate|i:1677334773;id|s:1:\"1\";username|s:5:\"admin\";password|s:88:\"/ZthFL9VBx2NQYcnpiVAPa/Z/9zdeURJzWaRZRpwg/+IBGjD02K2G7BQpKDYr1R3QieOHBsI/cRBZciojXC4hQ==\";group_id|s:1:\"1\";kode|s:0:\"\";nama|s:13:\"Administrator\";email|s:17:\"sabrang@gmail.com\";nama_industri|s:0:\"\";keterangan|s:13:\"Administrator\";last_login|s:19:\"2023-02-25 15:41:30\";last_logout|s:19:\"2023-02-25 15:40:48\";status_user_id|s:1:\"1\";user_id|s:1:\"0\";file_foto|s:50:\"data/20230225/b993ea89c674ef3a04484947f99db139.png\";created_at|s:19:\"2023-01-07 21:34:10\";created_by|s:0:\"\";updated_at|s:19:\"2023-02-25 17:22:55\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:5:\"Admin\";'),
-('a680n5p75virqm1dc9b3878hq475htf0','127.0.0.1',1677335330,'__ci_last_regenerate|i:1677335294;id|s:1:\"1\";username|s:5:\"admin\";password|s:88:\"/ZthFL9VBx2NQYcnpiVAPa/Z/9zdeURJzWaRZRpwg/+IBGjD02K2G7BQpKDYr1R3QieOHBsI/cRBZciojXC4hQ==\";group_id|s:1:\"1\";kode|s:0:\"\";nama|s:13:\"Administrator\";email|s:17:\"sabrang@gmail.com\";nama_industri|s:0:\"\";keterangan|s:13:\"Administrator\";last_login|s:19:\"2023-02-25 15:41:30\";last_logout|s:19:\"2023-02-25 15:40:48\";status_user_id|s:1:\"1\";user_id|s:1:\"0\";file_foto|s:50:\"data/20230225/b993ea89c674ef3a04484947f99db139.png\";created_at|s:19:\"2023-01-07 21:34:10\";created_by|s:0:\"\";updated_at|s:19:\"2023-02-25 17:22:55\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:5:\"Admin\";'),
-('b1meslmjc9jdbu8chafv8up9d48f01b9','127.0.0.1',1677335924,'__ci_last_regenerate|i:1677335619;id|s:1:\"1\";username|s:5:\"admin\";password|s:88:\"/ZthFL9VBx2NQYcnpiVAPa/Z/9zdeURJzWaRZRpwg/+IBGjD02K2G7BQpKDYr1R3QieOHBsI/cRBZciojXC4hQ==\";group_id|s:1:\"1\";kode|s:0:\"\";nama|s:13:\"Administrator\";email|s:17:\"sabrang@gmail.com\";nama_industri|s:0:\"\";keterangan|s:13:\"Administrator\";last_login|s:19:\"2023-02-25 15:41:30\";last_logout|s:19:\"2023-02-25 15:40:48\";status_user_id|s:1:\"1\";user_id|s:1:\"0\";file_foto|s:50:\"data/20230225/b993ea89c674ef3a04484947f99db139.png\";created_at|s:19:\"2023-01-07 21:34:10\";created_by|s:0:\"\";updated_at|s:19:\"2023-02-25 17:22:55\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:5:\"Admin\";'),
-('ifemcgm5tmt1km0acr1pcrnuaspvknmh','127.0.0.1',1677336292,'__ci_last_regenerate|i:1677335926;id|s:1:\"1\";username|s:5:\"admin\";password|s:88:\"/ZthFL9VBx2NQYcnpiVAPa/Z/9zdeURJzWaRZRpwg/+IBGjD02K2G7BQpKDYr1R3QieOHBsI/cRBZciojXC4hQ==\";group_id|s:1:\"1\";kode|s:0:\"\";nama|s:13:\"Administrator\";email|s:17:\"sabrang@gmail.com\";nama_industri|s:0:\"\";keterangan|s:13:\"Administrator\";last_login|s:19:\"2023-02-25 15:41:30\";last_logout|s:19:\"2023-02-25 15:40:48\";status_user_id|s:1:\"1\";user_id|s:1:\"0\";file_foto|s:50:\"data/20230225/b993ea89c674ef3a04484947f99db139.png\";created_at|s:19:\"2023-01-07 21:34:10\";created_by|s:0:\"\";updated_at|s:19:\"2023-02-25 17:22:55\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:5:\"Admin\";'),
-('keo7no6f6eqvnc41bvkip2qdeq2dullj','127.0.0.1',1677336592,'__ci_last_regenerate|i:1677336296;id|s:1:\"1\";username|s:5:\"admin\";password|s:88:\"/ZthFL9VBx2NQYcnpiVAPa/Z/9zdeURJzWaRZRpwg/+IBGjD02K2G7BQpKDYr1R3QieOHBsI/cRBZciojXC4hQ==\";group_id|s:1:\"1\";kode|s:0:\"\";nama|s:13:\"Administrator\";email|s:17:\"sabrang@gmail.com\";nama_industri|s:0:\"\";keterangan|s:13:\"Administrator\";last_login|s:19:\"2023-02-25 15:41:30\";last_logout|s:19:\"2023-02-25 15:40:48\";status_user_id|s:1:\"1\";user_id|s:1:\"0\";file_foto|s:50:\"data/20230225/b993ea89c674ef3a04484947f99db139.png\";created_at|s:19:\"2023-01-07 21:34:10\";created_by|s:0:\"\";updated_at|s:19:\"2023-02-25 17:22:55\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:5:\"Admin\";'),
-('2he71cocnb52napehkbpva6mksaqov6d','127.0.0.1',1677336534,'__ci_last_regenerate|i:1677336534;'),
-('ubbbhdmfte30k6e4dhulku25ka12jlpl','127.0.0.1',1677336872,'__ci_last_regenerate|i:1677336642;id|s:1:\"1\";username|s:5:\"admin\";password|s:88:\"/ZthFL9VBx2NQYcnpiVAPa/Z/9zdeURJzWaRZRpwg/+IBGjD02K2G7BQpKDYr1R3QieOHBsI/cRBZciojXC4hQ==\";group_id|s:1:\"1\";kode|s:0:\"\";nama|s:13:\"Administrator\";email|s:17:\"sabrang@gmail.com\";nama_industri|s:0:\"\";keterangan|s:13:\"Administrator\";last_login|s:19:\"2023-02-25 15:41:30\";last_logout|s:19:\"2023-02-25 15:40:48\";status_user_id|s:1:\"1\";user_id|s:1:\"0\";file_foto|s:50:\"data/20230225/b993ea89c674ef3a04484947f99db139.png\";created_at|s:19:\"2023-01-07 21:34:10\";created_by|s:0:\"\";updated_at|s:19:\"2023-02-25 17:22:55\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:5:\"Admin\";'),
-('9hu068jmt3neimvhaq1s7ukk8ev5s8qk','127.0.0.1',1677337734,'__ci_last_regenerate|i:1677337121;id|s:2:\"10\";username|s:9:\"123456789\";password|s:88:\"ZvBO3vIvUDAcZka38UR//qcKHRPG65UNksX9ghmzasiS6kibQ2EGpAena2YwL5EdO31gKNC4FHpuejyBrq06yQ==\";group_id|s:1:\"2\";kode|s:9:\"123456789\";nama|s:4:\"Udin\";email|s:0:\"\";nama_industri|s:0:\"\";keterangan|s:0:\"\";last_login|N;last_logout|N;status_user_id|s:1:\"1\";user_id|s:1:\"1\";file_foto|s:50:\"data/20230225/f3d54dc7c20a5c26b99503008b1a34b9.png\";created_at|s:19:\"2023-02-25 22:39:08\";created_by|s:13:\"Administrator\";updated_at|N;updated_by|s:0:\"\";is_login|b:1;nama_group|s:4:\"Guru\";'),
-('dcsmrrpk6rtm5tjgeet092tmmp6d81on','127.0.0.1',1677337456,'__ci_last_regenerate|i:1677337456;'),
-('n5gea4qa30rrkpfjf9u9bbo2ui5k6874','127.0.0.1',1677337917,'__ci_last_regenerate|i:1677337905;id|s:1:\"1\";username|s:5:\"admin\";password|s:88:\"/ZthFL9VBx2NQYcnpiVAPa/Z/9zdeURJzWaRZRpwg/+IBGjD02K2G7BQpKDYr1R3QieOHBsI/cRBZciojXC4hQ==\";group_id|s:1:\"1\";kode|s:0:\"\";nama|s:13:\"Administrator\";email|s:17:\"sabrang@gmail.com\";nama_industri|s:0:\"\";keterangan|s:13:\"Administrator\";last_login|s:19:\"2023-02-25 22:01:27\";last_logout|s:19:\"2023-02-25 22:58:41\";status_user_id|s:1:\"1\";user_id|s:1:\"0\";file_foto|s:50:\"data/20230225/b993ea89c674ef3a04484947f99db139.png\";created_at|s:19:\"2023-01-07 21:34:10\";created_by|s:0:\"\";updated_at|s:19:\"2023-02-25 17:22:55\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:5:\"Admin\";');
+('h8uatdejurmqqj7r77clko3ghhtokf2o','127.0.0.1',1677507318,'__ci_last_regenerate|i:1677507097;id|s:2:\"17\";username|s:10:\"0088977654\";password|s:88:\"k/h9ZVvl6xw9/x7ARw8kcRUdQVoFL9wSE1AZNiArRRJvrgKLNe1SBABJuPiZs5/pBl5npR/fZVPSsSygWoJtEQ==\";group_id|s:1:\"3\";kode|s:10:\"0088977654\";nama|s:6:\"Hairul\";email|s:0:\"\";nama_industri|s:0:\"\";keterangan|s:0:\"\";last_login|s:19:\"2023-02-27 21:16:29\";last_logout|s:19:\"2023-02-27 21:39:03\";status_user_id|s:1:\"1\";user_id|s:1:\"1\";file_foto|s:33:\"assets/images/users/avatar-11.png\";created_at|s:19:\"2023-02-27 11:10:43\";created_by|s:13:\"Administrator\";updated_at|s:19:\"2023-02-27 11:32:56\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:5:\"Siswa\";'),
+('gutb8fnlbdjpqtlukl813jis43mjt3mo','127.0.0.1',1677509100,'__ci_last_regenerate|i:1677507493;id|s:2:\"17\";username|s:10:\"0088977654\";password|s:88:\"k/h9ZVvl6xw9/x7ARw8kcRUdQVoFL9wSE1AZNiArRRJvrgKLNe1SBABJuPiZs5/pBl5npR/fZVPSsSygWoJtEQ==\";group_id|s:1:\"3\";kode|s:10:\"0088977654\";nama|s:6:\"Hairul\";email|s:0:\"\";nama_industri|s:0:\"\";keterangan|s:0:\"\";last_login|s:19:\"2023-02-27 21:16:29\";last_logout|s:19:\"2023-02-27 21:39:03\";status_user_id|s:1:\"1\";user_id|s:1:\"1\";file_foto|s:33:\"assets/images/users/avatar-11.png\";created_at|s:19:\"2023-02-27 11:10:43\";created_by|s:13:\"Administrator\";updated_at|s:19:\"2023-02-27 11:32:56\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:5:\"Siswa\";'),
+('68500pv67bp6k058t2t9qbtrdjl3th3u','127.0.0.1',1677509312,'__ci_last_regenerate|i:1677509118;id|s:2:\"17\";username|s:10:\"0088977654\";password|s:88:\"k/h9ZVvl6xw9/x7ARw8kcRUdQVoFL9wSE1AZNiArRRJvrgKLNe1SBABJuPiZs5/pBl5npR/fZVPSsSygWoJtEQ==\";group_id|s:1:\"3\";kode|s:10:\"0088977654\";nama|s:6:\"Hairul\";email|s:0:\"\";nama_industri|s:0:\"\";keterangan|s:0:\"\";last_login|s:19:\"2023-02-27 21:16:29\";last_logout|s:19:\"2023-02-27 21:39:03\";status_user_id|s:1:\"1\";user_id|s:1:\"1\";file_foto|s:33:\"assets/images/users/avatar-11.png\";created_at|s:19:\"2023-02-27 11:10:43\";created_by|s:13:\"Administrator\";updated_at|s:19:\"2023-02-27 11:32:56\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:5:\"Siswa\";'),
+('3mfefjroujar8midegad2verl3ud27ss','127.0.0.1',1677509682,'__ci_last_regenerate|i:1677509445;id|s:2:\"17\";username|s:10:\"0088977654\";password|s:88:\"k/h9ZVvl6xw9/x7ARw8kcRUdQVoFL9wSE1AZNiArRRJvrgKLNe1SBABJuPiZs5/pBl5npR/fZVPSsSygWoJtEQ==\";group_id|s:1:\"3\";kode|s:10:\"0088977654\";nama|s:6:\"Hairul\";email|s:0:\"\";nama_industri|s:0:\"\";keterangan|s:0:\"\";last_login|s:19:\"2023-02-27 21:16:29\";last_logout|s:19:\"2023-02-27 21:39:03\";status_user_id|s:1:\"1\";user_id|s:1:\"1\";file_foto|s:33:\"assets/images/users/avatar-11.png\";created_at|s:19:\"2023-02-27 11:10:43\";created_by|s:13:\"Administrator\";updated_at|s:19:\"2023-02-27 11:32:56\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:5:\"Siswa\";'),
+('hpgd89i3cb5ihig9fu7djluqa51bbihb','127.0.0.1',1677510128,'__ci_last_regenerate|i:1677509844;id|s:2:\"17\";username|s:10:\"0088977654\";password|s:88:\"k/h9ZVvl6xw9/x7ARw8kcRUdQVoFL9wSE1AZNiArRRJvrgKLNe1SBABJuPiZs5/pBl5npR/fZVPSsSygWoJtEQ==\";group_id|s:1:\"3\";kode|s:10:\"0088977654\";nama|s:6:\"Hairul\";email|s:0:\"\";nama_industri|s:0:\"\";keterangan|s:0:\"\";last_login|s:19:\"2023-02-27 21:16:29\";last_logout|s:19:\"2023-02-27 21:39:03\";status_user_id|s:1:\"1\";user_id|s:1:\"1\";file_foto|s:33:\"assets/images/users/avatar-11.png\";created_at|s:19:\"2023-02-27 11:10:43\";created_by|s:13:\"Administrator\";updated_at|s:19:\"2023-02-27 11:32:56\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:5:\"Siswa\";'),
+('rncpt4au8ahgthqfplr6fggv3i4nelc8','127.0.0.1',1677510251,'__ci_last_regenerate|i:1677510178;id|s:2:\"17\";username|s:10:\"0088977654\";password|s:88:\"k/h9ZVvl6xw9/x7ARw8kcRUdQVoFL9wSE1AZNiArRRJvrgKLNe1SBABJuPiZs5/pBl5npR/fZVPSsSygWoJtEQ==\";group_id|s:1:\"3\";kode|s:10:\"0088977654\";nama|s:6:\"Hairul\";email|s:0:\"\";nama_industri|s:0:\"\";keterangan|s:0:\"\";last_login|s:19:\"2023-02-27 21:16:29\";last_logout|s:19:\"2023-02-27 21:39:03\";status_user_id|s:1:\"1\";user_id|s:1:\"1\";file_foto|s:33:\"assets/images/users/avatar-11.png\";created_at|s:19:\"2023-02-27 11:10:43\";created_by|s:13:\"Administrator\";updated_at|s:19:\"2023-02-27 11:32:56\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:5:\"Siswa\";'),
+('e3nmbfqlnr2spgduuae1hc04mbpnr7ps','127.0.0.1',1677510881,'__ci_last_regenerate|i:1677510726;id|s:2:\"17\";username|s:10:\"0088977654\";password|s:88:\"k/h9ZVvl6xw9/x7ARw8kcRUdQVoFL9wSE1AZNiArRRJvrgKLNe1SBABJuPiZs5/pBl5npR/fZVPSsSygWoJtEQ==\";group_id|s:1:\"3\";kode|s:10:\"0088977654\";nama|s:6:\"Hairul\";email|s:0:\"\";nama_industri|s:0:\"\";keterangan|s:0:\"\";last_login|s:19:\"2023-02-27 21:16:29\";last_logout|s:19:\"2023-02-27 21:39:03\";status_user_id|s:1:\"1\";user_id|s:1:\"1\";file_foto|s:33:\"assets/images/users/avatar-11.png\";created_at|s:19:\"2023-02-27 11:10:43\";created_by|s:13:\"Administrator\";updated_at|s:19:\"2023-02-27 11:32:56\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:5:\"Siswa\";'),
+('1j7vgve6ue3rgp5qvceiiavhipncie9t','127.0.0.1',1677511522,'__ci_last_regenerate|i:1677511522;'),
+('dh6dp1j3mjaki2oka1g750bbmq14f0gn','::1',1677513430,'__ci_last_regenerate|i:1677511593;id|s:1:\"1\";username|s:5:\"admin\";password|s:88:\"T5qYNDjSVXkXvvSAE61sjmXAdbwUbn6RRbeKobM83dBqL4uQYYvjdODh4cg4DXwF4+R5btnbW7c0lDCvj6esKg==\";group_id|s:1:\"1\";kode|s:0:\"\";nama|s:13:\"Administrator\";email|s:0:\"\";nama_industri|s:0:\"\";keterangan|s:13:\"Administrator\";last_login|s:19:\"2023-02-27 23:22:18\";last_logout|s:19:\"2023-02-27 23:22:41\";status_user_id|s:1:\"1\";user_id|s:1:\"1\";file_foto|s:50:\"data/20230227/84cefca17e7418a52dda5988fdc7e85f.png\";created_at|s:19:\"2023-01-07 22:34:10\";created_by|s:0:\"\";updated_at|s:19:\"2023-02-27 20:47:47\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:5:\"Admin\";'),
+('8nraingvta3nc5cda77g6ok0i904e9jl','127.0.0.1',1677512202,'__ci_last_regenerate|i:1677511934;id|s:2:\"16\";username|s:18:\"199610212019031002\";password|s:88:\"jkQpWK1VwWfpyHj8iT8Te7ceiNsEitngJ15EFSyBTrhxkB7dokI2lsctNs+xFH2Mt8ixsC9hfMhmdJclTGZPMw==\";group_id|s:1:\"2\";kode|s:18:\"199610212019031002\";nama|s:26:\"Miftahur Risky Jufri, S.Pd\";email|s:0:\"\";nama_industri|s:0:\"\";keterangan|s:0:\"\";last_login|s:19:\"2023-02-27 23:27:51\";last_logout|s:19:\"2023-02-27 23:31:37\";status_user_id|s:1:\"1\";user_id|s:1:\"1\";file_foto|s:33:\"assets/images/users/avatar-11.png\";created_at|s:19:\"2023-02-27 11:06:45\";created_by|s:13:\"Administrator\";updated_at|s:19:\"2023-02-27 11:13:26\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:4:\"Guru\";'),
+('3bs1tpfgs6qq50u2oulmj2mms7lnd2bu','127.0.0.1',1677512918,'__ci_last_regenerate|i:1677512383;id|s:2:\"16\";username|s:18:\"199610212019031002\";password|s:88:\"jkQpWK1VwWfpyHj8iT8Te7ceiNsEitngJ15EFSyBTrhxkB7dokI2lsctNs+xFH2Mt8ixsC9hfMhmdJclTGZPMw==\";group_id|s:1:\"2\";kode|s:18:\"199610212019031002\";nama|s:26:\"Miftahur Risky Jufri, S.Pd\";email|s:0:\"\";nama_industri|s:0:\"\";keterangan|s:0:\"\";last_login|s:19:\"2023-02-27 23:32:24\";last_logout|s:19:\"2023-02-27 23:39:19\";status_user_id|s:1:\"1\";user_id|s:1:\"1\";file_foto|s:33:\"assets/images/users/avatar-11.png\";created_at|s:19:\"2023-02-27 11:06:45\";created_by|s:13:\"Administrator\";updated_at|s:19:\"2023-02-27 11:13:26\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:4:\"Guru\";'),
+('f82cs3gsjvqfldit292uctn2g1bo7vmc','127.0.0.1',1677513192,'__ci_last_regenerate|i:1677513192;'),
+('sqcsm1mvq9trdc8a0gfs76tlqijadubh','127.0.0.1',1677513465,'__ci_last_regenerate|i:1677513436;id|s:2:\"16\";username|s:18:\"199610212019031002\";password|s:88:\"jkQpWK1VwWfpyHj8iT8Te7ceiNsEitngJ15EFSyBTrhxkB7dokI2lsctNs+xFH2Mt8ixsC9hfMhmdJclTGZPMw==\";group_id|s:1:\"2\";kode|s:18:\"199610212019031002\";nama|s:26:\"Miftahur Risky Jufri, S.Pd\";email|s:0:\"\";nama_industri|s:0:\"\";keterangan|s:0:\"\";last_login|s:19:\"2023-02-27 23:39:51\";last_logout|s:19:\"2023-02-27 23:52:32\";status_user_id|s:1:\"1\";user_id|s:1:\"1\";file_foto|s:33:\"assets/images/users/avatar-11.png\";created_at|s:19:\"2023-02-27 11:06:45\";created_by|s:13:\"Administrator\";updated_at|s:19:\"2023-02-27 11:13:26\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:4:\"Guru\";'),
+('idhs4jo949fp6n6ntl12mek01s9sq95t','::1',1677513491,'__ci_last_regenerate|i:1677513484;id|s:1:\"1\";username|s:5:\"admin\";password|s:88:\"T5qYNDjSVXkXvvSAE61sjmXAdbwUbn6RRbeKobM83dBqL4uQYYvjdODh4cg4DXwF4+R5btnbW7c0lDCvj6esKg==\";group_id|s:1:\"1\";kode|s:0:\"\";nama|s:13:\"Administrator\";email|s:0:\"\";nama_industri|s:0:\"\";keterangan|s:13:\"Administrator\";last_login|s:19:\"2023-02-27 23:22:18\";last_logout|s:19:\"2023-02-27 23:22:41\";status_user_id|s:1:\"1\";user_id|s:1:\"1\";file_foto|s:50:\"data/20230227/84cefca17e7418a52dda5988fdc7e85f.png\";created_at|s:19:\"2023-01-07 22:34:10\";created_by|s:0:\"\";updated_at|s:19:\"2023-02-27 20:47:47\";updated_by|s:13:\"Administrator\";is_login|b:1;nama_group|s:5:\"Admin\";');
 
 /*Table structure for table `m_client_setting` */
 
@@ -71,7 +69,7 @@ CREATE TABLE `m_client_setting` (
 /*Data for the table `m_client_setting` */
 
 insert  into `m_client_setting`(`id`,`host`,`site_name`,`nama_instansi`,`npsn`,`no_telp`,`provinsi`,`kab_kota`,`kecamatan`,`kelurahan_desa`,`alamat`,`logo_instansi`,`bg_login`,`updated_at`,`updated_by`) values 
-(1,'localhost:8056','SIP-PKL','SMK Negeri 7 Jeneponto','40312510','085395619423','Sulawesi Selatan','Jeneponto','Arungkeke','Arungkeke Pallantikang','Jl. Pendidikan','data/20230108/26a275d2a048835b9d807bcf97b64fd2.jpg','data/20230107/3.jpg','2023-01-08 03:10:59','Administrator');
+(1,'localhost:8056','SIP-PKL','SMK Negeri 7 Jeneponto','40312510','085395619423','Sulawesi Selatan','Jeneponto','Arungkeke','Arungkeke Pallantikang','Jl. Pendidikan','data/20230108/26a275d2a048835b9d807bcf97b64fd2.jpg','data/20230107/3.jpg','2023-01-08 04:10:59','Administrator');
 
 /*Table structure for table `m_deskripsi` */
 
@@ -153,12 +151,14 @@ CREATE TABLE `m_guru` (
   `updated_by` varchar(100) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `UNIQ` (`nip`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 /*Data for the table `m_guru` */
 
 insert  into `m_guru`(`id`,`nip`,`nama`,`golongan_id`,`nama_golongan`,`file_foto`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(1,'123456789','Udin',4,'I/d','data/20230225/f3d54dc7c20a5c26b99503008b1a34b9.png','2023-02-25 22:39:08','Administrator','2023-02-25 23:08:54','Udin');
+(1,'199610212019031002','Miftahur Risky Jufri, S.Pd',10,'III/b','','2023-02-27 11:06:45','Administrator',NULL,''),
+(2,'198005192010012027','Rahmawati, S.Pd., M.Pd',11,'III/c','','2023-02-27 20:32:35','Administrator',NULL,''),
+(3,'197710252014122001','Ihsan Naskah, S.Kom., M.T',13,'IV/a','','2023-02-27 20:33:08','Administrator','2023-02-27 20:33:14','Administrator');
 
 /*Table structure for table `m_hari` */
 
@@ -198,9 +198,26 @@ CREATE TABLE `m_hari_kerja` (
   `updated_at` timestamp(6) NULL DEFAULT NULL,
   `updated_by` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
 /*Data for the table `m_hari_kerja` */
+
+insert  into `m_hari_kerja`(`id`,`industri_id`,`nama_industri`,`hari_id`,`nama_hari`,`waktu_masuk`,`waktu_pulang`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+(6,2,'Kominfo',1,'Senin','07:30:00.000000','16:00:00.000000','2023-02-27 20:58:05.000000','Administrator',NULL,''),
+(7,2,'Kominfo',2,'Selasa','07:30:00.000000','16:00:00.000000','2023-02-27 20:58:05.000000','Administrator',NULL,''),
+(8,2,'Kominfo',3,'Rabu','07:30:00.000000','16:00:00.000000','2023-02-27 20:58:05.000000','Administrator',NULL,''),
+(9,2,'Kominfo',4,'Kamis','07:30:00.000000','16:00:00.000000','2023-02-27 20:58:05.000000','Administrator',NULL,''),
+(10,2,'Kominfo',5,'Jumat','07:30:00.000000','15:30:00.000000','2023-02-27 20:58:05.000000','Administrator',NULL,''),
+(11,3,'Pengadilan Agama',1,'Senin','07:30:00.000000','16:00:00.000000','2023-02-27 20:58:52.000000','Administrator',NULL,''),
+(12,3,'Pengadilan Agama',2,'Selasa','07:30:00.000000','16:00:00.000000','2023-02-27 20:58:52.000000','Administrator',NULL,''),
+(13,3,'Pengadilan Agama',3,'Rabu','07:30:00.000000','16:00:00.000000','2023-02-27 20:58:52.000000','Administrator',NULL,''),
+(14,3,'Pengadilan Agama',4,'Kamis','07:30:00.000000','16:00:00.000000','2023-02-27 20:58:52.000000','Administrator',NULL,''),
+(15,3,'Pengadilan Agama',5,'Jumat','07:30:00.000000','16:00:00.000000','2023-02-27 20:58:52.000000','Administrator',NULL,''),
+(23,1,'Pegadaian',1,'Senin','07:30:00.000000','16:00:00.000000','2023-02-27 21:39:33.000000','Administrator',NULL,''),
+(24,1,'Pegadaian',2,'Selasa','07:30:00.000000','16:00:00.000000','2023-02-27 21:39:33.000000','Administrator',NULL,''),
+(25,1,'Pegadaian',3,'Rabu','07:30:00.000000','16:00:00.000000','2023-02-27 21:39:33.000000','Administrator',NULL,''),
+(26,1,'Pegadaian',4,'Kamis','07:30:00.000000','16:00:00.000000','2023-02-27 21:39:33.000000','Administrator',NULL,''),
+(27,1,'Pegadaian',5,'Jumat','07:03:00.000000','15:30:00.000000','2023-02-27 21:39:33.000000','Administrator',NULL,'');
 
 /*Table structure for table `m_industri` */
 
@@ -225,7 +242,9 @@ CREATE TABLE `m_industri` (
 /*Data for the table `m_industri` */
 
 insert  into `m_industri`(`id`,`nama`,`nama_pimpinan`,`alamat`,`email`,`no_telp`,`jenis_usaha_id`,`nama_jenis_usaha`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(3,'PT. Murfa Surya Mahardika','Risky','asdf','example@gmail.com','213421312',5,'Bidang Usaha Pertanian','2023-02-25 22:49:51','Administrator',NULL,'');
+(1,'Pegadaian','Muh Alwi Hamka, SE','Bontosunggu','alwihamka@gmail.com','08233876877',10,'Usaha Perdagangan','2023-02-27 11:08:47','Administrator','2023-02-27 20:31:41','Administrator'),
+(2,'Kominfo','Mirzah Pujawati, ST','Bontosunggu','mirzahpuajawati@gmail.com','',1,'Bidang Teknologi, Informasi, dan Komunikasi','2023-02-27 11:19:00','Administrator','2023-02-27 20:31:31','Administrator'),
+(3,'Pengadilan Agama','Muhammad Salehuddin, SE., M.Si','Pakkaterang','saleh77@gmail.com','',2,'Bidang Usaha Formal','2023-02-27 20:31:03','Administrator',NULL,'');
 
 /*Table structure for table `m_jenis_usaha` */
 
@@ -265,12 +284,14 @@ CREATE TABLE `m_jurusan` (
   `updated_by` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `UNIQ` (`nama`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 /*Data for the table `m_jurusan` */
 
 insert  into `m_jurusan`(`id`,`nama`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(1,'Teknik Otomotif','2023-02-25 22:37:44','Administrator','2023-02-25 22:37:48','Administrator');
+(1,'Teknik Komputer dan Jaringan','2023-02-27 11:04:31','Administrator',NULL,''),
+(2,'Multimedia','2023-02-27 11:04:37','Administrator',NULL,''),
+(3,'Teknik dan Bisnis Sepeda Motor','2023-02-27 11:04:45','Administrator',NULL,'');
 
 /*Table structure for table `m_kelas` */
 
@@ -285,12 +306,14 @@ CREATE TABLE `m_kelas` (
   `updated_by` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `UNIQ` (`nama`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 /*Data for the table `m_kelas` */
 
 insert  into `m_kelas`(`id`,`nama`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(2,'I','2023-02-25 22:38:44','Administrator',NULL,'');
+(2,'11','2023-02-27 11:05:22','Administrator',NULL,''),
+(3,'10','2023-02-27 11:05:28','Administrator','2023-02-27 11:06:09','Administrator'),
+(4,'12','2023-02-27 11:05:35','Administrator',NULL,'');
 
 /*Table structure for table `m_siswa` */
 
@@ -312,13 +335,15 @@ CREATE TABLE `m_siswa` (
   `updated_by` varchar(100) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `UNIQ` (`nis`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 /*Data for the table `m_siswa` */
 
 insert  into `m_siswa`(`id`,`nis`,`nama`,`jurusan_id`,`nama_jurusan`,`kelas_id`,`nama_kelas`,`tahun_masuk`,`file_foto`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(1,'12341','Risky',1,'Teknik Otomotif',2,'I',2021,'','2023-02-25 22:43:41','Administrator','2023-02-25 22:44:16','Administrator'),
-(3,'12342','Suti',1,'Teknik Otomotif',2,'I',2022,'','2023-02-25 22:44:52','Administrator',NULL,'');
+(1,'0088977654','Hairul',1,'Teknik Komputer dan Jaringan',3,'10',2020,'','2023-02-27 11:10:43','Administrator',NULL,''),
+(2,'0099838887','Hamsah',2,'Multimedia',4,'12',2020,'','2023-02-27 11:21:51','Administrator',NULL,''),
+(3,'0088977655','Nurpadillah',2,'Multimedia',4,'12',2020,'','2023-02-27 20:39:56','Administrator',NULL,''),
+(4,'0088977657','Nur Awal',3,'Teknik dan Bisnis Sepeda Motor',4,'12',2020,'','2023-02-27 20:40:27','Administrator',NULL,'');
 
 /*Table structure for table `m_status_user` */
 
@@ -361,16 +386,23 @@ CREATE TABLE `m_user` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `updated_by` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 /*Data for the table `m_user` */
 
 insert  into `m_user`(`id`,`username`,`password`,`group_id`,`kode`,`nama`,`email`,`nama_industri`,`keterangan`,`last_login`,`last_logout`,`status_user_id`,`user_id`,`file_foto`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(1,'admin','/ZthFL9VBx2NQYcnpiVAPa/Z/9zdeURJzWaRZRpwg/+IBGjD02K2G7BQpKDYr1R3QieOHBsI/cRBZciojXC4hQ==',1,'','Administrator','sabrang@gmail.com','','Administrator','2023-02-25 23:11:56','2023-02-25 22:58:41',1,0,'data/20230225/b993ea89c674ef3a04484947f99db139.png','2023-01-07 21:34:10','','2023-02-25 17:22:55','Administrator'),
-(12,'12345','B7HT8PywPeNz5GkzUfsm7IxVCKErPri/1756RiBcdR8jOZjZsL3ybp2pGEdu24958d+FknR7Tc3ZTfUqyIdpZQ==',3,'12345','Risky','','','',NULL,NULL,1,1,'assets/images/users/avatar-11.png','2023-02-25 22:43:41','Administrator',NULL,''),
-(13,'12346','fbRk0ZkVxVeij72xU6jrVcL7ADVUrT/JEf2P/HG299Tb6IQxSc2tDRMq1aOEGh9JzRsJUw4TJE2mOFewVlovvA==',3,'12346','Suti','','','',NULL,NULL,1,1,'assets/images/users/avatar-11.png','2023-02-25 22:44:07','Administrator',NULL,''),
-(14,'12342','ZEhFyNZfOy3tSgu8UPOc6yrO8yLO+ybREywYhjBWRrFI7jCWu5qZOl7Fij0Z5gNZWHOIWxMjoDVNcNmSBQkXHg==',3,'12342','Suti','','','',NULL,NULL,1,1,'assets/images/users/avatar-11.png','2023-02-25 22:44:52','Administrator',NULL,''),
-(15,'123456789','ZvBO3vIvUDAcZka38UR//qcKHRPG65UNksX9ghmzasiS6kibQ2EGpAena2YwL5EdO31gKNC4FHpuejyBrq06yQ==',2,'123456789','Udin','','','','2023-02-25 22:58:49',NULL,1,1,'data/20230225/f3d54dc7c20a5c26b99503008b1a34b9.png','2023-02-25 22:39:08','Administrator','2023-02-25 23:08:54','Udin');
+(1,'admin','T5qYNDjSVXkXvvSAE61sjmXAdbwUbn6RRbeKobM83dBqL4uQYYvjdODh4cg4DXwF4+R5btnbW7c0lDCvj6esKg==',1,'','Administrator','','','Administrator','2023-02-27 23:26:42','2023-02-27 23:22:41',1,1,'data/20230227/84cefca17e7418a52dda5988fdc7e85f.png','2023-01-07 22:34:10','','2023-02-27 20:47:47','Administrator'),
+(16,'199610212019031002','jkQpWK1VwWfpyHj8iT8Te7ceiNsEitngJ15EFSyBTrhxkB7dokI2lsctNs+xFH2Mt8ixsC9hfMhmdJclTGZPMw==',2,'199610212019031002','Miftahur Risky Jufri, S.Pd','','','','2023-02-27 23:57:22','2023-02-27 23:52:32',1,1,'assets/images/users/avatar-11.png','2023-02-27 11:06:45','Administrator','2023-02-27 11:13:26','Administrator'),
+(17,'0088977654','D2gzupl9yYOgRvY/J+0Dw5G4hs88WO5fgfcrFzbu+Q13m49bXebCGeA2bH/KZRzEj7XId3bcEwuebU7psOB3kQ==',3,'0088977654','Hairul','','','','2023-02-27 23:39:25','2023-02-27 23:39:42',1,1,'assets/images/users/avatar-11.png','2023-02-27 11:10:43','Administrator','2023-02-27 23:31:49','Administrator'),
+(18,'april','NBDW1dUo6ziX5YAx/THodoNL6iL5s97XZHb+xq7arpsq6lSK9QroP9vlb058JkwdUMVwah8C2TAkEbCRHwquwQ==',4,'1','Apriliana','','Pegadaian','','2023-02-27 23:52:39','2023-02-27 23:57:16',1,1,'assets/images/users/avatar-11.png','2023-02-27 11:11:46','Administrator',NULL,''),
+(19,'reski','yql2P0STRonfWnu8jWDEH3IvkOm+XLT6T2FRGiWJMzmnleIJPoHMm2pNdzhyekxq41eK8NYMU3T7meYhgAnNtg==',4,'1','Reski','','Pegadaian','','2023-02-27 11:16:55','2023-02-27 11:17:20',1,1,'assets/images/users/avatar-11.png','2023-02-27 11:16:10','Miftahur Risky Jufri, S.Pd','2023-02-27 11:30:42','Administrator'),
+(20,'0099838887','8rLS4ZT3NyhycoLsqZsenadw+blrUlnsUpqJB/QJE2hxMOPxA2PSqsmV+ccTTf5xXEtZnVmNmEXkEIPvXirlrg==',3,'0099838887','Hamsah','','','',NULL,NULL,1,1,'assets/images/users/avatar-11.png','2023-02-27 11:21:51','Administrator',NULL,''),
+(21,'murni','xxqJ9Qp5fQLiELRz1m7lnTPbZwF52wqWqoiqjQXxfcjo4EZplWllpi7XBjFRiabFOmzgDTdQHo8OvE2bupCJYA==',4,'2','Murniati','','KOMINFO KAB. JENEPONTO','','2023-02-27 11:25:42','2023-02-27 11:26:23',1,1,'assets/images/users/avatar-11.png','2023-02-27 11:23:17','Administrator',NULL,''),
+(22,'198005192010012027','I6FypI+pXAB8/JELt2m8VpHUz5skZPD67qnQLRIflk5/5DrM3CAHIM/YcE3ObEmesDqfwZ6D0H2rl4LAPRToVQ==',2,'198005192010012027','Rahmawati, S.Pd., M.Pd','','','',NULL,NULL,1,1,'assets/images/users/avatar-11.png','2023-02-27 20:32:35','Administrator',NULL,''),
+(23,'197710252014122001','LAXITCBbgI6gW8iawHCwwEzn4GyfZ/0B7A56qN+JUVOuo2C44OtKeEqSG16dEUSEJOdYByrSVLlJ/S86GjK0oQ==',2,'197710252014122001','Ihsan Naskah, S.Kom., M.T','','','','2023-02-27 20:49:59','2023-02-27 20:53:12',1,1,'assets/images/users/avatar-11.png','2023-02-27 20:33:08','Administrator',NULL,''),
+(24,'susanto','FzXKJrLM8xyW90Hpi/6XxWXBI7Ph/vNx2aCxihm0+uZLmzYqb0szTuvvGbYXHSatTJNPN4OR9CzmTgm3mKoqmQ==',4,'3','Susanto Widoyo, SH','','Pengadilan Agama','','2023-02-27 21:04:39','2023-02-27 21:03:17',1,1,'assets/images/users/avatar-11.png','2023-02-27 20:37:27','Administrator',NULL,''),
+(25,'0088977655','BtvCZGySp5IuxfKQ9q2sS7arl1aB98/8fZy621FQxe29lyrLexpAWN3etStuGPGXQgYKhanB4SY4yNcApJbtMw==',3,'0088977655','Nurpadillah','','','','2023-02-27 20:59:48','2023-02-27 20:55:23',1,1,'assets/images/users/avatar-11.png','2023-02-27 20:39:56','Administrator',NULL,''),
+(26,'0088977657','ZN5I6hHBJOoK5AEbkt+QjIlB5H3RLx5jJO8Mj3pqimyDmTh58rCxkgHv95fq+RKf3kn0vU7syhXh2L0qLglwWA==',3,'0088977657','Nur Awal','','','',NULL,NULL,1,1,'assets/images/users/avatar-11.png','2023-02-27 20:40:27','Administrator',NULL,'');
 
 /*Table structure for table `tbl_absen` */
 
@@ -385,7 +417,7 @@ CREATE TABLE `tbl_absen` (
   `waktu_pulang` time(6) DEFAULT NULL,
   `absen_masuk` time(6) DEFAULT NULL,
   `absen_pulang` time(6) DEFAULT NULL,
-  `status` int(11) NOT NULL COMMENT '0 Tampa Keterangan\r\n1 Hadir\r\n2 Izin\r\n3 Sakit 4 Alpa',
+  `status` int(11) NOT NULL COMMENT '0 Belum Absen \r\n1 Hadir \r\n2 Izin\r\n 3 Sakit 4 Alpa 5 Terlambat',
   `keterangan_siswa` text NOT NULL,
   `verifikasi_stat` int(11) NOT NULL DEFAULT '0',
   `verifikasi_at` timestamp(6) NULL DEFAULT NULL,
@@ -396,9 +428,49 @@ CREATE TABLE `tbl_absen` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `updated_by` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
 /*Data for the table `tbl_absen` */
+
+insert  into `tbl_absen`(`id`,`siswa_id`,`nama_siswa`,`tanggal`,`waktu_masuk`,`waktu_pulang`,`absen_masuk`,`absen_pulang`,`status`,`keterangan_siswa`,`verifikasi_stat`,`verifikasi_at`,`verifikasi_by`,`verifikasi_ket`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+(81,'0088977654','Hairul','2023-02-01','07:30:00.000000','16:00:00.000000',NULL,NULL,2,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(82,'0088977654','Hairul','2023-02-02','07:30:00.000000','16:00:00.000000',NULL,NULL,3,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(83,'0088977654','Hairul','2023-02-03','07:03:00.000000','15:30:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(84,'0088977654','Hairul','2023-02-06','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(85,'0088977654','Hairul','2023-02-07','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(86,'0088977654','Hairul','2023-02-08','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(87,'0088977654','Hairul','2023-02-09','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(88,'0088977654','Hairul','2023-02-10','07:03:00.000000','15:30:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(89,'0088977654','Hairul','2023-02-13','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(90,'0088977654','Hairul','2023-02-14','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(91,'0088977654','Hairul','2023-02-15','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(92,'0088977654','Hairul','2023-02-16','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(93,'0088977654','Hairul','2023-02-17','07:03:00.000000','15:30:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(94,'0088977654','Hairul','2023-02-20','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(95,'0088977654','Hairul','2023-02-21','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(96,'0088977654','Hairul','2023-02-22','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(97,'0088977654','Hairul','2023-02-23','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(98,'0088977654','Hairul','2023-02-24','07:03:00.000000','15:30:00.000000',NULL,NULL,4,'',1,'2023-02-27 23:57:27.000000','Apriliana',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(99,'0088977654','Hairul','2023-02-27','07:30:00.000000','16:00:00.000000','07:30:00.000000','20:30:00.000000',1,'',1,'2023-02-27 23:57:27.000000','Apriliana',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)','2023-02-27 23:56:27','Apriliana'),
+(100,'0099838887','Hamsah','2023-02-01','07:30:00.000000','16:00:00.000000',NULL,NULL,2,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(101,'0099838887','Hamsah','2023-02-02','07:30:00.000000','16:00:00.000000',NULL,NULL,3,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(102,'0099838887','Hamsah','2023-02-03','07:30:00.000000','15:30:00.000000',NULL,NULL,3,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(103,'0099838887','Hamsah','2023-02-06','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(104,'0099838887','Hamsah','2023-02-07','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(105,'0099838887','Hamsah','2023-02-08','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(106,'0099838887','Hamsah','2023-02-09','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(107,'0099838887','Hamsah','2023-02-10','07:30:00.000000','15:30:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(108,'0099838887','Hamsah','2023-02-13','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(109,'0099838887','Hamsah','2023-02-14','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(110,'0099838887','Hamsah','2023-02-15','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(111,'0099838887','Hamsah','2023-02-16','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(112,'0099838887','Hamsah','2023-02-17','07:30:00.000000','15:30:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(113,'0099838887','Hamsah','2023-02-20','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(114,'0099838887','Hamsah','2023-02-21','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(115,'0099838887','Hamsah','2023-02-22','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(116,'0099838887','Hamsah','2023-02-23','07:30:00.000000','16:00:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(117,'0099838887','Hamsah','2023-02-24','07:30:00.000000','15:30:00.000000',NULL,NULL,4,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)',NULL,''),
+(118,'0099838887','Hamsah','2023-02-27','07:30:00.000000','16:00:00.000000','07:30:00.000000','08:30:00.000000',1,'',0,NULL,'',NULL,'2023-02-27 23:38:50.000000','Miftahur Risky Jufri, S.Pd (Auto)','2023-02-27 23:50:27','Miftahur Risky Jufri, S.Pd');
 
 /*Table structure for table `tbl_kelompok` */
 
@@ -422,12 +494,15 @@ CREATE TABLE `tbl_kelompok` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `updated_by` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 /*Data for the table `tbl_kelompok` */
 
 insert  into `tbl_kelompok`(`id`,`industri_id`,`nama_industri`,`guru_id`,`nama_guru`,`siswa_id`,`nama_siswa`,`tanggal_awal`,`tanggal_akhir`,`pembimbing_id`,`nama_pembimbing`,`file_nilai`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(2,3,'PT. Murfa Surya Mahardika','123456789','Udin','12341','Risky','2023-02-01','2023-02-28',0,'','','2023-02-25 22:57:25','Administrator',NULL,'');
+(1,1,'Pegadaian','199610212019031002','Miftahur Risky Jufri, S.Pd','0088977654','Hairul','2023-02-01','2023-02-28',18,'Apriliana','','2023-02-27 11:12:27','Administrator','2023-02-27 11:14:27','Miftahur Risky Jufri, S.Pd'),
+(2,2,'Kominfo','199610212019031002','Miftahur Risky Jufri, S.Pd','0099838887','Hamsah','2023-02-01','2023-02-28',21,'Murniati','','2023-02-27 11:23:27','Administrator','2023-02-27 23:24:27','Miftahur Risky Jufri, S.Pd'),
+(3,3,'Pengadilan Agama','197710252014122001','Ihsan Naskah, S.Kom., M.T','0088977655','Nurpadillah','2023-02-01','2023-02-28',24,'Susanto Widoyo, SH','','2023-02-27 20:41:27','Administrator','2023-02-27 20:41:27','Administrator'),
+(4,3,'Pengadilan Agama','197710252014122001','Ihsan Naskah, S.Kom., M.T','0088977657','Nur Awal','2023-02-01','2023-02-28',24,'Susanto Widoyo, SH','','2023-02-27 20:43:27','Administrator','2023-02-27 20:44:27','Administrator');
 
 /*Table structure for table `tbl_keterangan` */
 
@@ -467,9 +542,12 @@ CREATE TABLE `tbl_logbook` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `updated_by` varchar(100) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 /*Data for the table `tbl_logbook` */
+
+insert  into `tbl_logbook`(`id`,`siswa_id`,`nama_siswa`,`tanggal`,`uraian`,`file_foto`,`verifikasi_stat`,`verifikasi_at`,`verifikasi_by`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+(2,'0088977655','Nurpadillah','2023-02-01','Mengerjakan Laporan Harian','data/20230227/be561e348e0da81df9ec76a79bb8823a.jpg','1','2023-02-27 21:04:27','Administrator','2023-02-27 21:01:27','Nurpadillah',NULL,'');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
