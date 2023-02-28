@@ -268,7 +268,7 @@
                 <br>
             </td>
             <td align="left" valign=top colspan="2">
-                <?= strtoupper(client('kab_kota')) ?>, <?= strtoupper(tanggal(date('Y-m-d'))) ?>
+                <?= strtoupper(nama('m_industri', 'nama', ['id', $data['industri_id']])) ?>, <?= strtoupper(tanggal(date('Y-m-d'))) ?>
             </td>
         </tr>
         <tr>
