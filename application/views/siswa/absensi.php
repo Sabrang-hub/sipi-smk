@@ -53,6 +53,7 @@
                                     <th class="text-center">Absen Pulang</th>
                                     <th class="text-center">Status Kehadiran</th>
                                     <th class="text-center">Keterangan</th>
+                                    <th class="text-center">Verif. Pembimbing</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
@@ -219,7 +220,13 @@
                 var no = data.length;
                 for (let i = 0; i < data.length; i++) {
                     d = data[i];
-                    $('#list').DataTable().row.add([no, d.tanggal, d.absen_masuk, d.absen_pulang, d.nama_status, d.keterangan_siswa, d.aksi]).draw(false);
+                    d = data[i];
+                    if (d.verifikasi_stat == 1) {
+                        verif = "<span class=\"badge bg-success\">Diverifikasi</span>";
+                    } else {
+                        verif = "<span class=\"badge bg-secondary\">Berlum</span>";
+                    }
+                    $('#list').DataTable().row.add([no, d.tanggal, d.absen_masuk, d.absen_pulang, d.nama_status, d.keterangan_siswa, verif, d.aksi]).draw(false);
                     no--;
                 }
             },

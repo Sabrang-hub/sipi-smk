@@ -159,7 +159,7 @@
                         };
                         s += '<details><summary><span class="badge bg-primary">Tambah</span></summary>';
                         s += '<textarea class="form-control my-2" placeholder="Masukkan keterangan"></textarea>';
-                        s += '<button title="Simpan Keterangan" class="btn btn-primary btn-sm" onclick="simpan_keterangan(' + row.id + ',this)"><i class="mdi mdi-content-save"></i> <span class="d-none d-lg-inline">Simpan</span></button>';
+                        s += '<button title="Simpan Keterangan" class="btn btn-primary btn-sm" onclick="simpan_keterangan(' + row.id + ',2,this)"><i class="mdi mdi-content-save"></i> <span class="d-none d-lg-inline">Simpan</span></button>';
                         s += '</details>';
                         return s;
                     }
@@ -181,7 +181,7 @@
                         };
                         s += '<details><summary><span class="badge bg-primary">Tambah</span></summary>';
                         s += '<textarea class="form-control my-2" placeholder="Masukkan keterangan"></textarea>';
-                        s += '<button title="Simpan Keterangan" class="btn btn-primary btn-sm" onclick="simpan_keterangan(' + row.id + ',this)"><i class="mdi mdi-content-save"></i> <span class="d-none d-lg-inline">Simpan</span></button>';
+                        s += '<button title="Simpan Keterangan" class="btn btn-primary btn-sm" onclick="simpan_keterangan(' + row.id + ',2,this)"><i class="mdi mdi-content-save"></i> <span class="d-none d-lg-inline">Simpan</span></button>';
                         s += '</details>';
                         return s;
                     }
@@ -257,7 +257,7 @@
 
     });
 
-    function simpan_keterangan(id, e) {
+    function simpan_keterangan(id, jenis, e) {
         var $this = $(e);
         var src = $this.html();
         $this.prop('disabled', true);
@@ -271,7 +271,7 @@
             data: ({
                 id,
                 keterangan: $this.parent().find('textarea').val(),
-                jenis: 1,
+                jenis: jenis,
             }),
             dataType: 'json',
             type: 'post',
