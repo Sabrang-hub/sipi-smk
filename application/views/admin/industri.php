@@ -60,6 +60,11 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="kab_kota" class="form-label">Kabupaten / Kota</label>
+                        <input type="text" id="kab_kota" name="kab_kota" class="form-control" placeholder="Masukkan kabupaten / kota">
+                    </div>
+
+                    <div class="mb-3">
                         <label for="alamat" class="form-label">Alamat</label>
                         <textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Masukkan alamat"></textarea>
                     </div>
@@ -237,8 +242,16 @@
                     }
                 },
                 {
-                    data: 'alamat',
+                    data: 'kab_kota',
                     responsivePriority: 6,
+                    title: 'Kab / Kota',
+                    render: function(value, type, row) {
+                        return value;
+                    }
+                },
+                {
+                    data: 'alamat',
+                    responsivePriority: 7,
                     title: 'Alamat',
                     render: function(value, type, row) {
                         return value;
@@ -246,7 +259,7 @@
                 },
                 {
                     data: 'email',
-                    responsivePriority: 7,
+                    responsivePriority: 8,
                     title: 'Email',
                     render: function(value, type, row) {
                         return value;
@@ -254,7 +267,7 @@
                 },
                 {
                     data: 'no_telp',
-                    responsivePriority: 8,
+                    responsivePriority: 9,
                     title: 'No. Telp',
                     render: function(value, type, row) {
                         return value;
@@ -262,7 +275,7 @@
                 },
                 {
                     data: 'nama_jenis_usaha',
-                    responsivePriority: 9,
+                    responsivePriority: 10,
                     title: 'Jenis Usaha',
                     render: function(value, type, row) {
                         return value;
