@@ -288,7 +288,7 @@
                 <br>
             </td>
             <td align="left" valign=top>
-                PEMBIMBING LAPANGAN
+                Pembimbing Lapangan
             </td>
             <td align="left" valign=top>
                 <br>
