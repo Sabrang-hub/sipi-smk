@@ -132,7 +132,7 @@
         </tr>
         <?php
         $no = 1;
-        foreach ($log as $row) {
+        foreach ($log as $row) :
         ?>
             <tr>
                 <td style="border: 1px solid black;" align="center" valign=top sdval="1" sdnum="1033;">
@@ -179,9 +179,14 @@
             </tr>
         <?php
             $no++;
-        }
+        endforeach
         ?>
 
+        <?php if (count($log) <= 0) : ?>
+            <tr>
+                <td style="border: 1px solid black;" colspan="7" align="center">Data Tidak Tersedia</td>
+            </tr>
+        <?php endif ?>
         <tr>
             <td align="left" valign=top>
                 <br>

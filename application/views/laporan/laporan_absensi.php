@@ -109,7 +109,7 @@
         </tr>
         <?php
         $no = 1;
-        foreach ($absensi as $row) {
+        foreach ($absensi as $row) :
             if ($row['status'] != 0) {
         ?>
                 <tr>
@@ -138,8 +138,13 @@
         <?php
                 $no++;
             }
-        }
+        endforeach
         ?>
+        <?php if (count($absensi) <= 0) : ?>
+            <tr>
+                <td style="border: 1px solid black;" colspan="7" align="center">Data Tidak Tersedia</td>
+            </tr>
+        <?php endif ?>
         <tr>
             <td colspan=7 height="21" align="center" valign=top>
                 <br>
