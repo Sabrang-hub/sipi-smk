@@ -268,7 +268,7 @@
                 <br>
             </td>
             <td align="left" valign=top colspan="2">
-                <?= nama('m_industri', 'kab_kota', ['id', $data['industri_id']]) ?>, <?= tanggal(date('Y-m-d')) ?>
+                <?= strtoupper(nama('m_industri', 'kab_kota', ['id' => $data['industri_id']])) ?>, <?= strtoupper(tanggal(date('Y-m-d'))) ?>
             </td>
         </tr>
         <tr>
@@ -288,7 +288,7 @@
                 <br>
             </td>
             <td align="left" valign=top>
-                Pembimbing Lapangan
+                PEMBIMBING LAPANGAN
             </td>
             <td align="left" valign=top>
                 <br>
