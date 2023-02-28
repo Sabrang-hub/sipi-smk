@@ -138,6 +138,15 @@
                         return row.aksi_absensi;
                     }
                 },
+                {
+                    data: 'file_nilai',
+                    title: 'Nilai',
+                    orderable: false,
+                    responsivePriority: 8,
+                    render: function(value, type, row) {
+                        return row.file_nilai;
+                    }
+                },
             ],
             initComplete: function(settings, json) {
                 $('#list').parent().addClass('overflow-auto');

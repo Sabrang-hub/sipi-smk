@@ -27,9 +27,7 @@ class M_main extends CI_Model
             if ($group_id == '1') {
                 $aksi .= "<button title=\"Hapus\" type=\"button\" class=\"btn btn-danger btn-sm me-1\" onclick=\"hapus_kelompok('" . $row->id . "','" . $row->siswa_id . " - " . $row->nama_siswa . "',event)\"><i class=\"mdi mdi-trash-can-outline\"></i></button>";
             }
-            if ($row->file_nilai != '') {
-                $aksi .= "<a href=\"" . base_url($row->file_nilai) . "\" target=\"_blank\" title=\"Download File Nilai\" class=\"btn btn-success btn-sm me-1\"><i class=\"mdi mdi-file-chart-outline\"></i></a>";
-            }
+
             $row->aksi = $aksi;
             if ($row->created_at <> null && $row->created_at <> '0000-00-00 00:00:00') {
                 $row->created_at = date('j M Y h:i A', strtotime($row->created_at));
@@ -469,6 +467,9 @@ class M_main extends CI_Model
             $aksi_absensi .= "<a href=\"" . base_url('laporan_absensi?id=' . encrypt_url($row->siswa_id)) . "\" title=\"Cetak\" type=\"button\" class=\"btn btn-primary btn-sm me-1\" target=\"_blank\"><i class=\"mdi mdi mdi-printer\"></i></a>";
             $aksi_absensi .= "<a href=\"" . base_url('absensi-siswa/' . encrypt_url($row->siswa_id)) . "\" title=\"Detail\" type=\"button\" class=\"btn btn-primary btn-sm me-1\"><i class=\"mdi mdi-text-box-search-outline\"></i></a>";
             $row->aksi_absensi = $aksi_absensi;
+            if ($row->file_nilai != '') {
+                $row->file_nilai = "<a href=\"" . base_url($row->file_nilai) . "\" target=\"_blank\" title=\"Download File Nilai\" class=\"btn btn-success btn-sm me-1\"><i class=\"mdi mdi-file-chart-outline\"></i></a>";
+            }
             if ($row->created_at <> null && $row->created_at <> '0000-00-00 00:00:00') {
                 $row->created_at = date('j M Y h:i A', strtotime($row->created_at));
             }
