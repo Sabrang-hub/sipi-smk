@@ -951,6 +951,16 @@ class M_main extends CI_Model
 
     public function rekap_tahun_pkl()
     {
+        $group_id = $this->session->userdata('group_id');
+        $kode = $this->session->userdata('kode');
+        $id = $this->session->userdata('id');
+        if ($group_id == 2) {
+            $this->db->where('guru_id', $kode);
+        } elseif ($group_id == 3) {
+            $this->db->where('siswa_id', $kode);
+        } elseif ($group_id == 4) {
+            $this->db->where('pembimbing_id', $id);
+        }
         $res = $this->db->select("YEAR(tanggal_awal) label,COUNT(id) jumlah")->from("tbl_kelompok")->group_by("year(tanggal_awal)")->get();
         if ($res->num_rows() <= 0) {
             $data = [
@@ -973,6 +983,16 @@ class M_main extends CI_Model
 
     public function rekap_industri_pkl()
     {
+        $group_id = $this->session->userdata('group_id');
+        $kode = $this->session->userdata('kode');
+        $id = $this->session->userdata('id');
+        if ($group_id == 2) {
+            $this->db->where('guru_id', $kode);
+        } elseif ($group_id == 3) {
+            $this->db->where('siswa_id', $kode);
+        } elseif ($group_id == 4) {
+            $this->db->where('pembimbing_id', $id);
+        }
         $res = $this->db->select("nama_industri label,COUNT(id) jumlah")->from("tbl_kelompok")->group_by("industri_id")->get();
         if ($res->num_rows() <= 0) {
             $data = [

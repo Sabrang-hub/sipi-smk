@@ -153,7 +153,15 @@
                 </a>
                 <img src="<?= base_url() ?>assets/images/svg/help-icon.svg" height="90" alt="Helper Icon Image" />
                 <h5 class="mt-3">Panduan</h5>
-                <a href="javascript: void(0);" class="btn btn-secondary btn-sm">Download</a>
+                <?php if ($this->session->userdata('group_id') == 1) : ?>
+                    <a target="_blank" href="<?= base_url() ?>assets\data\Panduan SIP-PKL.pdf" class="btn btn-secondary btn-sm">Download</a>
+                <?php elseif ($this->session->userdata('group_id') == 2) : ?>
+                    <a target="_blank" href="<?= base_url() ?>assets/data/Panduan SIP-PKL Guru.pdf" class="btn btn-secondary btn-sm">Download</a>
+                <?php elseif ($this->session->userdata('group_id') == 3) : ?>
+                    <a target="_blank" href="<?= base_url() ?>assets/data/Panduan SIP-PKL Siswa.pdf" class="btn btn-secondary btn-sm">Download</a>
+                <?php elseif ($this->session->userdata('group_id') == 4) : ?>
+                    <a target="_blank" href="<?= base_url() ?>assets\data\Panduan SIP-PKL Pembimbing Lapangan.pdf" class="btn btn-secondary btn-sm">Download</a>
+                <?php endif ?>
             </div>
 
         </ul>

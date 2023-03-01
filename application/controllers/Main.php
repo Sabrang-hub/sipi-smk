@@ -27,6 +27,8 @@ class Main extends CI_Controller
 				case '2':
 					$data['title'] = 'Beranda';
 					$data['page'] = 'guru/beranda';
+					$data['rekap_tahun_pkl'] = $this->main->rekap_tahun_pkl();
+					$data['rekap_industri_pkl'] = $this->main->rekap_industri_pkl();
 					$data['data'] = $this->db->where('nip', $this->session->userdata('kode'))->get('m_guru')->row_array();
 					$rekap_kahadiran = $this->main->rekap_kahadiran('');
 					$data['jumlah_belum_absen'] = 0;
@@ -116,6 +118,7 @@ class Main extends CI_Controller
 				case '4':
 					$data['title'] = 'Beranda';
 					$data['page'] = 'pembimbing/beranda';
+					$data['rekap_tahun_pkl'] = $this->main->rekap_tahun_pkl();
 					$data['data'] = $this->db->where('kode', $this->session->userdata('kode'))->get('m_user')->row_array();
 					$rekap_kahadiran = $this->main->rekap_kahadiran('');
 					$data['jumlah_belum_absen'] = 0;

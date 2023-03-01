@@ -207,6 +207,22 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-6 col-6">
+                        <div class="card">
+                            <div class="card-body p-0" dir="ltr">
+                                <div id="rekap_tahun_pkl" class="apex-charts" data-colors="#0acf97"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-6">
+                        <div class="card">
+                            <div class="card-body p-0" dir="ltr">
+                                <div id="rekap_industri_pkl" class="apex-charts" data-colors="#0acf97"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -248,6 +264,7 @@
 <?php $this->layout->endSection() ?>
 <?php $this->layout->section('script') ?>
 <script src="<?= base_url() ?>assets/vendor/cropperjs/cropper.js"></script>
+<script src="<?= base_url() ?>assets/vendor/apexcharts/apexcharts.min.js"></script>
 <script>
     var cropper;
     var modal_foto_id = document.getElementById("modal-foto");
@@ -257,6 +274,115 @@
     });
     var image = document.querySelector('#img_preview');
     $(document).ready(function(e) {
+
+        var s = ((a = $("#rekap_tahun_pkl").data("colors")) && (o = a.split(",")), {
+                chart: {
+                    type: "bar",
+                    height: 309,
+                    sparkline: {
+                        enabled: !1
+                    }
+                },
+                stroke: {
+                    width: 0,
+                    curve: "straight"
+                },
+                fill: {
+                    opacity: 0.5
+                },
+                series: [{
+                    name: "Jumlah",
+                    data: <?= json_encode($rekap_tahun_pkl['data']) ?>
+                }],
+                xaxis: {
+                    crosshairs: {
+                        width: 1
+                    },
+                    categories: <?= json_encode($rekap_tahun_pkl['label']) ?>
+                },
+                yaxis: {
+                    min: 0
+                },
+                colors: o,
+                title: {
+                    text: <?= $rekap_tahun_pkl['total'] ?>,
+                    offsetX: 20,
+                    offsetY: 20,
+                    style: {
+                        fontSize: "24px"
+                    }
+                },
+                subtitle: {
+                    text: "Jumlah PKL Siswa",
+                    offsetX: 20,
+                    offsetY: 55,
+                    style: {
+                        fontSize: "14px"
+                    }
+                },
+                tooltip: {
+                    y: {
+                        formatter: function(t) {
+                            return t + " Siswa";
+                        },
+                    },
+                },
+            }),
+            o = (new ApexCharts(document.querySelector("#rekap_tahun_pkl"), s).render(), ["#734CEA"]),
+            s = ((a = $("#rekap_industri_pkl").data("colors")) && (o = a.split(",")), {
+                chart: {
+                    type: "bar",
+                    height: 309,
+                    sparkline: {
+                        enabled: !1
+                    }
+                },
+                stroke: {
+                    width: 0,
+                    curve: "straight"
+                },
+                fill: {
+                    opacity: 0.5
+                },
+                series: [{
+                    name: "Jumlah",
+                    data: <?= json_encode($rekap_industri_pkl['data']) ?>
+                }],
+                xaxis: {
+                    crosshairs: {
+                        width: 1
+                    },
+                    categories: <?= json_encode($rekap_industri_pkl['label']) ?>
+                },
+                yaxis: {
+                    min: 0
+                },
+                colors: o,
+                title: {
+                    text: <?= $rekap_industri_pkl['total'] ?>,
+                    offsetX: 20,
+                    offsetY: 20,
+                    style: {
+                        fontSize: "24px"
+                    }
+                },
+                subtitle: {
+                    text: "Jumlah Siswa Industri",
+                    offsetX: 20,
+                    offsetY: 55,
+                    style: {
+                        fontSize: "14px"
+                    }
+                },
+                tooltip: {
+                    y: {
+                        formatter: function(t) {
+                            return t + " Siswa";
+                        },
+                    },
+                },
+            }),
+            o = (new ApexCharts(document.querySelector("#rekap_industri_pkl"), s).render(), ["#734CEA"])
 
         $('#fm-foto').submit(function(e) {
             e.preventDefault();
