@@ -94,7 +94,7 @@
                 </div>
             </div>
         </div>
-        <?php if ($status_absen_hari_ini < 2 && $jumlah_belum_absen <= 0) : ?>
+        <?php if ($status_absen_hari_ini < 2 && $jumlah_belum_absen > 0) : ?>
             <div class="row">
                 <div class="col-12">
                     <a href="<?= base_url('absensi') ?>">
