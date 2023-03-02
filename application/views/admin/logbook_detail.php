@@ -159,7 +159,7 @@
                         };
                         s += '<details><summary><span class="badge bg-primary">Tambah</span></summary>';
                         s += '<textarea class="form-control my-2" placeholder="Masukkan keterangan"></textarea>';
-                        s += '<button title="Simpan Keterangan" class="btn btn-primary btn-sm" onclick="simpan_keterangan(' + row.id + ',2,this)"><i class="mdi mdi-content-save"></i> <span class="d-none d-lg-inline">Simpan</span></button>';
+                        s += '<button title="Simpan Keterangan" class="btn btn-primary btn-sm" onclick="simpan_keterangan(' + row.id + ',1,this)"><i class="mdi mdi-content-save"></i> <span class="d-none d-lg-inline">Simpan</span></button>';
                         s += '</details>';
                         return s;
                     }
