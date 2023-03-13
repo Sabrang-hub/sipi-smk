@@ -5,7 +5,7 @@
 <head>
 
     <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-    <title>REKAP KEHADIRAN - <?= strtoupper($data['nama_siswa']) ?></title>
+    <title>REKAP KEHADIRAN - <?= strtoupper($data['nama_siswa']) ?> - <?= date('YmdHis') ?></title>
     <meta name="generator" content="LibreOffice 5.4.7.2 (Linux)" />
     <meta name="author" content="No Name" />
     <meta name="created" content="2023-02-12T17:20:18" />
