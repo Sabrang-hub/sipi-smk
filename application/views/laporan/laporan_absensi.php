@@ -158,50 +158,50 @@
     </table>
     <table cellspacing="0" border="0" cellpadding="4" style="border-collapse: collapse; width:100%">
         <tr>
-            <td colspan=5 height="21" align="left" valign=top width="60%">
+            <td height="21" align="left" valign=top width="60%">
                 CATATAN :
             </td>
-            <td colspan=2 align="left" valign=top width="40%">
+            <td align="left" valign=top width="40%">
                 <?= strtoupper(nama('m_industri', 'kab_kota', ['id' => $data['industri_id']])) ?>, <?= strtoupper(tanggal(date('Y-m-d'))) ?>
             </td>
         </tr>
         <tr>
-            <td colspan=5 height="21" align="center" valign=top>
+            <td height="21" align="center" valign=top>
                 <br>
             </td>
-            <td colspan=2 align="left" valign=top>
+            <td align="left" valign=top>
                 PEMBIMBING LAPANGAN
             </td>
         </tr>
         <tr>
-            <td colspan=5 height="21" align="center" valign=top>
+            <td height="21" align="center" valign=top>
                 <br>
             </td>
-            <td colspan=2 align="left" valign=top>
-                <br>
-            </td>
-        </tr>
-        <tr>
-            <td colspan=5 height="21" align="center" valign=top>
-                <br>
-            </td>
-            <td colspan=2 align="left" valign=top>
+            <td align="left" valign=top>
                 <br>
             </td>
         </tr>
         <tr>
-            <td colspan=5 height="21" align="center" valign=top>
+            <td height="21" align="center" valign=top>
                 <br>
             </td>
-            <td colspan=2 align="left" valign=top>
+            <td align="left" valign=top>
                 <br>
             </td>
         </tr>
         <tr>
-            <td colspan=5 height="21" align="center" valign=top>
+            <td height="21" align="center" valign=top>
                 <br>
             </td>
-            <td colspan=2 align="left" valign=top>
+            <td align="left" valign=top>
+                <br>
+            </td>
+        </tr>
+        <tr>
+            <td height="21" align="center" valign=top>
+                <br>
+            </td>
+            <td align="left" valign=top>
                 <u><?= $data['nama_pembimbing'] ?></u>
             </td>
         </tr>
