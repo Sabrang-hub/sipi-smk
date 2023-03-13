@@ -157,7 +157,7 @@
         </tr>
         <tr>
             <td colspan=5 height="21" align="center" valign=top>
-                <br>
+                CATATAN :
             </td>
             <td colspan=2 align="left" valign=top>
                 <?= strtoupper(nama('m_industri', 'kab_kota', ['id' => $data['industri_id']])) ?>, <?= strtoupper(tanggal(date('Y-m-d'))) ?>
