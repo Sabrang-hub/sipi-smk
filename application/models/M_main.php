@@ -92,7 +92,7 @@ class M_main extends CI_Model
 
 
         if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_roleback();
+            $this->db->trans_rollback();
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),
@@ -312,7 +312,7 @@ class M_main extends CI_Model
         }
 
         if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_roleback();
+            $this->db->trans_rollback();
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),
@@ -340,7 +340,7 @@ class M_main extends CI_Model
         $this->db->insert('tbl_keterangan', $data);
 
         if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_roleback();
+            $this->db->trans_rollback();
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),
@@ -646,7 +646,7 @@ class M_main extends CI_Model
                 $date_exist = 1;
             }
             if ($date_exist == 1) {
-                if ($value->format('Y-m-d') == date('Y-m-d') && ($status == 0 || ($status == 1 && $data_absen['absen_pulang'] == null) || ($status == 5 && $data_absen['absen_pulang'] == null))) {
+                if ($value->format('Y-m-d') == date('Y-m-d') && ($status == 0 || ($status == 1 && $data_absen['absen_pulang'] == null) || ($status == 5 && $data_absen['absen_pulang'] == null)) || $this->session->userdata('group_id') == 1) {
                     $aksi = "<button class=\"btn btn-info btn-sm me-1\" onclick=\"edit_absensi($index,event)\"><i class=\"mdi mdi-file-sign\"></i></button>";
                 } else {
                     $aksi = "<span class=\"badge bg-primary text-white\"><i>Selesai</i></span>";
@@ -934,7 +934,7 @@ class M_main extends CI_Model
         $this->db->where('siswa_id', $data['siswa_id'])->update('tbl_kelompok', $data);
 
         if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_roleback();
+            $this->db->trans_rollback();
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),

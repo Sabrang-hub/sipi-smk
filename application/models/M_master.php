@@ -302,7 +302,7 @@ class m_master extends CI_Model
 
 
         if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_roleback();
+            $this->db->trans_rollback();
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),
@@ -414,7 +414,7 @@ class m_master extends CI_Model
 
 
         if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_roleback();
+            $this->db->trans_rollback();
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),
@@ -475,7 +475,7 @@ class m_master extends CI_Model
         $data['updated_by'] = $this->session->userdata('nama');
         $this->db->where('1=1')->update('m_client_setting', $data);
         if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_roleback();
+            $this->db->trans_rollback();
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),
@@ -579,7 +579,7 @@ class m_master extends CI_Model
 
 
         if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_roleback();
+            $this->db->trans_rollback();
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),
@@ -634,7 +634,7 @@ class m_master extends CI_Model
 
 
         if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_roleback();
+            $this->db->trans_rollback();
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),
@@ -673,7 +673,7 @@ class m_master extends CI_Model
         $this->db->where('id', $data['id'])->update('m_user', $data);
 
         if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_roleback();
+            $this->db->trans_rollback();
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),
@@ -768,7 +768,7 @@ class m_master extends CI_Model
 
 
         if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_roleback();
+            $this->db->trans_rollback();
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),
@@ -897,7 +897,7 @@ class m_master extends CI_Model
 
 
         if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_roleback();
+            $this->db->trans_rollback();
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),
@@ -936,7 +936,7 @@ class m_master extends CI_Model
         $this->db->where('kode', $id)->update('m_user', $data);
 
         if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_roleback();
+            $this->db->trans_rollback();
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),
@@ -961,7 +961,7 @@ class m_master extends CI_Model
         $this->db->where('id', $id)->delete('m_guru');
 
         if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_roleback();
+            $this->db->trans_rollback();
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),
@@ -1073,7 +1073,7 @@ class m_master extends CI_Model
         }
 
         if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_roleback();
+            $this->db->trans_rollback();
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),
@@ -1112,7 +1112,7 @@ class m_master extends CI_Model
         $this->db->where('nis', $id)->update('m_siswa', $data);
 
         if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_roleback();
+            $this->db->trans_rollback();
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),
@@ -1137,7 +1137,7 @@ class m_master extends CI_Model
         $this->db->where('id', $id)->delete('m_siswa');
 
         if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_roleback();
+            $this->db->trans_rollback();
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),
@@ -1176,7 +1176,7 @@ class m_master extends CI_Model
         $this->db->where('id', $data['id'])->update('m_user', $data);
 
         if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_roleback();
+            $this->db->trans_rollback();
             return [
                 'stat' => false,
                 'msg' => $this->db->error(),

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="latin1" collation="latin1_swedish_ci">sipt7266_db</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="m_siswa" view="colnames">
+<left>749</left>
+<top>3</top>
+<width>128</width>
+<height>299</height>
+<sql_create_table>CREATE TABLE `m_siswa` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nis` varchar(50) NOT NULL DEFAULT '',
+  `nama` varchar(100) NOT NULL DEFAULT '',
+  `jurusan_id` int(11) NOT NULL DEFAULT '0',
+  `nama_jurusan` varchar(100) NOT NULL DEFAULT '',
+  `kelas_id` int(11) NOT NULL DEFAULT '0',
+  `nama_kelas` varchar(100) NOT NULL DEFAULT '',
+  `tahun_masuk` year(4) NOT NULL,
+  `file_foto` varchar(200) NOT NULL DEFAULT '',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_by` varchar(100) NOT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `updated_by` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `UNIQ` (`nis`) USING BTREE,
+  KEY `rel_1` (`jurusan_id`),
+  KEY `rel_2` (`kelas_id`),
+  CONSTRAINT `rel_1` FOREIGN KEY (`jurusan_id`) REFERENCES `m_jurusan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `rel_2` FOREIGN KEY (`kelas_id`) REFERENCES `m_kelas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC</sql_create_table>
+</table>
+<table name="m_jurusan" view="colnames">
+<left>921</left>
+<top>7</top>
+<width>113</width>
+<height>180</height>
+<sql_create_table>CREATE TABLE `m_jurusan` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(50) NOT NULL DEFAULT '',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_by` varchar(100) NOT NULL DEFAULT '',
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `updated_by` varchar(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `UNIQ` (`nama`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC</sql_create_table>
+</table>
+<table name="m_kelas" view="colnames">
+<left>923</left>
+<top>200</top>
+<width>113</width>
+<height>180</height>
+<sql_create_table>CREATE TABLE `m_kelas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(50) NOT NULL DEFAULT '',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_by` varchar(100) NOT NULL DEFAULT '',
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `updated_by` varchar(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `UNIQ` (`nama`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC</sql_create_table>
+</table>
+<table name="tbl_kelompok" view="colnames">
+<left>558</left>
+<top>3</top>
+<width>155</width>
+<height>332</height>
+<sql_create_table>CREATE TABLE `tbl_kelompok` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `industri_id` int(11) NOT NULL DEFAULT '0',
+  `nama_industri` varchar(100) NOT NULL DEFAULT '',
+  `guru_id` varchar(30) NOT NULL DEFAULT '',
+  `nama_guru` varchar(100) NOT NULL DEFAULT '',
+  `siswa_id` varchar(30) NOT NULL DEFAULT '',
+  `nama_siswa` varchar(100) NOT NULL DEFAULT '',
+  `tanggal_awal` date DEFAULT NULL,
+  `tanggal_akhir` date DEFAULT NULL,
+  `pembimbing_id` int(11) NOT NULL DEFAULT '0',
+  `nama_pembimbing` varchar(100) NOT NULL DEFAULT '',
+  `file_nilai` varchar(255) NOT NULL DEFAULT '',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_by` varchar(100) NOT NULL DEFAULT '',
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `updated_by` varchar(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `rel_3` (`industri_id`),
+  KEY `rel_4` (`guru_id`),
+  KEY `rel_5` (`siswa_id`),
+  KEY `rel_6` (`pembimbing_id`),
+  CONSTRAINT `rel_3` FOREIGN KEY (`industri_id`) REFERENCES `m_industri` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `rel_4` FOREIGN KEY (`guru_id`) REFERENCES `m_guru` (`nip`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `rel_5` FOREIGN KEY (`siswa_id`) REFERENCES `m_siswa` (`nis`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `rel_6` FOREIGN KEY (`pembimbing_id`) REFERENCES `m_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC</sql_create_table>
+</table>
+<table name="m_industri" view="colnames">
+<left>360</left>
+<top>5</top>
+<width>153</width>
+<height>299</height>
+<sql_create_table>CREATE TABLE `m_industri` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(100) NOT NULL,
+  `nama_pimpinan` varchar(100) NOT NULL,
+  `kab_kota` varchar(100) NOT NULL DEFAULT '',
+  `alamat` varchar(255) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `no_telp` varchar(30) NOT NULL,
+  `jenis_usaha_id` int(11) NOT NULL DEFAULT '0',
+  `nama_jenis_usaha` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_by` varchar(100) NOT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `updated_by` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC</sql_create_table>
+</table>
+<table name="m_guru" view="colnames">
+<left>384</left>
+<top>330</top>
+<width>137</width>
+<height>248</height>
+<sql_create_table>CREATE TABLE `m_guru` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nip` varchar(30) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `golongan_id` int(11) NOT NULL DEFAULT '0',
+  `nama_golongan` varchar(50) NOT NULL,
+  `file_foto` varchar(255) NOT NULL DEFAULT '',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_by` varchar(100) NOT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `updated_by` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `UNIQ` (`nip`) USING BTREE,
+  KEY `rel_8` (`golongan_id`),
+  CONSTRAINT `rel_8` FOREIGN KEY (`golongan_id`) REFERENCES `m_golongan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC</sql_create_table>
+</table>
+<table name="m_user" view="colnames">
+<left>735</left>
+<top>333</top>
+<width>143</width>
+<height>389</height>
+<sql_create_table>CREATE TABLE `m_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL DEFAULT '',
+  `password` varchar(255) NOT NULL DEFAULT '',
+  `group_id` int(11) NOT NULL DEFAULT '0',
+  `kode` varchar(50) NOT NULL DEFAULT '',
+  `nama` varchar(100) NOT NULL DEFAULT '',
+  `email` varchar(50) NOT NULL DEFAULT '',
+  `nama_industri` varchar(100) NOT NULL DEFAULT '',
+  `keterangan` varchar(255) NOT NULL DEFAULT '',
+  `last_login` timestamp NULL DEFAULT NULL,
+  `last_logout` timestamp NULL DEFAULT NULL,
+  `status_user_id` int(11) NOT NULL DEFAULT '0',
+  `user_id` int(11) NOT NULL DEFAULT '0',
+  `file_foto` varchar(255) NOT NULL DEFAULT 'assets/images/users/avatar-11.png',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_by` varchar(100) NOT NULL DEFAULT '',
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `updated_by` varchar(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `UNIQ` (`username`,`group_id`),
+  KEY `restrict_m_group` (`group_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC</sql_create_table>
+</table>
+<table name="m_group" view="colnames">
+<left>578</left>
+<top>351</top>
+<width>103</width>
+<height>114</height>
+<sql_create_table>CREATE TABLE `m_group` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(20) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`) USING BTREE,
+  CONSTRAINT `rel_10` FOREIGN KEY (`id`) REFERENCES `m_user` (`group_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>
