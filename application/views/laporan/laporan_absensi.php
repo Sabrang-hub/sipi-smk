@@ -155,6 +155,8 @@
                 <br>
             </td>
         </tr>
+    </table>
+    <table cellspacing="0" border="0" cellpadding="4" style="border-collapse: collapse; width:100%">
         <tr>
             <td colspan=5 height="21" align="left" valign=top>
                 CATATAN :

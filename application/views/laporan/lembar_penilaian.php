@@ -5,7 +5,7 @@
 <head>
 
     <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-    <title>Lembar Penilaian</title>
+    <title>LEMBAR PENILAIAN - <?= date('YmdHis') ?></title>
     <meta name="generator" content="LibreOffice 5.4.7.2 (Linux)" />
     <meta name="author" content="No Name" />
     <meta name="created" content="2023-02-11T07:41:01" />

@@ -17,7 +17,7 @@ class Laporan extends CI_Controller
             $mpdf->SetFooter('Printed SIP-PKL on @ {DATE j-m-Y H:i:s} || Page {PAGENO} of {nb}');
             $mpdf->AddPage('L');
             $mpdf->WriteHTML($html);
-            $mpdf->Output();
+            $mpdf->Output('Laporan_kegiatan_' . date('YmdHis') . '.pdf', 'I');
         } else {
             redirect(base_url('auth'));
         }
@@ -45,7 +45,7 @@ class Laporan extends CI_Controller
             $mpdf->SetFooter('Printed SIP-PKL on @ {DATE j-m-Y H:i:s} || Page {PAGENO} of {nb}');
             $mpdf->AddPage('P');
             $mpdf->WriteHTML($html);
-            $mpdf->Output();
+            $mpdf->Output('Lembar_Penilaian_' . date('YmdHis') . '.pdf', 'I');
         } else {
             redirect(base_url('auth'));
         }
