@@ -31,7 +31,7 @@ class Laporan extends CI_Controller
             $mpdf->SetFooter('Printed SIP-PKL on @ {DATE j-m-Y H:i:s} || Page {PAGENO} of {nb}');
             $mpdf->AddPage('L');
             $mpdf->WriteHTML($html);
-            $mpdf->Output();
+            $mpdf->Output('Rekap_Kehadiran_' . date('YmdHis') . '.pdf', 'I');
         } else {
             redirect(base_url('auth'));
         }
