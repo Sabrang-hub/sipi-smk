@@ -142,7 +142,7 @@
                         </div>
                         <div class="col-6 col-lg-4">
                             <div class="mb-3">
-                                <label for="absen_pulang" class="form-label">Absen Masuk</label>
+                                <label for="absen_pulang" class="form-label">Absen Pulang</label>
                                 <input type="time" id="absen_pulang" name="absen_pulang" class="form-control form-control-sm">
                             </div>
                         </div>
