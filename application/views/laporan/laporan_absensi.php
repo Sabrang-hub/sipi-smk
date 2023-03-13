@@ -158,10 +158,10 @@
     </table>
     <table cellspacing="0" border="0" cellpadding="4" style="border-collapse: collapse; width:100%">
         <tr>
-            <td colspan=5 height="21" align="left" valign=top>
+            <td colspan=5 height="21" align="left" valign=top width="60%">
                 CATATAN :
             </td>
-            <td colspan=2 align="left" valign=top>
+            <td colspan=2 align="left" valign=top width="40%">
                 <?= strtoupper(nama('m_industri', 'kab_kota', ['id' => $data['industri_id']])) ?>, <?= strtoupper(tanggal(date('Y-m-d'))) ?>
             </td>
         </tr>
