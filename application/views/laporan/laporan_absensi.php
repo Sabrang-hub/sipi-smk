@@ -92,10 +92,10 @@
                 TANGGAL
             </td>
             <td style="border: 1px solid #000000; width:15%;" align="center" valign=middle>
-                WAKTU MASUK
+                ABSEN MASUK
             </td>
             <td style="border: 1px solid #000000; width:15%;" align="center" valign=middle>
-                WAKTU PULANG
+                ABSEN PULANG
             </td>
             <td style="border: 1px solid #000000; width:15%;" align="center" valign=middle>
                 STATUS KEHADIRAN
@@ -120,10 +120,10 @@
                         <?= date('d-m-Y', strtotime($row['tanggal'])) ?>
                     </td>
                     <td style="border: 1px solid #000000;" align="center" valign=top>
-                        <?= $row['waktu_masuk'] ?>
+                        <?= $row['absen_masuk'] ?>
                     </td>
                     <td style="border: 1px solid #000000;" align="center" valign=top>
-                        <?= $row['waktu_pulang'] ?>
+                        <?= $row['absen_pulang'] ?>
                     </td>
                     <td style="border: 1px solid #000000;" align="center" valign=top>
                         <?= $row['nama_status'] ?>
