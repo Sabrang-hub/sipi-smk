@@ -260,7 +260,7 @@
     <table cellspacing="0" border="0" cellpadding="4" style="border-collapse: collapse; width:100%">
         <tr>
             <td align="left" valign=top>
-                <br>
+                CATATAN :
             </td>
             <td align="left" valign=top>
                 <br>
