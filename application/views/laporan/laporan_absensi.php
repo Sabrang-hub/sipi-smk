@@ -156,7 +156,7 @@
             </td>
         </tr>
         <tr>
-            <td colspan=5 height="21" align="center" valign=top>
+            <td colspan=5 height="21" align="left" valign=top>
                 CATATAN :
             </td>
             <td colspan=2 align="left" valign=top>
