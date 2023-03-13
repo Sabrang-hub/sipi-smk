@@ -259,7 +259,7 @@
     </table>
     <table cellspacing="0" border="0" cellpadding="4" style="border-collapse: collapse; width:100%">
         <tr>
-            <td align="left" valign=top>
+            <td align="left" valign=top style="white-space:nowrap">
                 CATATAN : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
             <td align="left" valign=top>
