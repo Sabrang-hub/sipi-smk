@@ -259,38 +259,15 @@
     </table>
     <table cellspacing="0" border="0" cellpadding="4" style="border-collapse: collapse; width:100%">
         <tr>
-            <td align="left" valign=top style="white-space:nowrap">
-                CATATAN : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <td align="left" valign=top width="60%">
+                CATATAN :
             </td>
-            <td align="left" valign=top>
-                <br>
-            </td>
-            <td align="left" valign=top>
-                <br>
-            </td>
-            <td align="left" valign=top>
-                <br>
-            </td>
-            <td align="left" valign=top>
-                <br>
-            </td>
-            <td align="left" valign=top colspan="2">
+
+            <td align="left" valign=top colspan="2" width="40%">
                 <?= strtoupper(nama('m_industri', 'kab_kota', ['id' => $data['industri_id']])) ?>, <?= strtoupper(tanggal(date('Y-m-d'))) ?>
             </td>
         </tr>
         <tr>
-            <td align="left" valign=top>
-                <br>
-            </td>
-            <td align="left" valign=top>
-                <br>
-            </td>
-            <td align="left" valign=top>
-                <br>
-            </td>
-            <td align="left" valign=top>
-                <br>
-            </td>
             <td align="left" valign=top>
                 <br>
             </td>
@@ -311,18 +288,6 @@
             <td align="left" valign=top>
                 <br>
             </td>
-            <td align="left" valign=top>
-                <br>
-            </td>
-            <td align="left" valign=top>
-                <br>
-            </td>
-            <td align="left" valign=top>
-                <br>
-            </td>
-            <td align="left" valign=top>
-                <br>
-            </td>
         </tr>
         <tr>
             <td align="left" valign=top>
@@ -334,32 +299,8 @@
             <td align="left" valign=top>
                 <br>
             </td>
-            <td align="left" valign=top>
-                <br>
-            </td>
-            <td align="left" valign=top>
-                <br>
-            </td>
-            <td align="left" valign=top>
-                <br>
-            </td>
-            <td align="left" valign=top>
-                <br>
-            </td>
         </tr>
         <tr>
-            <td align="left" valign=top>
-                <br>
-            </td>
-            <td align="left" valign=top>
-                <br>
-            </td>
-            <td align="left" valign=top>
-                <br>
-            </td>
-            <td align="left" valign=top>
-                <br>
-            </td>
             <td align="left" valign=top>
                 <br>
             </td>
